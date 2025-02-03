@@ -1,45 +1,33 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
 
-// Body Parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// Set static folder for public assets (CSS, JS, images)
+// Set static folder for public assets
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// Define Routes
-app.get('/', (req, res) => {
-    res.render('index');  // This will render views/index.ejs
+// Import Routes
+const indexRoutes = require('./routes/index');
+const blogRoutes = require('./routes/blog');
+
+app.use('/', indexRoutes);
+app.use('/blog', blogRoutes);
+
+// Error Handling Middleware (Handles 404)
+app.use((req, res) => {
+    res.status(404).render('404', { title: 'Page Not Found' });
 });
 
+// Start Server
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-
-
-
-app.get('/about', (req, res) => {
-    res.render('about'); // Renders views/about.ejs
-});
-
-app.get('/blog', (req, res) => {
-    res.render('blog'); // Renders views/blog.ejs
-});
-
-app.get('/resources', (req, res) => {
-    res.render('resources'); // Renders views/resources.ejs
-});
-
-app.get('/jobs', (req, res) => {
-    res.render('jobs'); // Renders views/jobs.ejs
-});
-
