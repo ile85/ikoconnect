@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const blogController = require('../controllers/blogController');
 
-router.get('/', blogController.getAllBlogs);
-router.get('/:id', blogController.getBlogById);
+router.get('/', (req, res) => {
+    res.render('pages/blog', {
+        title: 'Blog | IkoConnect',
+        description: 'Latest articles and insights on freelancing and remote work.',
+    });
+});
 
 module.exports = router;
