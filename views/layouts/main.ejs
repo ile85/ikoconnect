@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%- description || 'IkoConnect - Your ultimate resource for freelancers. Get the best job resources, remote work tips, and tool reviews.' %>">
+    <meta name="description" content="<%= description %>">
     <meta name="keywords" content="freelancing, remote work, job resources, productivity, time management">
     <meta name="author" content="IkoConnect">
     
-    <title><%- title || 'IkoConnect | Empower Your Freelance Career' %></title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/images/favicon.ico">
 </head>
 <body>
 
     <!-- Header -->
-    <%- include('./partials/header') %>
+    <%- include('../partials/header') %>
 
     <!-- Dynamic Content -->
     <main>
-        <%- body %>
+        <%- body %> 
     </main>
 
     <!-- Footer -->
-    <%- include('./partials/footer') %>
+    <%- include('../partials/footer') %>
 
     <!-- JavaScript -->
     <script src="/js/main.js"></script>
