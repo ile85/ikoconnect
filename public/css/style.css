@@ -1,17 +1,21 @@
-/* General Reset */
+/* ✅ General Reset & Basic Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Body and Typography */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     color: #333;
-    line-height: 1.8;
+    line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* ✅ Smooth Scroll Effect */
+html {
+    scroll-behavior: smooth;
 }
 
 h1, h2, h3 {
@@ -23,195 +27,250 @@ p {
     font-size: 1.1rem;
 }
 
-/* Header and Navigation */
+/* ✅ Header & Navigation */
 header {
-    background-color: #0059a8;
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 4px 2px -2px gray;
-}
-
-header nav {
+    background: linear-gradient(135deg, #24292e, #1e1e1e);
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-header nav a {
+header .logo {
+    font-size: 26px;
+    font-weight: bold;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
-header nav a:hover {
+header .logo:hover {
     color: #ffcc33;
 }
 
-/* Mobile Navigation */
+/* ✅ Navigation */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.nav-links li a:hover {
+    background: #ffcc33;
+    color: #24292e;
+}
+
+/* ✅ Hamburger Menu (Mobile) */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
 }
 
-.hamburger .line {
-    width: 25px;
+.hamburger div {
+    width: 30px;
     height: 3px;
     background-color: white;
-    margin: 4px 0;
+    margin: 5px 0;
+    transition: all 0.3s ease;
 }
 
-.menu {
+/* ✅ Mobile Navigation */
+.mobile-nav {
     display: none;
     flex-direction: column;
-    background-color: #0059a8;
     position: absolute;
     top: 60px;
-    right: 0;
+    left: 0;
     width: 100%;
-    z-index: 1000;
+    background: #24292e;
+    padding: 15px;
+    text-align: center;
 }
 
-.menu.open {
+.mobile-nav.open {
     display: flex;
 }
 
-.no-scroll {
+.mobile-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.mobile-nav a:hover {
+    background: #ffcc33;
+    color: #24292e;
+}
+
+/* ✅ Sticky Header Effect */
+header.scroll {
+    background: #1e1e1e;
+    padding: 10px 5%;
+    transition: all 0.3s ease;
+}
+
+/* ✅ Button Styles */
+.cta-btn {
+    padding: 15px 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cta-btn.primary {
+    background: #ffcc33;
+    color: #24292e;
+}
+
+.cta-btn.primary:hover {
+    background: #eab308;
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+/* ✅ Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('/images/hero-bg.jpg') center/cover no-repeat;
     overflow: hidden;
 }
 
-/* Hero Section */
-.hero {
-    background: url('/images/domenico.jpg') no-repeat center center/cover;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 0 20px;
-    position: relative;
-}
-
+/* ✅ Dark Overlay */
 .hero::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; /* Fix overlay width */
+    width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
+/* ✅ Hero Content */
 .hero-content {
     position: relative;
     z-index: 2;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.hero p {
-    font-size: 1.5rem;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* CTA Buttons */
-.cta-btn {
-    background-color: #ff8c00;
-    padding: 15px 30px;
+    max-width: 700px;
     color: white;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* ✅ Hero Title */
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+/* ✅ Hero Description */
+.hero p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 25px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-in-out forwards;
+}
+
+/* ✅ Call-to-Action Buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 🔹 Main CTA Buttons */
+.cta-btn {
+    padding: 15px 30px;
     text-transform: uppercase;
-    border: none;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
     display: inline-block;
-    margin-top: 20px;
     border-radius: 5px;
+    text-decoration: none;
 }
 
-.cta-btn:hover {
-    background-color: #e67300;
+.cta-btn.primary {
+    background: linear-gradient(90deg, #ffcc33, #ff9900);
+    color: #24292e;
+    box-shadow: 0 4px 10px rgba(255, 153, 0, 0.3);
+}
+
+.cta-btn.primary:hover {
+    background: linear-gradient(90deg, #ff9900, #ff6600);
     transform: scale(1.05);
 }
 
 .cta-btn.secondary {
-    background-color: #2ecc71;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
 }
 
 .cta-btn.secondary:hover {
-    background-color: #27ae60;
+    background: rgba(255, 255, 255, 0.3);
 }
 
-/* Sections */
-section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
+/* ✅ Hero Animation */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-section:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-section p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    animation: fadeInUp 1.5s ease-in-out;
-}
-
-/* Footer */
-footer {
-    background-color: #0059a8;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    margin-top: 60px;
-    line-height: 2;
-}
-
-/* Responsive Design */
+/* ✅ Responsive Hero Section */
 @media (max-width: 768px) {
-    header nav {
-        flex-direction: column;
-    }
-
-    .hero {
-        padding: 0 10px;
-    }
-
-    .menu {
-        display: none;
-    }
-
-    .menu.open {
-        display: flex;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -222,24 +281,438 @@ footer {
 
     .cta-btn {
         font-size: 1rem;
-        padding: 10px 20px;
-        margin-top: 15px;
+        padding: 12px 25px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
 }
 
-/* Animations */
-@keyframes fadeInUp {
+/* ✅ Animated Arrow for Scroll */
+.hero-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: white;
+    animation: bounce 1.5s infinite;
+    cursor: pointer;
+}
+
+/* ✅ Bounce Animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+/* ✅ About Section */
+#about {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #0059a8, #003c73);
+    color: white;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ About Title */
+#about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+/* ✅ About Description */
+#about p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-in-out forwards;
+}
+
+/* ✅ About Learn More Button */
+#about .cta-btn {
+    background: white;
+    color: #0059a8;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#about .cta-btn:hover {
+    background: #facc15;
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive About Section */
+@media (max-width: 768px) {
+    #about h2 {
+        font-size: 2rem;
+    }
+
+    #about p {
+        font-size: 1.1rem;
+    }
+}
+
+/* ✅ Testimonials Section */
+.slider-container {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f9f9f9, #ffffff);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ✅ Testimonial Section Title */
+.slider-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #24292e;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+/* ✅ Testimonial Slider */
+.slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* ✅ Individual Slide */
+.slide {
+    min-width: 100%;
+    padding: 20px;
+    background: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ✅ Testimonial Quote */
+.slide h3 {
+    font-size: 1.5rem;
+    color: #0059a8;
+    margin-bottom: 10px;
+}
+
+.slide p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* ✅ Testimonial Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #0059a8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.slider-btn:hover {
+    background-color: #003c73;
+}
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}
+
+/* ✅ Responsive Testimonials */
+@media (max-width: 768px) {
+    .slider-container h2 {
+        font-size: 2rem;
+    }
+
+    .slide h3 {
+        font-size: 1.3rem;
+    }
+
+    .slide p {
+        font-size: 1rem;
+    }
+}
+/* ✅ Blog Section */
+#blog {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f4f4f4, #ffffff);
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Blog Title */
+#blog h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #24292e;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+/* ✅ Blog Description */
+#blog p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-in-out forwards;
+}
+
+/* ✅ Blog Read More Button */
+#blog .cta-btn {
+    background: #0059a8;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#blog .cta-btn:hover {
+    background: #facc15;
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive Blog Section */
+@media (max-width: 768px) {
+    #blog h2 {
+        font-size: 2rem;
+    }
+
+    #blog p {
+        font-size: 1.1rem;
+    }
+}
+
+/* ✅ Newsletter Signup */
+#newsletter {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #0059a8, #003c73);
+    color: white;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ Newsletter Title */
+#newsletter h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+/* ✅ Newsletter Description */
+#newsletter p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-in-out forwards;
+}
+
+/* ✅ Newsletter Form */
+#newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: auto;
+    opacity: 0;
+    animation: fadeInUp 2.5s ease-in-out forwards;
+}
+
+/* ✅ Newsletter Input */
+#newsletter input[type="email"] {
+    width: 70%;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* ✅ Newsletter Subscribe Button */
+#newsletter button {
+    background: #facc15;
+    color: #333;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#newsletter button:hover {
+    background: #eab308;
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive Newsletter Signup */
+@media (max-width: 768px) {
+    #newsletter h2 {
+        font-size: 2rem;
+    }
+
+    #newsletter p {
+        font-size: 1.1rem;
+    }
+
+    #newsletter form {
+        flex-direction: column;
+    }
+
+    #newsletter input[type="email"] {
+        width: 100%;
+    }
+}
+/* ✅ Footer */
+footer {
+    background: linear-gradient(135deg, #003c73, #00254d);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1rem;
+    line-height: 2;
+    margin-top: 60px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ Footer Logo */
+footer .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #facc15;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* ✅ Footer Links */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+    color: #facc15;
+}
+
+/* ✅ Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #facc15;
+}
+
+/* ✅ Footer Copyright */
+footer p {
+    font-size: 0.9rem;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+/* ✅ Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #facc15;
+    color: #333;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+/* ✅ Animations for Scroll */
+@keyframes fadeIn {
     from {
-        transform: translateY(30px);
         opacity: 0;
+        transform: translateY(10px);
     }
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Scroll-triggered Animations */
+/* ✅ Smooth Scroll Animation */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ✅ Scroll-triggered Animations */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(20px);
@@ -251,47 +724,19 @@ footer {
     transform: translateY(0);
 }
 
-/* Slider */
-.slider {
-    position: relative;
-    width: 80%;
-    max-width: 1000px;
-    margin: 40px auto;
-    overflow: hidden;
-}
+/* ✅ Responsive Footer */
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
 
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
+    .social-icons {
+        gap: 10px;
+    }
 
-.slide {
-    min-width: 100%;
-    padding: 20px;
-    background: #f4f4f4;
-    text-align: center;
-}
-
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #0059a8;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.slider-btn.prev {
-    left: 10px;
-}
-
-.slider-btn.next {
-    right: 10px;
-}
-
-.slider-btn:hover {
-    background-color: #003c73;
+    .back-to-top {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
 }

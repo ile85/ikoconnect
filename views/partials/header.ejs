@@ -1,15 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || "IkoConnect" %></title>
+    <meta name="description" content="<%= description || 'Your ultimate resource for remote work and freelancing.' %>">
+    
+    <!-- ✅ Load CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- ✅ JavaScript -->
+    <script src="/js/script.js" defer></script>
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+
+<!-- ✅ HEADER (Fixed) -->
+<!-- ✅ HEADER (Fixed) -->
 <header>
     <nav>
         <a href="/" class="logo">IkoConnect</a>
-        <button class="hamburger" id="hamburger">
+        <ul class="nav-links">
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/jobs">Jobs</a></li>
+        </ul>
+        <!-- ✅ Correct ID for Hamburger Menu -->
+        <button id="hamburger" class="hamburger">
             <span class="line"></span>
             <span class="line"></span>
             <span class="line"></span>
         </button>
-        <div class="menu" id="menu">
-            <a href="/blog">Blog</a>
-            <a href="/resources">Resources</a>
-            <a href="/jobs">Jobs</a>
-        </div>
+        <ul id="menu" class="mobile-nav">
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/jobs">Jobs</a></li>
+        </ul>
     </nav>
 </header>
+
+

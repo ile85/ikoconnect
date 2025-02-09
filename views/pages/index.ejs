@@ -1,22 +1,29 @@
 <%- include('../partials/header') %>
 
+<!-- ✅ HERO SECTION -->
 <section class="hero">
-    <div class="hero-content">
-        <h1>Take Your Freelance Career to the Next Level</h1>
-        <p>Join thousands of freelancers growing their careers with expert tips, job resources, and top productivity tools.</p>
-        <a href="/jobs" class="cta-btn primary">Find Freelance Jobs</a>
-        <a href="/newsletter" class="cta-btn secondary">Get Free Tips</a>
+    <div class="hero-overlay"></div>
+    <div class="hero-content animate-on-scroll">
+        <h1 class="fade-in">Take Your Freelance Career to the Next Level</h1>
+        <p class="fade-in">Join thousands of freelancers growing their careers with expert tips, job resources, and top productivity tools.</p>
+        <div class="hero-buttons">
+            <a href="/jobs" class="cta-btn primary">Find Freelance Jobs</a>
+            <a href="/newsletter" class="cta-btn secondary">Get Free Tips</a>
+        </div>
     </div>
 </section>
 
-<section id="about" class="animate-on-scroll">
+<!-- ✅ ABOUT SECTION -->
+<section id="about" class="section animate-on-scroll">
     <h2>What is IkoConnect?</h2>
     <p>IkoConnect helps freelancers succeed with job listings, tools, and insights.</p>
     <a href="/about" class="cta-btn">Learn More</a>
 </section>
 
-<div class="slider animate-on-scroll">
-    <div class="slides">
+<!-- ✅ TESTIMONIAL SLIDER -->
+<div class="slider-container animate-on-scroll">
+    <h2 class="section-title">🌟 Success Stories</h2>
+    <div class="slider">
         <div class="slide active">
             <h3>⭐ Alex D.</h3>
             <p>"IkoConnect helped me land my first big freelancing gig! The job resources are amazing!"</p>
@@ -30,13 +37,15 @@
     <button class="slider-btn next">›</button>
 </div>
 
-<section id="blog" class="animate-on-scroll">
+<!-- ✅ BLOG SECTION -->
+<section id="blog" class="section animate-on-scroll">
     <h2>Latest Freelancing Tips</h2>
     <p>Discover expert tips on freelancing, productivity, and remote work success.</p>
     <a href="/blog" class="cta-btn">Read the Blog</a>
 </section>
 
-<section id="newsletter" class="animate-on-scroll">
+<!-- ✅ NEWSLETTER SIGNUP -->
+<section id="newsletter" class="section animate-on-scroll">
     <h2>Join Our Freelancer Community</h2>
     <p>Get exclusive freelancing tips and job alerts straight to your inbox.</p>
     <form action="/subscribe" method="POST">

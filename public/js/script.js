@@ -1,0 +1,67 @@
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("✅ script.js is running!");
+
+    // ✅ Fix Mobile Menu Toggle
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const body = document.body;
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("open");
+            body.classList.toggle("no-scroll");
+        });
+        console.log("✅ Hamburger menu loaded successfully!");
+    } else {
+        console.error("❌ Hamburger menu elements not found!");
+    }
+
+    // ✅ Modal Functionality (Fixed)
+    function initializeModal() {
+        const modal = document.getElementById("myModal");
+        const openModalBtn = document.getElementById("open-modal");
+        const closeModalBtn = modal ? modal.querySelector(".close") : null;
+
+        if (modal && openModalBtn && closeModalBtn) {
+            openModalBtn.addEventListener("click", () => {
+                modal.style.display = "flex";
+            });
+
+            closeModalBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && modal.style.display === "flex") {
+                    modal.style.display = "none";
+                }
+            });
+
+            console.log("✅ Modal functionality is working!");
+        } else {
+            console.warn("⚠️ Modal elements not found.");
+        }
+    }
+
+    initializeModal();
+
+    // ✅ Smooth Scroll Fix
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
+    });
+});
