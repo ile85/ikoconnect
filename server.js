@@ -27,6 +27,9 @@ const jobsRoutes = require('./routes/jobs');
 const aboutRoutes = require('./routes/about');
 const connectDB = require('./config/db');
 connectDB();
+const morgan = require('morgan');
+app.use(morgan('dev'));
+
 
 app.use('/', indexRoutes);
 app.use('/blog', blogRoutes);
@@ -39,6 +42,10 @@ app.post('/subscribe', (req, res) => {
     const email = req.body.email;
     console.log(`📩 New subscription from: ${email}`);
     res.send("✅ Thank you for subscribing!");
+});
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: "Something went wrong!" });
 });
 
 // ✅ Start Server
