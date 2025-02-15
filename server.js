@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
 
 // ✅ Initialize Express first
 const app = express();
 
 // ✅ Set Port
-const PORT = 5500; 
+const PORT = process.env.PORT || 5500;
 
 // ✅ Use Built-in Body Parser (No Need for `body-parser`)
 app.use(express.json());
@@ -24,6 +25,8 @@ const blogRoutes = require('./routes/blog');
 const resourceRoutes = require('./routes/resources');
 const jobsRoutes = require('./routes/jobs');
 const aboutRoutes = require('./routes/about');
+const connectDB = require('./config/db');
+connectDB();
 
 app.use('/', indexRoutes);
 app.use('/blog', blogRoutes);
