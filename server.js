@@ -1,21 +1,20 @@
 const express = require('express');
 const path = require('path');
 
+// ✅ Initialize Express first
 const app = express();
 
-// ✅ Ensure the app only listens on port 5500
+// ✅ Set Port
 const PORT = 5500; 
 
-// ✅ Built-in body parser (No need for `body-parser`)
+// ✅ Use Built-in Body Parser (No Need for `body-parser`)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
-// ✅ Serve static files
+// ✅ Serve Static Files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ Set view engine to EJS
+// ✅ Set View Engine to EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 

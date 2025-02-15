@@ -91,6 +91,12 @@ nav {
     color: white;
 }
 
+.hamburger-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 .hamburger div {
     width: 30px;
     height: 3px;
@@ -100,22 +106,20 @@ nav {
 }
 
 /* ✅ Mobile Navigation */
-.mobile-nav {
+#mobile-menu {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 60px;
     left: 0;
+    background-color: white;
     width: 100%;
-    background: #24292e;
-    padding: 15px;
     text-align: center;
 }
 
-.mobile-nav.open {
+#mobile-menu.open {
     display: flex;
 }
-
 .mobile-nav a {
     color: white;
     text-decoration: none;
@@ -214,7 +218,6 @@ header.scroll {
     opacity: 0.9;
     margin-bottom: 25px;
     opacity: 0;
-    animation: fadeInUp 2s ease-in-out forwards;
 }
 
 /* ✅ Call-to-Action Buttons */
@@ -288,6 +291,16 @@ header.scroll {
         flex-direction: column;
         align-items: center;
         gap: 15px;
+    }
+}
+/* Show hamburger menu only on small screens */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
     }
 }
 

@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("✅ script.js is running!");
 
     // ✅ Fix Mobile Menu Toggle
-    const hamburger = document.getElementById("hamburger");
+    const hamburgerMenu = document.getElementById("hamburger-menu");
     const mobileMenu = document.getElementById("mobile-menu");
     const body = document.body;
 
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener("click", () => {
+    if (hamburgerMenu && mobileMenu) {
+        hamburgerMenu.addEventListener("click", () => {
             mobileMenu.classList.toggle("open");
             body.classList.toggle("no-scroll");
         });
