@@ -108,17 +108,20 @@ nav {
 /* ✅ Mobile Navigation */
 #mobile-menu {
     display: none;
-    flex-direction: column;
     position: absolute;
     top: 60px;
-    left: 0;
+    right: 0;
     background-color: white;
-    width: 100%;
-    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 #mobile-menu.open {
-    display: flex;
+    display: block;
+}
+.no-scroll {
+    overflow: hidden;
 }
 .mobile-nav a {
     color: white;
