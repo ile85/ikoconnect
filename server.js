@@ -5,10 +5,11 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import { join } from "path";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import connectDB from "./config/db.js";
 
+import connectDB from "./config/db.js";
 import signupRoutes from "./routes/signup.js";
 import indexRoutes from "./routes/index.js";
 import blogRoutes from "./routes/blog.js";
@@ -16,7 +17,11 @@ import resourceRoutes from "./routes/resources.js";
 import jobsRoutes from "./routes/jobs.js";
 import aboutRoutes from "./routes/about.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 dotenv.config();
+
 
 const app = express();
 
@@ -54,7 +59,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Something went wrong!" });
 });
 
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 5501;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
