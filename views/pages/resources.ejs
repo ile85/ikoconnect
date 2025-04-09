@@ -1,8 +1,32 @@
-<%- include('../partials/header') %>
+<!-- views/pages/resources.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Resources | IkoConnect</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Recommended Tools for Freelancers</h1>
+    <p>Our hand-picked selection of platforms and tools to power your remote work life.</p>
+  </header>
 
-<section class="resources">
-    <h1>Resources for Remote Workers</h1>
-    <p>Find the best tools and tips to enhance your productivity as a remote worker.</p>
-</section>
+  <main>
+    <ul class="resources-list">
+      <% tools.forEach(tool => { %>
+        <li>
+          <a href="<%= tool.link %>" target="_blank" rel="noopener">
+            <%= tool.name %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
 
-<%- include('../partials/footer') %>
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> IkoConnect</p>
+  </footer>
+</body>
+</html>

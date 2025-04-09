@@ -1,11 +1,10 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('pages/about', {
-        title: 'About Us | IkoConnect',
-        description: 'Learn more about IkoConnect and our mission for freelancers.',
-    });
+router.get("/", (req, res) => {
+  const aboutInfo = {
+    title: "About IkoConnect",
+    description: "IkoConnect is your go-to hub for remote work strategies, freelancing tools, and productivity hacks. Created by Ile Dimeski to empower remote workers and freelancers across the globe."
+  };
+  res.render("pages/about", { aboutInfo });
 });
-
-module.exports = router;

@@ -1,43 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/header') %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IkoConnect | Remote Work & Freelancing Hub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to IkoConnect</h1>
+    <p>Your ultimate resource for remote work, freelancing tips, and productivity tools.</p>
+  </header>
 
-<!-- ✅ HERO SECTION -->
-<section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content animate-on-scroll">
-        <h1 class="fade-in">Take Your Freelance Career to the Next Level</h1>
-        <p class="fade-in">Join thousands of freelancers growing their careers with expert tips, job resources, and top productivity tools.</p>
-        <div class="hero-buttons">
-            <a href="/jobs" class="cta-btn primary">Find Freelance Jobs</a>
-            <a href="/newsletter" class="cta-btn secondary">Get Free Tips</a>
-        </div>
-    </div>
-</section>
-
-<!-- ✅ ABOUT SECTION -->
-<section id="about" class="section animate-on-scroll">
-    <h2>What is IkoConnect?</h2>
-    <p>IkoConnect helps freelancers succeed with job listings, tools, and insights.</p>
-    <a href="/about" class="cta-btn">Learn More</a>
-</section>
-
-<!-- ✅ BLOG SECTION -->
-<section id="blog" class="section animate-on-scroll">
-    <h2>Latest Freelancing Tips</h2>
-    <p>Discover expert tips on freelancing, productivity, and remote work success.</p>
-    <a href="/blog" class="cta-btn">Read the Blog</a>
-</section>
-
-<!-- ✅ NEWSLETTER SIGNUP -->
-<section id="newsletter" class="section animate-on-scroll">
-    <h2>Join Our Freelancer Community</h2>
-    <p>Get exclusive freelancing tips and job alerts straight to your inbox.</p>
+  <section>
+    <h2>Start Your Freelance Journey</h2>
+    <p>Browse job opportunities, discover new tools, or subscribe to our newsletter!</p>
     <form action="/subscribe" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email">
-        <button type="submit" class="cta-btn">Subscribe Now</button>
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
     </form>
-</section>
+  </section>
 
-<%- include('../partials/footer') %>
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> IkoConnect. All rights reserved.</p>
+  </footer>
+</body>
 </html>
