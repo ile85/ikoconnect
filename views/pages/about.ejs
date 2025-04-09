@@ -1,27 +1,8 @@
-<!-- views/pages/about.ejs -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About IkoConnect</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <header>
-    <h1><%= aboutInfo.title %></h1>
-  </header>
+<%- include('../partials/header') %>
 
-  <main>
-    <section>
-      <p><%= aboutInfo.description %></p>
-    </section>
-  </main>
+<section class="text-center">
+  <h2><%= aboutInfo.title %></h2>
+  <p><%= aboutInfo.description %></p>
+</section>
 
-  <footer>
-    <p>&copy; <%= new Date().getFullYear() %> IkoConnect</p>
-  </footer>
-</body>
-<div id="toast" class="toast"></div>
-
-</html>
+<%- include('../partials/footer') %>

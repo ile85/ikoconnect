@@ -1,38 +1,20 @@
-<!-- views/pages/jobs.ejs -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Remote Jobs | IkoConnect</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <header>
-    <h1>Remote & Freelance Job Board</h1>
-    <p>Find the latest hand-picked jobs for remote professionals.</p>
-  </header>
+<%- include('../partials/header') %>
 
-  <main>
-    <% if (jobs.length > 0) { %>
-      <% jobs.forEach(job => { %>
-        <div class="job-posting">
-          <h2><%= job.title %></h2>
-          <p><strong>Company:</strong> <%= job.company %></p>
-          <p><strong>Location:</strong> <%= job.location %></p>
-          <a href="<%= job.link %>" target="_blank" rel="noopener">View Job</a>
-        </div>
-        <hr />
-      <% }) %>
-    <% } else { %>
-      <p>No job listings available at the moment.</p>
-    <% } %>
-  </main>
+<section>
+  <h2>Job Opportunities</h2>
 
-  <footer>
-    <p>&copy; <%= new Date().getFullYear() %> IkoConnect</p>
-  </footer>
-  <div id="toast" class="toast"></div>
+  <% if (jobs.length > 0) { %>
+    <% jobs.forEach(job => { %>
+      <div class="job-posting">
+        <h3><%= job.title %></h3>
+        <p><strong>Company:</strong> <%= job.company %></p>
+        <p><strong>Location:</strong> <%= job.location %></p>
+        <a href="<%= job.link %>" target="_blank">View Job</a>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No jobs currently available.</p>
+  <% } %>
+</section>
 
-</body>
-</html>
+<%- include('../partials/footer') %>

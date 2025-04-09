@@ -1,10 +1,9 @@
+// routes/about.js
 import express from "express";
+import { renderAboutPage } from "../controllers/aboutController.js";
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const aboutInfo = {
-    title: "About IkoConnect",
-    description: "IkoConnect is your go-to hub for remote work strategies, freelancing tools, and productivity hacks. Created by Ile Dimeski to empower remote workers and freelancers across the globe."
-  };
-  res.render("pages/about", { aboutInfo });
-});
+router.get("/", renderAboutPage);
+
+export default router;

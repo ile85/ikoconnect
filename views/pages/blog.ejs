@@ -1,38 +1,19 @@
-<!-- views/pages/blog.ejs -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IkoConnect Blog</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <header>
-    <h1>IkoConnect Blog</h1>
-    <p>Tips, tutorials, and stories from the remote work world.</p>
-  </header>
+<%- include('../partials/header') %>
 
-  <main>
-    <% if (posts && posts.length > 0) { %>
-      <% posts.forEach(post => { %>
-        <article class="blog-post">
-          <h2><%= post.title %></h2>
-          <p><%= post.content %></p>
-        </article>
-        <hr />
-      <% }) %>
-    <% } else { %>
-      <p>No blog posts available yet. Stay tuned!</p>
-    <% } %>
-  </main>
+<section>
+  <h2>IkoConnect Blog</h2>
+  <p>Tips, tutorials, and insights from the freelance world.</p>
 
-  <footer>
-    <p>&copy; <%= new Date().getFullYear() %> IkoConnect</p>
-  </footer>
-</body>
-<div id="toast" class="toast"></div>
+  <% if (posts && posts.length > 0) { %>
+    <% posts.forEach(post => { %>
+      <article class="blog-post">
+        <h3><%= post.title %></h3>
+        <p><%= post.content %></p>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <p>No blog posts yet. Stay tuned!</p>
+  <% } %>
+</section>
 
-</html>
-
-
+<%- include('../partials/footer') %>

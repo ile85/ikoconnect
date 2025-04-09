@@ -1,14 +1,10 @@
+// routes/signup.js
 import express from "express";
+import { renderSignupForm, handleSignup } from "../controllers/signupController.js";
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("pages/signup");
-});
-
-router.post("/", (req, res) => {
-  const { email, name } = req.body;
-  console.log(`📝 Signup submitted: ${name} (${email})`);
-  res.status(200).json({ message: "Signup received!" });
-});
+router.get("/", renderSignupForm);
+router.post("/", handleSignup);
 
 export default router;
