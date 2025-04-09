@@ -8,8 +8,6 @@
 
 body {
     background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
     overflow-x: hidden;
 }
 
@@ -81,14 +79,8 @@ nav {
 }
 
 /* ✅ Hamburger Menu (Mobile) */
-.hamburger {
+.hamburger-menu {
     display: none;
-    flex-direction: column;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
 }
 
 .hamburger-btn {
@@ -96,13 +88,7 @@ nav {
     background: none;
     border: none;
     cursor: pointer;
-}
-.hamburger div {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    margin: 5px 0;
-    transition: all 0.3s ease;
+    color: white;
 }
 
 /* ✅ Mobile Navigation */
@@ -115,16 +101,20 @@ nav {
     width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    flex-direction: column;
+    padding: 15px;
 }
 
 #mobile-menu.open {
-    display: block;
+    display: flex;
 }
+
 .no-scroll {
     overflow: hidden;
 }
+
 .mobile-nav a {
-    color: white;
+    color: #000;
     text-decoration: none;
     font-size: 18px;
     padding: 10px;
@@ -135,13 +125,23 @@ nav {
     color: #24292e;
 }
 
+/* ✅ Media Queries */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
 /* ✅ Sticky Header Effect */
 header.scroll {
     background: #1e1e1e;
     padding: 10px 5%;
     transition: all 0.3s ease;
 }
-
 /* ✅ Button Styles */
 .cta-btn {
     padding: 15px 30px;
@@ -172,6 +172,7 @@ header.scroll {
 .cta-btn.secondary:hover {
     background: rgba(255, 255, 255, 0.4);
 }
+
 /* ✅ Hero Section */
 .hero {
     position: relative;
@@ -203,7 +204,7 @@ header.scroll {
     color: white;
     text-align: center;
     padding: 20px;
-    animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out forwards;
 }
 
 /* ✅ Hero Title */
@@ -211,7 +212,7 @@ header.scroll {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 15px;
-    opacity: 0;
+    opacity: 1;
     animation: fadeInUp 1.5s ease-in-out forwards;
 }
 
@@ -220,7 +221,7 @@ header.scroll {
     font-size: 1.3rem;
     opacity: 0.9;
     margin-bottom: 25px;
-    opacity: 0;
+    opacity: 1;
 }
 
 /* ✅ Call-to-Action Buttons */
@@ -230,7 +231,7 @@ header.scroll {
     gap: 20px;
 }
 
-/* 🔹 Main CTA Buttons */
+/* ✅ Main CTA Buttons */
 .cta-btn {
     padding: 15px 30px;
     text-transform: uppercase;
@@ -296,7 +297,8 @@ header.scroll {
         gap: 15px;
     }
 }
-/* Show hamburger menu only on small screens */
+
+/* ✅ Show hamburger menu only on small screens */
 @media screen and (max-width: 768px) {
     .nav-links {
         display: none;
@@ -330,6 +332,9 @@ header.scroll {
 }
 /* ✅ About Section */
 #about {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     padding: 80px 20px;
     text-align: center;
     background: linear-gradient(135deg, #0059a8, #003c73);
@@ -339,13 +344,134 @@ header.scroll {
     margin: auto;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+/* 🔹 Team Section */
+.team-section {
+    margin-top: 50px;
+}
 
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    max-width: 250px;
+}
+
+.team-member img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.team-member img:hover {
+    transform: scale(1.05);
+}
+
+.team-member h3 {
+    margin-top: 15px;
+    font-size: 1.4rem;
+}
+
+.team-member p {
+    color: gray;
+    font-size: 1rem;
+}
+
+/* 🔹 Infographic Section */
+.infographic {
+    margin-top: 50px;
+    background: linear-gradient(135deg, #0059a8, #003c73);
+    color: white;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.stat h3 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+/* 🔹 Story Section */
+.story-section {
+    margin-top: 50px;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.story-section h2 {
+    font-size: 2rem;
+    color: #24292e;
+}
+
+.story-section p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 10px;
+}
+/* 🔹 CTA Section */
+.cta-section {
+    margin-top: 50px;
+    text-align: center;
+    padding: 50px;
+    background: #ffcc33;
+    color: #24292e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.cta-section .cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #24292e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.cta-section .cta-btn:hover {
+    background: #1e1e1e;
+}
 /* ✅ About Title */
 #about h2 {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 15px;
-    opacity: 0;
+    opacity: 1;
     animation: fadeInUp 1.5s ease-in-out forwards;
 }
 
@@ -354,7 +480,7 @@ header.scroll {
     font-size: 1.2rem;
     max-width: 700px;
     margin: 0 auto 30px;
-    opacity: 0;
+    opacity: 1;
     animation: fadeInUp 2s ease-in-out forwards;
 }
 
@@ -372,6 +498,104 @@ header.scroll {
     transform: scale(1.05);
 }
 
+/* ✅ Signup Page */
+#signup {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+#signup .container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#signup h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.cta-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ffcc33;
+    color: #24292e;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.cta-btn:hover {
+    background: #eab308;
+}
+
+/* ✅ Signup Success Page */
+#signup-success {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+#signup-success .container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#signup-success h1 {
+    font-size: 2.2rem;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+#signup-success p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #ffcc33;
+    color: #24292e;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.cta-btn:hover {
+    background: #eab308;
+}
 /* ✅ Responsive About Section */
 @media (max-width: 768px) {
     #about h2 {
@@ -482,61 +706,74 @@ header.scroll {
         font-size: 1rem;
     }
 }
-/* ✅ Blog Section */
+
+/* ✅ Blog Page */
 #blog {
     padding: 80px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #f4f4f4, #ffffff);
-    border-radius: 10px;
-    max-width: 1200px;
+    background: #f9f9f9;
+}
+
+#blog .container {
+    max-width: 900px;
     margin: auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Blog Title */
-#blog h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #24292e;
-    opacity: 0;
-    animation: fadeInUp 1.5s ease-in-out forwards;
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
 }
 
-/* ✅ Blog Description */
-#blog p {
+.blog-post {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.blog-post h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.blog-post a {
+    color: #0059a8;
+    text-decoration: none;
+}
+
+.blog-post p {
     font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 30px;
-    opacity: 0;
-    animation: fadeInUp 2s ease-in-out forwards;
+    color: #333;
 }
 
-/* ✅ Blog Read More Button */
-#blog .cta-btn {
-    background: #0059a8;
-    color: white;
+.blog-post .cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffcc33;
+    color: #24292e;
     font-weight: bold;
     border-radius: 5px;
-    transition: background 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
 }
 
-#blog .cta-btn:hover {
-    background: #facc15;
-    transform: scale(1.05);
+.blog-post .cta-btn:hover {
+    background: #eab308;
 }
 
-/* ✅ Responsive Blog Section */
+/* ✅ Responsive Blog */
 @media (max-width: 768px) {
-    #blog h2 {
-        font-size: 2rem;
+    .blog-posts {
+        flex-direction: column;
     }
 
-    #blog p {
-        font-size: 1.1rem;
+    .blog-post {
+        padding: 15px;
     }
 }
-
 /* ✅ Newsletter Signup */
 #newsletter {
     padding: 80px 20px;
@@ -584,10 +821,24 @@ header.scroll {
     width: 70%;
     padding: 12px;
     border-radius: 5px;
-    border: none;
+    border: 2px solid #007bff;
+    background-color: #fff;
     outline: none;
     font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
+
+#newsletter input[type="email"]:focus {
+    border-color: #ffcc33;
+}
+
+input:-webkit-autofill {
+    background-color: #e6f7ff !important;
+    color: #333 !important;
+    box-shadow: 0 0 0px 1000px white inset;
+}
+
 
 /* ✅ Newsletter Subscribe Button */
 #newsletter button {
@@ -625,6 +876,7 @@ header.scroll {
         width: 100%;
     }
 }
+
 /* ✅ Footer */
 footer {
     background: linear-gradient(135deg, #003c73, #00254d);
@@ -690,7 +942,6 @@ footer p {
     margin-top: 10px;
     opacity: 0.8;
 }
-
 /* ✅ Back to Top Button */
 .back-to-top {
     position: fixed;
@@ -755,4 +1006,60 @@ html {
         font-size: 12px;
         padding: 8px 12px;
     }
+}
+
+/* ✅ Fix Autofill Issues */
+input:-webkit-autofill {
+    background-color: #e6f7ff !important;
+    color: #333 !important;
+    box-shadow: 0 0 0px 1000px white inset;
+}
+
+/* ✅ Improve Form Input Styles */
+input, textarea, select {
+    font-size: 1rem;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #ffcc33;
+    outline: none;
+}
+
+/* ✅ Ensure Proper Mobile Spacing */
+@media (max-width: 768px) {
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #newsletter form {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #newsletter input[type="email"] {
+        width: 100%;
+    }
+}
+
+/* ✅ Final Touches */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
 }

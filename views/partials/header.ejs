@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +5,7 @@
     <meta name="description" content="<%= description || 'Your ultimate resource for remote work and freelancing.' %>">
     
     <!-- ✅ Load CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=<%= Date.now() %>">
     
     <!-- ✅ JavaScript -->
     <script src="/js/script.js" defer></script>
@@ -15,23 +13,23 @@
     <!-- ✅ Favicon -->
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
-<body>
 
+<body>
     <header>
         <nav class="navbar">
             <div class="logo">
                 <a href="/">IkoConnect</a>
             </div>
-    
-            <!-- Desktop Navigation -->
-            <ul class="nav-links" id="mobile-menu">
+
+            <!-- ✅ Desktop Navigation (Visible on large screens) -->
+            <ul class="nav-links" id="desktop-menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/jobs">Jobs</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
-    
+
             <!-- ✅ Hamburger Menu (For Mobile) -->
             <div id="hamburger-menu" class="hamburger-menu">
                 <button class="hamburger-btn">☰</button>
@@ -39,4 +37,13 @@
         </nav>
     </header>
 
-
+    <!-- ✅ Mobile Navigation Menu (for small screens only) -->
+    <nav id="mobile-menu" class="mobile-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>

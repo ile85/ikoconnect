@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <%- include('../partials/header') %>
 
 <!-- ✅ HERO SECTION -->
@@ -20,23 +22,6 @@
     <a href="/about" class="cta-btn">Learn More</a>
 </section>
 
-<!-- ✅ TESTIMONIAL SLIDER -->
-<div class="slider-container animate-on-scroll">
-    <h2 class="section-title">🌟 Success Stories</h2>
-    <div class="slider">
-        <div class="slide active">
-            <h3>⭐ Alex D.</h3>
-            <p>"IkoConnect helped me land my first big freelancing gig! The job resources are amazing!"</p>
-        </div>
-        <div class="slide">
-            <h3>⭐ Maria K.</h3>
-            <p>"From job listings to productivity hacks, IkoConnect is a game-changer for freelancers."</p>
-        </div>
-    </div>
-    <button class="slider-btn prev">‹</button>
-    <button class="slider-btn next">›</button>
-</div>
-
 <!-- ✅ BLOG SECTION -->
 <section id="blog" class="section animate-on-scroll">
     <h2>Latest Freelancing Tips</h2>
@@ -49,9 +34,10 @@
     <h2>Join Our Freelancer Community</h2>
     <p>Get exclusive freelancing tips and job alerts straight to your inbox.</p>
     <form action="/subscribe" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required>
+        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email">
         <button type="submit" class="cta-btn">Subscribe Now</button>
     </form>
 </section>
 
 <%- include('../partials/footer') %>
+</html>

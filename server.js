@@ -4,6 +4,7 @@ const cors = require('cors'); // ✅ Must be declared BEFORE using it
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
+const signupRoutes = require('./routes/signup');
 require('dotenv').config(); // ✅ Load environment variables early
 
 // ✅ Initialize Express
@@ -36,8 +37,8 @@ const resourceRoutes = require('./routes/resources');
 const jobsRoutes = require('./routes/jobs');
 const aboutRoutes = require('./routes/about');
 
+app.use('/signup', signupRoutes);
 app.use('/', indexRoutes);
-app.use('/blog', blogRoutes);
 app.use('/resources', resourceRoutes);
 app.use('/jobs', jobsRoutes);
 app.use('/about', aboutRoutes);

@@ -15,5 +15,11 @@ if (indexController && typeof indexController.getHomepage === 'function') {
 } else {
     console.error("❌ Error: One or more functions are missing in indexController.js");
 }
+router.get('/', (req, res) => {
+    res.render('pages/index', { 
+        title: "Welcome to IkoConnect",
+        description: "Your ultimate resource for freelancers, job listings, and productivity tools."
+    });
+});
 
 module.exports = router;

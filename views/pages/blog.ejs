@@ -1,8 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
 <%- include('../partials/header') %>
 
-<section class="blog">
-    <h1>Blog</h1>
-    <p>Here, we share tips, tools, and industry insights for remote work and freelancing.</p>
+<section id="blog">
+    <div class="container">
+        <h1>📖 Freelancing & Remote Work Blog</h1>
+        <p>Stay up to date with the latest trends, tips, and insights to succeed as a freelancer.</p>
+
+        <% if (blogPosts && blogPosts.length > 0) { %>
+            <div class="blog-posts">
+                <% blogPosts.forEach(post => { %>
+                    <div class="blog-post">
+                        <h2><a href="/blog/<%= post.slug %>"><%= post.title %></a></h2>
+                        <p><%= post.summary %></p>
+                        <a href="/blog/<%= post.slug %>" class="cta-btn">Read More</a>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p>No blog posts found.</p>
+        <% } %>
+    </div>
 </section>
 
 <%- include('../partials/footer') %>
+</html>
