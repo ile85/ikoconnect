@@ -16,26 +16,20 @@
 
 <body>
     <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="/">IkoConnect</a>
-            </div>
-
-            <!-- ✅ Desktop Navigation (Visible on large screens) -->
-            <ul class="nav-links" id="desktop-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/jobs">Jobs</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <!-- ✅ Hamburger Menu (For Mobile) -->
-            <div id="hamburger-menu" class="hamburger-menu">
-                <button class="hamburger-btn">☰</button>
-            </div>
-        </nav>
-    </header>
+        <div class="navbar">
+          <h1>IkoConnect</h1>
+          <button class="nav-toggle" aria-label="Toggle Menu">&#9776;</button>
+          <nav class="nav-menu">
+            <a href="/">Home</a>
+            <a href="/blog">Blog</a>
+            <a href="/resources">Resources</a>
+            <a href="/jobs">Jobs</a>
+            <a href="/about">About</a>
+            <a href="/signup">Sign Up</a>
+          </nav>
+        </div>
+      </header>
+      
 
     <!-- ✅ Mobile Navigation Menu (for small screens only) -->
     <nav id="mobile-menu" class="mobile-nav">
