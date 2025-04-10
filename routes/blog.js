@@ -1,26 +1,10 @@
-// Ensure this file is processed as an EJS template by the server
-<%- include('../partials/header') %>
+// routes/blog.js
+import express from "express";
+import { renderBlogPage, renderSinglePost } from "../controllers/blogController.js";
 
-<main class="mt-3">
-  <h2 class="text-center mb-3">📚 Blog Posts</h2>
+const router = express.Router();
 
-  <% if (posts && posts.length > 0) { %>
-    <% posts.forEach(post => { %>
-      <article class="blog-post mb-3">
-        <h3>
-          <a href="/blog/<%= post.slug %>"><%= post.title %></a>
-        </h3>
-        <p class="text-muted"><%= post.date %></p>
-        <p><%= post.description %></p>
-        <div class="post-preview">
-          <%- post.content.substring(0, 300) %>...
-        </div>
-        <a href="/blog/<%= post.slug %>" class="btn btn-outline mt-2">Read More</a>
-      </article>
-    <% }) %>
-  <% } else { %>
-    <p class="text-center">No blog posts available right now. Check back soon!</p>
-  <% } %>
-</main>
+router.get("/", renderBlogPage);
+router.get("/:slug", renderSinglePost); // dynamic blog post
 
-<%- include('../partials/footer') %>
+export default router;
