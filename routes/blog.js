@@ -1,3 +1,4 @@
+// Ensure this file is processed as an EJS template by the server
 <%- include('../partials/header') %>
 
 <main class="mt-3">
