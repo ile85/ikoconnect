@@ -16,6 +16,7 @@ import blogRoutes from "./routes/blog.js";
 import resourceRoutes from "./routes/resources.js";
 import jobsRoutes from "./routes/jobs.js";
 import aboutRoutes from "./routes/about.js";
+import contactRoutes from "./routes/contact.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,6 +32,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
+app.use("/contact", contactRoutes);
 
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));
