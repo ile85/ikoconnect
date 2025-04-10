@@ -110,26 +110,26 @@ document.addEventListener("DOMContentLoaded", () => {
       toast.classList.remove("show");
     }, duration);
   }  
-  document.addEventListener("DOMContentLoaded", () => {
-    const toast = document.createElement("div");
-    toast.id = "toast";
-    toast.className = "toast";
-    document.body.appendChild(toast);
-  
-    const section = document.querySelector("section");
-    const showToast = (message, type = "success") => {
-      toast.textContent = message;
-      toast.classList.add("show", type);
-      setTimeout(() => {
-        toast.classList.remove("show", type);
-      }, 5000);
-    };
-  
-    if (section?.dataset.success === "true") {
-      showToast("✅ Your message has been sent successfully!", "success");
-    }
-  
-    if (section?.dataset.error === "true") {
-      showToast("❌ Something went wrong. Please try again.", "error");
-    }
-  });
+  // === TOAST POPUP LOGIC ===
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector("section");
+
+  const toast = document.createElement("div");
+  toast.id = "toast";
+  toast.className = "toast";
+  document.body.appendChild(toast);
+
+  const showToast = (message, type = "success") => {
+    toast.textContent = message;
+    toast.classList.add("show", type);
+    setTimeout(() => toast.classList.remove("show", type), 5000);
+  };
+
+  if (section?.dataset.success === "true") {
+    showToast("✅ Your message has been sent successfully!", "success");
+  }
+
+  if (section?.dataset.error === "true") {
+    showToast("❌ Something went wrong. Please try again.", "error");
+  }
+});
