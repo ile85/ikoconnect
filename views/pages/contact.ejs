@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<section class="text-center">
+<section class="text-center"data-success="<%= success %>" data-error="<%= error %>">
   <h2>Contact Us</h2>
   <p>We’d love to hear from you. Send us your message below!</p>
 
@@ -10,14 +10,18 @@
     <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
     <button type="submit">Send Message</button>
   </form>
-
-<% if (success) { %>
-  <div class="alert alert-success">✅ Your message has been sent successfully!</div>
-<% } %>
-
-<% if (error) { %>
-  <div class="alert alert-danger">❌ Something went wrong while sending your message. Please try again.</div>
-<% } %>
-
-<%- include('../partials/footer') %>
+  
+  <% if (success) { %>
+    <div class="alert alert-success mt-3">
+      ✅ Your message has been sent successfully!
+    </div>
+  <% } %>
+  
+  <% if (error) { %>
+    <div class="alert alert-danger mt-3">
+      ❌ Something went wrong while sending your message. Please try again.
+    </div>
+  <% } %>
 </section>
+<!-- Toast -->
+<div class="toast" id="toast"></div>

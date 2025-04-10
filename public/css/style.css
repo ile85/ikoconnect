@@ -257,8 +257,9 @@ form {
 /* === UTILITIES: ALERTS === */
 .alert {
   padding: 1rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
   border-radius: 6px;
+  font-weight: 600;
 }
 
 .alert-success {
@@ -332,24 +333,32 @@ form {
   }
 /* === TOAST NOTIFICATIONS === */
 .toast {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: #0d6efd;
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 500;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    z-index: 999;
-  }
-  
-  .toast.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(-10px);
-  }
-        
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #0d6efd;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+.toast.success {
+  background-color: #198754;
+}
