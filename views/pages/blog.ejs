@@ -7,11 +7,11 @@
   <% if (posts && posts.length > 0) { %>
     <% posts.forEach(post => { %>
       <article class="blog-post">
-        <h3><%= post.title %></h3>
-        <p><%= post.content %></p>
+        <h3><a href="/blog/<%= post.slug %>"><%= post.title %></a></h3>
+        <p><%= post.description %></p>
+        <small><%= post.date %></small>
       </article>
     <% }) %>
-  <% } else { %>
     <p>No blog posts yet. Stay tuned!</p>
   <% } %>
 </section>
