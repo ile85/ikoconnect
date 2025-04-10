@@ -14,12 +14,13 @@ export async function renderBlogPage(req, res) {
       files
         .filter(file => file.endsWith(".md"))
         .map(async filename => {
+          const slug = filename.replace(".md", "");
           const filePath = path.join(blogDir, filename);
           const fileContent = await fs.readFile(filePath, "utf-8");
           const { data } = matter(fileContent);
 
           return {
-            slug: filename.replace(".md", ""),
+            slug,
             title: data.title || "Untitled",
             description: data.description || "",
             date: data.date || "No date"
@@ -28,12 +29,11 @@ export async function renderBlogPage(req, res) {
     );
 
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
     res.render("pages/blog", { posts });
   } catch (err) {
-    console.error("❌ Error rendering blog page:", err);
-    res.status(500).render("pages/500", {
-      message: "Failed to load blog posts"
-    });
+    console.error("❌ Blog loading failed:", err.message);
+    res.status(500).json({ message: "Something went wrong!" });
   }
 }
 
