@@ -16,11 +16,5 @@
     "description": "All-in-one productivity tool",
     "url": "https://notion.so/?ref=iko",
     "logo": "/images/logos/notion.png"
-  },
-  {
-    "name": "Toggl Track",
-    "description": "Simple, beautiful time tracking tool trusted by freelancers and teams.",
-    "url": "https://toggl.com/track",
-    "logo": "https://logos-world.net/wp-content/uploads/2021/03/Toggl-Logo.png"
   }
 ]

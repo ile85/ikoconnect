@@ -13,10 +13,8 @@ export async function renderBlogPage(req, res) {
     const posts = await Promise.all(
       files
         .filter(file => file.endsWith(".md"))
-        .map(async (filename) => {
+        .map(async filename => {
           const filePath = path.join(blogDir, filename);
-          if (!fs.existsSync(filePath)) return null;
-
           const fileContent = await fs.readFile(filePath, "utf-8");
           const { data } = matter(fileContent);
 
@@ -24,21 +22,21 @@ export async function renderBlogPage(req, res) {
             slug: filename.replace(".md", ""),
             title: data.title || "Untitled",
             description: data.description || "",
-            date: data.date || "No date",
-            content: content.slice(0, 200) + "...",
+            date: data.date || "No date"
           };
         })
-    ).then(results => results.filter(post => post)); // remove nulls
+    );
 
-    // Sort by date descending
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
     res.render("pages/blog", { posts });
   } catch (err) {
-    console.error("❌ Failed to render blog page:", err);
-    res.status(500).render("pages/500", { message: "Internal Server Error" });
+    console.error("❌ Error rendering blog page:", err);
+    res.status(500).render("pages/500", {
+      message: "Failed to load blog posts"
+    });
   }
 }
+
 
 export async function renderSinglePost(req, res) {
   try {
