@@ -13,15 +13,12 @@ export async function renderBlogPage(req, res) {
     files
       .filter(file => file.endsWith(".md"))
       .map(async filename => {
-        const filePath = path.join(blogDir, `${slug}.md`);
-        if (!fs.existsSync(filePath)) {
-          return res.status(404).render("pages/404", { message: "Post not found" });
-        }
+        const filePath = path.join(blogDir, filename); // ✅ fix
         const fileContent = await fs.readFile(filePath, "utf-8");
         const { data } = matter(fileContent);
 
         return {
-          slug: `${slug}.md`.replace(".md", ""),
+          slug: filename.replace(".md", ""), // ✅ fix
           title: data.title || "Untitled",
           description: data.description || "",
           date: data.date || "No date"
