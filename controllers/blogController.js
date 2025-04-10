@@ -13,12 +13,12 @@ export async function renderBlogPage(req, res) {
     files
       .filter(file => file.endsWith(".md"))
       .map(async filename => {
-        const filePath = path.join(blogDir, filename); // ✅ fix
+        const filePath = path.join(blogDir, filename);
         const fileContent = await fs.readFile(filePath, "utf-8");
         const { data } = matter(fileContent);
-
+      
         return {
-          slug: filename.replace(".md", ""), // ✅ fix
+          slug: filename.replace(".md", ""),
           title: data.title || "Untitled",
           description: data.description || "",
           date: data.date || "No date"
