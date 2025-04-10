@@ -1,16 +1,16 @@
 <%- include('../partials/header') %>
 
 <section class="text-center">
-  <h2 class="mb-3">🔗 Recommended Tools</h2>
-  <p class="mb-4">Our top picks for freelancers & remote workers</p>
+  <h2 class="mb-3">💼 Top Tools for Freelancers</h2>
+  <p class="mb-4">Carefully picked platforms to boost your freelance game.</p>
 
-  <div class="grid">
+  <div class="tool-grid">
     <% tools.forEach(tool => { %>
       <div class="tool-card">
-        <img src="<%= tool.logo %>" alt="<%= tool.name %> logo" />
+        <img src="<%= tool.logo %>" alt="<%= tool.name %> logo" class="tool-logo" />
         <h3><%= tool.name %></h3>
         <p><%= tool.description %></p>
-        <a href="<%= tool.url %>" class="btn" target="_blank">Try <%= tool.name %></a>
+        <a href="<%= tool.url %>" class="btn" target="_blank">Visit <%= tool.name %></a>
       </div>
     <% }) %>
   </div>

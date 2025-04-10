@@ -18,6 +18,7 @@ import jobsRoutes from "./routes/jobs.js";
 import aboutRoutes from "./routes/about.js";
 import contactRoutes from "./routes/contact.js";
 import recommendationRoutes from "./routes/recommendations.js";
+import adminRoutes from "./routes/admin.js";
 
 const PORT = process.env.PORT || 5500;
 
@@ -37,6 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
 app.use("/contact", contactRoutes);
 app.use("/recommendations", recommendationRoutes);
+app.use("/admin", adminRoutes);
 
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));

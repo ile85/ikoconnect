@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+
+<section class="admin-panel">
+  <h2 class="text-center mb-2">🔧 Admin Panel: Add Affiliate Tool</h2>
+
+  <% if (message) { %>
+    <div class="alert alert-success text-center"><%= message %></div>
+  <% } %>
+
+  <form action="/admin/affiliate" method="POST" class="admin-form mt-3">
+    <input type="text" name="name" placeholder="Tool Name" required />
+    <input type="text" name="description" placeholder="Short Description" required />
+    <input type="url" name="url" placeholder="Affiliate URL" required />
+    <input type="text" name="logo" placeholder="Logo Path (e.g., /images/logos/fiverr.png)" required />
+    <button type="submit" class="btn mt-2">➕ Add Tool</button>
+  </form>
+
+  <hr class="mt-4 mb-3" />
+
+  <h3 class="text-center mb-2">📋 Existing Tools</h3>
+  <ul class="tool-list">
+    <% tools.forEach(tool => { %>
+      <li>
+        <img src="<%= tool.logo %>" alt="<%= tool.name %>" class="icon-sm" />
+        <div>
+          <strong><%= tool.name %></strong><br />
+          <a href="<%= tool.url %>" target="_blank">Link</a>
+        </div>
+        <form action="/admin/affiliate/delete" method="POST" style="margin-left:auto;">
+          <input type="hidden" name="name" value="<%= tool.name %>" />
+          <button type="submit" class="btn btn-outline" onclick="return confirm('Delete <%= tool.name %>?')">🗑 Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>

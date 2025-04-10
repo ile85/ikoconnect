@@ -1,21 +1,26 @@
 [
-    {
-      "name": "Fiverr",
-      "description": "Top freelance marketplace for digital services.",
-      "url": "https://go.fiverr.com/visit/?bta=12345&brand=fiverr",
-      "logo": "/images/logos/fiverr.png"
-    },
-    {
-      "name": "ClickUp",
-      "description": "Best project management tool for freelancers.",
-      "url": "https://clickup.com/?affiliate=your-code",
-      "logo": "/images/logos/clickup.png"
-    },
-    {
-      "name": "Notion",
-      "description": "All-in-one workspace for notes, tasks, and databases.",
-      "url": "https://notion.so?ref=your-aff-link",
-      "logo": "/images/logos/notion.png"
-    }
-  ]
-  
+  {
+    "name": "Fiverr",
+    "description": "Top freelance marketplace for digital services.",
+    "url": "https://go.fiverr.com/visit/?bta=12345&brand=fiverr",
+    "logo": "/images/logos/fiverr.png"
+  },
+  {
+    "name": "Upwork",
+    "description": "Find high-paying freelance jobs easily.",
+    "url": "https://upwork.com/your-affiliate-link",
+    "logo": "/images/logos/upwork.png"
+  },
+  {
+    "name": "Notion",
+    "description": "All-in-one productivity tool",
+    "url": "https://notion.so/?ref=iko",
+    "logo": "/images/logos/notion.png"
+  },
+  {
+    "name": "Toggl Track",
+    "description": "Simple, beautiful time tracking tool trusted by freelancers and teams.",
+    "url": "https://toggl.com/track",
+    "logo": "https://logos-world.net/wp-content/uploads/2021/03/Toggl-Logo.png"
+  }
+]
