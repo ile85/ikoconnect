@@ -67,21 +67,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
 });
-document.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector("section");
-  const toast = document.getElementById("toast");
 
-  const showToast = (msg, type) => {
-    toast.textContent = msg;
-    toast.className = `toast show ${type}`;
-    setTimeout(() => toast.className = "toast", 5000);
-  };
 
-  if (section?.dataset.success === "true") {
-    showToast("✅ Your message has been sent successfully!", "success");
-  }
-
-  if (section?.dataset.error === "true") {
-    showToast("❌ Something went wrong. Please try again.", "error");
-  }
-});
