@@ -18,6 +18,8 @@ import jobsRoutes from "./routes/jobs.js";
 import aboutRoutes from "./routes/about.js";
 import contactRoutes from "./routes/contact.js";
 
+const PORT = process.env.PORT || 5500;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -61,7 +63,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Something went wrong!" });
 });
 
-const PORT = process.env.PORT || 5501;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
 });
