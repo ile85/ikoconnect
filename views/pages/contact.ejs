@@ -11,5 +11,12 @@
     <button type="submit">Send Message</button>
   </form>
 </section>
+<% if (success) { %>
+  <div class="alert alert-success">✅ Your message has been sent successfully!</div>
+<% } %>
+
+<% if (error) { %>
+  <div class="alert alert-danger">❌ Something went wrong while sending your message. Please try again.</div>
+<% } %>
 
 <%- include('../partials/footer') %>
