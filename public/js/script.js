@@ -114,10 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const section = document.querySelector("section");
 
-  const toast = document.createElement("div");
-  toast.id = "toast";
-  toast.className = "toast";
-  document.body.appendChild(toast);
 
   const showToast = (message, type = "success") => {
     toast.textContent = message;
