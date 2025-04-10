@@ -1,14 +1,20 @@
 <%- include('../partials/header') %>
 
-<section class="text-center" data-success="<%= success %>" data-error="<%= error %>">
-  <h2>Contact Us</h2>
-  <p>We’d love to hear from you. Send us your message below!</p>
+<main>
+  <section class="text-center" data-success="<%= success %>" data-error="<%= error %>">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you. Send us your message below!</p>
 
-  <form action="/contact" method="POST" class="mt-3">
-    <input type="text" name="name" placeholder="Your name" required />
-    <input type="email" name="email" placeholder="Your email" required />
-    <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+    <form action="/contact" method="POST" class="mt-3">
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+      <button type="submit" id="submit-btn">
+        <span class="text">Send Message</span>
+        <span class="spinner" style="display:none;">⏳</span>
+      </button>
+    </form>
+  </section>
+</main>
 
+<%- include('../partials/footer') %>

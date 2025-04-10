@@ -23,27 +23,43 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // 🔹 Toast Notification
-  const toast = document.getElementById("toast");
-  const section = document.querySelector("section");
-
-  if (toast && section) {
-    const success = section.dataset.success === "true";
-    const error = section.dataset.error === "true";
-
-    if (success) {
-      toast.textContent = "✅ Your message has been sent successfully!";
-      toast.classList.add("show", "success");
-    }
-
-    if (error) {
-      toast.textContent = "❌ Something went wrong. Please try again.";
-      toast.classList.add("show", "error");
-    }
-
-    if (success || error) {
-      setTimeout(() => toast.classList.remove("show", "success", "error"), 5000);
-    }
+  const form = document.querySelector("form");
+  const submitBtn = document.getElementById("submit-btn");
+  
+  if (form && submitBtn) {
+    form.addEventListener("submit", () => {
+      const text = submitBtn.querySelector(".text");
+      const spinner = submitBtn.querySelector(".spinner");
+  
+      submitBtn.disabled = true;
+      text.style.display = "none";
+      spinner.style.display = "inline";
+    });
   }
+  // Toast Logic
+const toast = document.getElementById("toast");
+const section = document.querySelector("section");
+
+const showToast = (msg, type = "success") => {
+  if (!toast) return;
+
+  toast.innerHTML = `
+    <span class="icon">${type === "success" ? "✅" : "❌"}</span>
+    <span>${msg}</span>
+  `;
+  toast.classList.add("show", type);
+
+  setTimeout(() => {
+    toast.classList.remove("show", type);
+  }, 5000);
+};
+
+if (section) {
+  const success = section.dataset.success === "true";
+  const error = section.dataset.error === "true";
+
+  if (success) showToast("✅ Your message has been sent successfully!", "success");
+  if (error) showToast("❌ Something went wrong. Please try again.", "error");
+}
+
 });
