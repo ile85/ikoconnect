@@ -7,7 +7,7 @@ const router = express.Router();
 
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
-  port: parseInt(process.env.EMAIL_PORT), // важно: да биде број
+  port: parseInt(process.env.EMAIL_PORT),
   secure: false,
   auth: {
     user: process.env.EMAIL_USER,
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
       subject: "💬 Ново порака од контакт форма",
       text: message,
     });
-  
+
     console.log(`✅ Email испратен од ${name} (${email})`);
     res.render("pages/contact", { success: true, error: false });
   } catch (err) {
