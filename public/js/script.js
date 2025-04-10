@@ -2,7 +2,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ script.js is running!");
 
-  // 🔹 Mobile Menu
+  // ================================
+  // 🔹 Mobile Menu Toggle
+  // ================================
   const hamburgerMenu = document.getElementById("hamburger-menu");
   const mobileMenu = document.getElementById("mobile-menu");
   const body = document.body;
@@ -23,43 +25,49 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ================================
+  // 🔹 Form Submit Spinner
+  // ================================
   const form = document.querySelector("form");
   const submitBtn = document.getElementById("submit-btn");
-  
+
   if (form && submitBtn) {
     form.addEventListener("submit", () => {
       const text = submitBtn.querySelector(".text");
       const spinner = submitBtn.querySelector(".spinner");
-  
+
       submitBtn.disabled = true;
       text.style.display = "none";
       spinner.style.display = "inline";
     });
   }
-  // Toast Logic
-const toast = document.getElementById("toast");
-const section = document.querySelector("section");
 
-const showToast = (msg, type = "success") => {
-  if (!toast) return;
+  // ================================
+  // 🔹 Toast Popup Notification
+  // ================================
+  const toast = document.getElementById("toast");
+  const section = document.querySelector("section");
 
-  toast.innerHTML = `
-    <span class="icon">${type === "success" ? "✅" : "❌"}</span>
-    <span>${msg}</span>
-  `;
-  toast.classList.add("show", type);
+  const showToast = (msg, type = "success") => {
+    if (!toast) return;
 
-  setTimeout(() => {
-    toast.classList.remove("show", type);
-  }, 5000);
-};
+    toast.innerHTML = `
+      <span class="icon">${type === "success" ? "✅" : "❌"}</span>
+      <span>${msg}</span>
+    `;
+    toast.classList.add("show", type);
 
-if (section) {
-  const success = section.dataset.success === "true";
-  const error = section.dataset.error === "true";
+    setTimeout(() => {
+      toast.classList.remove("show", type);
+    }, 5000);
+  };
 
-  if (success) showToast("✅ Your message has been sent successfully!", "success");
-  if (error) showToast("❌ Something went wrong. Please try again.", "error");
-}
+  if (section?.dataset.success === "true") {
+    showToast("✅ Your message has been sent successfully!", "success");
+  }
 
+  if (section?.dataset.error === "true") {
+    showToast("❌ Something went wrong. Please try again.", "error");
+  }
 });

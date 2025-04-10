@@ -17,6 +17,7 @@ import resourceRoutes from "./routes/resources.js";
 import jobsRoutes from "./routes/jobs.js";
 import aboutRoutes from "./routes/about.js";
 import contactRoutes from "./routes/contact.js";
+import recommendationRoutes from "./routes/recommendations.js";
 
 const PORT = process.env.PORT || 5500;
 
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
 app.use("/contact", contactRoutes);
+app.use("/recommendations", recommendationRoutes);
 
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));
