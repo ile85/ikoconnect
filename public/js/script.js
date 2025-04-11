@@ -68,20 +68,36 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 🔹 Live Markdown Preview (Admin Panel)
-  const markdownInput = document.getElementById("markdown-input");
-  const markdownPreview = document.getElementById("markdown-preview");
-  if (markdownInput && markdownPreview) {
+  
+  const markdownInput = document.getElementById("markdown");
+  const previewBox = document.getElementById("markdown-preview");
+  
+  if (markdownInput && previewBox) {
     markdownInput.addEventListener("input", async () => {
-      const content = markdownInput.value;
-      const response = await fetch("/api/markdown-preview", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ content })
-      });
-      const data = await response.text();
-      markdownPreview.innerHTML = data;
+      const markdown = markdownInput.value;
+  
+      // 🔹 Додај fade ефект пред да се смени содржината
+      previewBox.style.opacity = 0.5;
+  
+      try {
+        const res = await fetch("/api/markdown-preview", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ markdown }),
+        });
+  
+        const data = await res.json();
+        previewBox.innerHTML = data.html;
+  
+        // 🔹 Fade назад до нормална видливост после update
+        setTimeout(() => {
+          previewBox.style.opacity = 1;
+        }, 100);
+  
+      } catch (err) {
+        previewBox.innerHTML = "<p style='color:red'>❌ Failed to render preview</p>";
+        previewBox.style.opacity = 1; // осигури се дека не останува полупроѕирен
+      }
     });
-  }
+  }  
 });

@@ -388,13 +388,30 @@ form {
   object-fit: contain;
 }
 .admin-panel {
-  max-width: 720px;
+  max-width: 1000px;
   margin: 2rem auto;
   padding: 2rem;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 1024px) {
+  .admin-panel {
+    grid-template-columns: 1fr;
+  }
+  .preview-box {
+    order: 2;
+    margin-top: 2rem;
+  }
+}
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .admin-form input {
@@ -404,12 +421,56 @@ form {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
-
-.admin-form button {
+.admin-form, .preview-box, .tool-list {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.admin-form input,
+.admin-form textarea {
   width: 100%;
   padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.admin-form label {
+  font-weight: 600;
+  color: #444;
 }
 
+.admin-form button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.admin-form button:hover {
+  background-color: #0845ad;
+}
+.admin-left, .admin-right {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.admin-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 .tool-list {
   list-style: none;
   padding: 0;
@@ -449,5 +510,59 @@ form {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   font-family: inherit;
   line-height: 1.6;
+}
+#markdown-preview {
+  transition: opacity 0.2s ease-in-out;
+}
+.preview-box {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  min-height: 100px;
+  transition: opacity 0.3s ease;
+  opacity: 0.95;
+  max-height: 500px;
+  overflow-y: auto;
+  position: sticky;
+  top: 80px; /* или повеќе ако имаш header */
+  align-self: start;
+}
+.preview-box h1,
+.preview-box h2,
+.preview-box h3 {
+  color: #0d6efd;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.preview-box p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.preview-box a {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
+.preview-box ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.preview-box code {
+  background-color: #f4f4f4;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.preview-box pre {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
 }
 

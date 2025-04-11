@@ -2,10 +2,10 @@ import express from "express";
 import fs from "fs-extra";
 import path from "path";
 import slugify from "slugify";
-import matter from "gray-matter";
 
 const router = express.Router();
 const blogDir = path.join(process.cwd(), "blog");
+const toolsPath = path.join(process.cwd(), "data", "affiliateTools.json");
 
 function validatePost(data) {
   const today = new Date().toISOString().split("T")[0];
@@ -19,20 +19,33 @@ function validatePost(data) {
   return fixed;
 }
 
-router.post("/affiliate", async (req, res) => {
-  const { title, url, description } = req.body;
-
-  if (!title || !url) {
-    return res.status(400).json({ error: "Title and URL are required." });
+// ✅ Admin Panel - Render
+router.get("/affiliate", async (req, res) => {
+  let tools = [];
+  try {
+    tools = await fs.readJson(toolsPath);
+  } catch {
+    tools = [];
   }
+  res.render("pages/admin-affiliate", { tools, message: null });
+});
 
-  const slug = slugify(title.toLowerCase(), { strict: true });
+// ✅ Add Affiliate Tool + Blog Post
+router.post("/affiliate", async (req, res) => {
+  const { logo, name, url, description, markdown } = req.body;
+
+  // ✅ Користи `name` наместо `title`
+  if (!name || !url || !logo) {
+    return res.status(400).json({ error: "Name, URL, and Logo are required." });
+  }
+  
+  const slug = slugify(name.toLowerCase(), { strict: true });
   const filePath = path.join(blogDir, `${slug}.md`);
-
+  
   const validated = validatePost({
-    title,
+    title: name, // ✅ name како title
     description,
-    date: new Date().toISOString().split("T")[0]
+    date: new Date().toISOString().split("T")[0],
   });
 
   const markdownContent = `---
@@ -46,14 +59,36 @@ description: ${validated.description}
 ${validated.description}
 
 👉 [Try ${validated.title}](${url})
+${markdown ? "\n---\n" + markdown : ""}
 `;
 
   try {
+    // ✅ Save Markdown Post
     await fs.writeFile(filePath, markdownContent, "utf-8");
-    res.status(201).json({ message: "Affiliate post created successfully!" });
+
+    // ✅ Save to JSON
+    const tools = await fs.readJson(toolsPath).catch(() => []);
+    tools.push({ name, description, url, logo });
+    await fs.writeJson(toolsPath, tools, { spaces: 2 });
+
+    res.redirect("/admin/affiliate");
   } catch (err) {
-    console.error("❌ Error writing markdown file:", err);
-    res.status(500).json({ error: "Failed to create post." });
+    console.error("❌ Error saving tool:", err);
+    res.status(500).json({ error: "Failed to save affiliate post and tool." });
+  }
+});
+
+// ✅ Delete Tool
+router.post("/affiliate/delete", async (req, res) => {
+  const { name } = req.body;
+  try {
+    let tools = await fs.readJson(toolsPath).catch(() => []);
+    tools = tools.filter(t => t.name !== name);
+    await fs.writeJson(toolsPath, tools, { spaces: 2 });
+    res.redirect("/admin/affiliate");
+  } catch (err) {
+    console.error("❌ Error deleting tool:", err);
+    res.status(500).json({ error: "Failed to delete tool." });
   }
 });
 

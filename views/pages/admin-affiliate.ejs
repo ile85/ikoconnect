@@ -1,68 +1,78 @@
 <%- include('../partials/header') %>
 
 <section class="admin-panel">
-  <h2 class="text-center mb-2">🔧 Admin Panel: Add Affiliate Tool</h2>
+  <div class="admin-left">
+    <h2 class="text-center mb-2">🔧 Admin Panel: Add Affiliate Tool</h2>
 
-  <% if (message) { %>
-    <div class="alert alert-success text-center"><%= message %></div>
-  <% } %>
+    <% if (message) { %>
+      <div class="alert alert-success text-center"><%= message %></div>
+    <% } %>
 
-  <form action="/admin/affiliate" method="POST" class="admin-form mt-3">
-    <input type="text" name="name" placeholder="Tool Name" required />
-    <input type="url" name="url" placeholder="Affiliate URL" required />
-    <input type="text" name="logo" placeholder="Logo Path (e.g., /images/logos/fiverr.png)" required />
+    <form action="/admin/affiliate" method="POST" class="admin-form mt-3">
+      <input type="text" name="name" placeholder="Tool Name" required />
+      <input type="text" name="description" placeholder="Short Description" required />
+      <input type="url" name="url" placeholder="Affiliate URL" required />
+      <input type="text" name="logo" placeholder="Logo Path (e.g., /images/logos/fiverr.png)" required />
 
-    <div class="markdown-preview-container">
-      <textarea name="description" id="markdown-input" rows="6" placeholder="Markdown Description" required></textarea>
-      <div id="markdown-preview" class="preview-box"></div>
-    </div>
+      <label for="markdown" class="mt-2">✍️ Optional Markdown Content</label>
+      <textarea id="markdown" name="markdown" rows="8" placeholder="Write your custom content here..."></textarea>
 
-    <button type="submit" class="btn mt-2">➕ Add Tool</button>
-  </form>
+      <button type="submit" class="btn mt-2">➕ Add Tool</button>
+    </form>
+  </div>
 
-  <hr class="mt-4 mb-3" />
+  <div class="admin-right">
+    <h4 class="mb-2">🔍 Live Preview</h4>
+    <div id="markdown-preview" class="preview-box"></div>
 
-  <h3 class="text-center mb-2">📋 Existing Tools</h3>
-  <ul class="tool-list">
-    <% tools.forEach(tool => { %>
-      <li>
-        <img src="<%= tool.logo %>" alt="<%= tool.name %>" class="icon-sm" />
-        <div>
-          <strong><%= tool.name %></strong><br />
-          <a href="<%= tool.url %>" target="_blank">Link</a>
-        </div>
-        <form action="/admin/affiliate/delete" method="POST" style="margin-left:auto;">
-          <input type="hidden" name="name" value="<%= tool.name %>" />
-          <button type="submit" class="btn btn-outline" onclick="return confirm('Delete <%= tool.name %>?')">🗑 Delete</button>
-        </form>
-      </li>
-    <% }) %>
-  </ul>
+    <hr class="mt-4 mb-3" />
+    <h3 class="text-center mb-2">📋 Existing Tools</h3>
+    <ul class="tool-list">
+      <% tools.forEach(tool => { %>
+        <li>
+          <img src="<%= tool.logo %>" alt="<%= tool.name %>" class="icon-sm" />
+          <div>
+            <strong><%= tool.name %></strong><br />
+            <a href="<%= tool.url %>" target="_blank">Link</a>
+          </div>
+          <form action="/admin/affiliate/delete" method="POST" style="margin-left:auto;">
+            <input type="hidden" name="name" value="<%= tool.name %>" />
+            <button type="submit" class="btn btn-outline" onclick="return confirm('Delete <%= tool.name %>?')">🗑 Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("markdown-input");
-  const preview = document.getElementById("markdown-preview");
-
-  input.addEventListener("input", async () => {
-    const markdown = input.value;
-
-    try {
-      const res = await fetch("/api/markdown-preview", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ markdown })
+  document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("markdown");
+    const preview = document.getElementById("markdown-preview");
+  
+    if (input && preview) {
+      input.addEventListener("input", async () => {
+        preview.style.opacity = 0.5;
+  
+        try {
+          const res = await fetch("/api/markdown-preview", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ markdown: input.value }),
+          });
+  
+          const data = await res.json();
+          preview.innerHTML = data.html;
+  
+          setTimeout(() => preview.style.opacity = 1, 100);
+        } catch (err) {
+          preview.innerHTML = "<p style='color:red'>❌ Failed to render preview</p>";
+          preview.style.opacity = 1;
+        }
       });
-
-      const data = await res.json();
-      preview.innerHTML = data.html;
-    } catch (err) {
-      preview.innerHTML = "<p style='color:red'>❌ Failed to load preview</p>";
     }
   });
-});
-</script>
+  </script>
 
 <style>
 .markdown-preview-container {
