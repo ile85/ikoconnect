@@ -9,13 +9,15 @@
 
   <form action="/admin/affiliate" method="POST" class="admin-form mt-3">
     <input type="text" name="name" placeholder="Tool Name" required />
-    <input type="text" name="description" placeholder="Short Description" required />
     <input type="url" name="url" placeholder="Affiliate URL" required />
     <input type="text" name="logo" placeholder="Logo Path (e.g., /images/logos/fiverr.png)" required />
+
+    <div class="markdown-preview-container">
+      <textarea name="description" id="markdown-input" rows="6" placeholder="Markdown Description" required></textarea>
+      <div id="markdown-preview" class="preview-box"></div>
+    </div>
+
     <button type="submit" class="btn mt-2">➕ Add Tool</button>
-    <label for="markdown" class="mt-2">📝 Markdown Content</label>
-    <textarea name="markdown" id="markdown" rows="10" placeholder="Write blog content here..."></textarea>
-    <div id="markdown-preview" class="markdown-preview mt-2"></div>
   </form>
 
   <hr class="mt-4 mb-3" />
@@ -37,24 +39,49 @@
     <% }) %>
   </ul>
 </section>
+
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const textarea = document.getElementById("markdown");
-    const preview = document.getElementById("markdown-preview");
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("markdown-input");
+  const preview = document.getElementById("markdown-preview");
 
-    if (textarea && preview) {
-      textarea.addEventListener("input", async () => {
-        const res = await fetch("/api/markdown-preview", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ markdown: textarea.value })
-        });
+  input.addEventListener("input", async () => {
+    const markdown = input.value;
 
-        const data = await res.json();
-        preview.innerHTML = data.html || "<p><em>No preview available.</em></p>";
+    try {
+      const res = await fetch("/api/markdown-preview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ markdown })
       });
+
+      const data = await res.json();
+      preview.innerHTML = data.html;
+    } catch (err) {
+      preview.innerHTML = "<p style='color:red'>❌ Failed to load preview</p>";
     }
   });
+});
 </script>
+
+<style>
+.markdown-preview-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+#markdown-input {
+  width: 50%;
+}
+.preview-box {
+  width: 50%;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-y: auto;
+  max-height: 300px;
+}
+</style>
 
 <%- include('../partials/footer') %>

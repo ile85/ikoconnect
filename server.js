@@ -19,7 +19,6 @@ import aboutRoutes from "./routes/about.js";
 import contactRoutes from "./routes/contact.js";
 import recommendationRoutes from "./routes/recommendations.js";
 import adminRoutes from "./routes/admin.js";
-import markdownPreviewRoute from "./routes/api/markdown-preview.js";
 import previewRoutes from "./routes/preview.js";
 
 const PORT = process.env.PORT || 5500;
@@ -53,7 +52,6 @@ app.use("/blog", blogRoutes);
 app.use("/resources", resourceRoutes);
 app.use("/jobs", jobsRoutes);
 app.use("/about", aboutRoutes);
-app.use("/api/markdown-preview", markdownPreviewRoute);
 app.use("/api", previewRoutes);
 
 
