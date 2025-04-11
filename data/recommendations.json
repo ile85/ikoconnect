@@ -16,5 +16,11 @@
     "description": "All-in-one productivity tool",
     "url": "https://notion.so/?ref=iko",
     "logo": "/images/logos/notion.png"
+  },
+  {
+    "name": "Trello — Organize Your Freelance Projects Like a Pro",
+    "description": "Trello is a visual project management tool that helps freelancers stay organized, collaborate with clients, and track tasks easily.",
+    "url": "https://trello.com",
+    "logo": "/images/logos/notion.png"
   }
 ]

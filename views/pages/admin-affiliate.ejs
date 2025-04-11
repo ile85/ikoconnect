@@ -13,6 +13,9 @@
     <input type="url" name="url" placeholder="Affiliate URL" required />
     <input type="text" name="logo" placeholder="Logo Path (e.g., /images/logos/fiverr.png)" required />
     <button type="submit" class="btn mt-2">➕ Add Tool</button>
+    <label for="markdown" class="mt-2">📝 Markdown Content</label>
+    <textarea name="markdown" id="markdown" rows="10" placeholder="Write blog content here..."></textarea>
+    <div id="markdown-preview" class="markdown-preview mt-2"></div>
   </form>
 
   <hr class="mt-4 mb-3" />
@@ -34,5 +37,24 @@
     <% }) %>
   </ul>
 </section>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const textarea = document.getElementById("markdown");
+    const preview = document.getElementById("markdown-preview");
+
+    if (textarea && preview) {
+      textarea.addEventListener("input", async () => {
+        const res = await fetch("/api/markdown-preview", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ markdown: textarea.value })
+        });
+
+        const data = await res.json();
+        preview.innerHTML = data.html || "<p><em>No preview available.</em></p>";
+      });
+    }
+  });
+</script>
 
 <%- include('../partials/footer') %>

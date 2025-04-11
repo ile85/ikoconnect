@@ -1,10 +1,10 @@
 // === script.js | IkoConnect ===
+
+// Wait for the DOM to fully load
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ script.js is running!");
 
-  // ================================
-  // 🔹 Mobile Menu Toggle
-  // ================================
+  // 🔹 Mobile Menu
   const hamburgerMenu = document.getElementById("hamburger-menu");
   const mobileMenu = document.getElementById("mobile-menu");
   const body = document.body;
@@ -26,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================================
-  // 🔹 Form Submit Spinner
-  // ================================
+  // 🔹 Disable submit button and show spinner
   const form = document.querySelector("form");
   const submitBtn = document.getElementById("submit-btn");
 
@@ -43,9 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================================
-  // 🔹 Toast Popup Notification
-  // ================================
+  // 🔹 Toast Logic
   const toast = document.getElementById("toast");
   const section = document.querySelector("section");
 
@@ -63,11 +59,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   };
 
-  if (section?.dataset.success === "true") {
-    showToast("✅ Your message has been sent successfully!", "success");
+  if (section) {
+    const success = section.dataset.success === "true";
+    const error = section.dataset.error === "true";
+
+    if (success) showToast("✅ Your message has been sent successfully!", "success");
+    if (error) showToast("❌ Something went wrong. Please try again.", "error");
   }
 
-  if (section?.dataset.error === "true") {
-    showToast("❌ Something went wrong. Please try again.", "error");
+  // 🔹 Live Markdown Preview (Admin Panel)
+  const markdownInput = document.getElementById("markdown-input");
+  const markdownPreview = document.getElementById("markdown-preview");
+  if (markdownInput && markdownPreview) {
+    markdownInput.addEventListener("input", async () => {
+      const content = markdownInput.value;
+      const response = await fetch("/api/markdown-preview", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ content })
+      });
+      const data = await response.text();
+      markdownPreview.innerHTML = data;
+    });
   }
 });

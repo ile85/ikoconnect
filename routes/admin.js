@@ -1,70 +1,60 @@
-import slugify from "slugify"; // додади најгоре
-import { format } from "date-fns"; // форматирање на датум
-
 import express from "express";
 import fs from "fs-extra";
 import path from "path";
+import slugify from "slugify";
+import matter from "gray-matter";
 
 const router = express.Router();
-const dataPath = path.join(process.cwd(), "data", "recommendations.json");
+const blogDir = path.join(process.cwd(), "blog");
 
-// GET admin panel
-router.get("/affiliate", async (req, res) => {
-  const tools = await fs.readJson(dataPath);
-  res.render("pages/admin-affiliate", { tools, message: null });
-});
+function validatePost(data) {
+  const today = new Date().toISOString().split("T")[0];
 
-// POST new affiliate
+  const fixed = {
+    title: data.title?.trim() || "Untitled Post",
+    description: data.description?.trim() || "This is an auto-generated post for SEO purposes.",
+    date: /^\d{4}-\d{2}-\d{2}$/.test(data.date) ? data.date : today,
+  };
+
+  return fixed;
+}
+
 router.post("/affiliate", async (req, res) => {
-    const { name, description, url, logo } = req.body;
-  
-    try {
-      const tools = await fs.readJson(dataPath);
-      const newTool = { name, description, url, logo };
-  
-      tools.push(newTool);
-      await fs.writeJson(dataPath, tools, { spaces: 2 });
-  
-      // 🔥 Auto-generate Markdown Blog Post
-      const blogDir = path.join(process.cwd(), "blog");
-      const slug = slugify(name, { lower: true });
-      const blogPath = path.join(blogDir, `${slug}.md`);
-      const today = format(new Date(), "yyyy-MM-dd");
-  
-      const mdContent = `---
-  title: ${name} – Recommended Tool for Freelancers
-  date: ${today}
-  description: ${description}
-  ---
-  
-  ## Why We Recommend ${name}
-  
-  ${description}
-  
-  👉 [Try ${name}](${url})
-  `;
-  
-      await fs.outputFile(blogPath, mdContent);
-  
-      res.redirect("/admin/affiliate");
-    } catch (err) {
-      console.error("❌ Error adding tool:", err);
-      res.render("pages/admin-affiliate", { tools: [], message: "❌ Failed to add tool." });
-    }
+  const { title, url, description } = req.body;
+
+  if (!title || !url) {
+    return res.status(400).json({ error: "Title and URL are required." });
+  }
+
+  const slug = slugify(title.toLowerCase(), { strict: true });
+  const filePath = path.join(blogDir, `${slug}.md`);
+
+  const validated = validatePost({
+    title,
+    description,
+    date: new Date().toISOString().split("T")[0]
   });
-router.post("/affiliate/delete", async (req, res) => {
-    const { name } = req.body;
-  
-    try {
-      let tools = await fs.readJson(dataPath);
-      tools = tools.filter(tool => tool.name !== name);
-      await fs.writeJson(dataPath, tools, { spaces: 2 });
-  
-      res.redirect("/admin/affiliate");
-    } catch (err) {
-      console.error("❌ Error deleting tool:", err);
-      res.render("pages/admin-affiliate", { tools: [], message: "❌ Failed to delete." });
-    }
-  });
+
+  const markdownContent = `---
+title: ${validated.title}
+date: ${validated.date}
+description: ${validated.description}
+---
+
+## Why We Recommend ${validated.title}
+
+${validated.description}
+
+👉 [Try ${validated.title}](${url})
+`;
+
+  try {
+    await fs.writeFile(filePath, markdownContent, "utf-8");
+    res.status(201).json({ message: "Affiliate post created successfully!" });
+  } catch (err) {
+    console.error("❌ Error writing markdown file:", err);
+    res.status(500).json({ error: "Failed to create post." });
+  }
+});
 
 export default router;
