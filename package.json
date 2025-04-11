@@ -9,6 +9,7 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+    "@vercel/og": "^0.6.8",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
@@ -22,6 +23,8 @@
     "mongoose": "^8.9.6",
     "morgan": "^1.10.0",
     "nodemailer": "^6.10.0",
+    "satori": "^0.12.2",
+    "sharp": "^0.34.1",
     "slugify": "^1.6.6"
   },
   "devDependencies": {

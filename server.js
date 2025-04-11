@@ -20,7 +20,7 @@ import contactRoutes from "./routes/contact.js";
 import recommendationRoutes from "./routes/recommendations.js";
 import adminRoutes from "./routes/admin.js";
 import previewRoutes from "./routes/preview.js";
-
+import ogImageRoute from "./routes/api/og-image.js";
 const PORT = process.env.PORT || 5500;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -53,6 +53,8 @@ app.use("/resources", resourceRoutes);
 app.use("/jobs", jobsRoutes);
 app.use("/about", aboutRoutes);
 app.use("/api", previewRoutes);
+app.use("/api/og-image", ogImageRoute);
+
 
 
 app.get("/favicon.ico", (req, res) => {

@@ -2,7 +2,13 @@ import express from "express";
 import fs from "fs-extra";
 import path from "path";
 import slugify from "slugify";
+import generateOgImage from "../utils/generateOgImage.js";
+import fs from "fs";
+import path from "path";
 
+const image = await generateOgImage({ title: validated.title });
+const ogPath = path.join(process.cwd(), "public", "og-images", `${slug}.png`);
+fs.writeFileSync(ogPath, Buffer.from(await image.arrayBuffer()));
 const router = express.Router();
 const blogDir = path.join(process.cwd(), "blog");
 const toolsPath = path.join(process.cwd(), "data", "affiliateTools.json");

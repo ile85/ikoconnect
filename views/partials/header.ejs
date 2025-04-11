@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+  <% if (typeof post !== "undefined") { %>
+    <meta property="og:title" content="<%= post.title %>" />
+    <meta property="og:description" content="<%= post.description %>" />
+    <meta property="og:image" content="https://www.ikoconnect.com/api/og-image?title=<%= encodeURIComponent(post.title) %>&description=<%= encodeURIComponent(post.description) %>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.ikoconnect.com/blog/<%= post.slug %>" />
+  <% } %>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

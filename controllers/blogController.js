@@ -47,7 +47,10 @@ export async function renderSinglePost(req, res) {
       title: data.title,
       date: data.date,
       description: data.description,
-      html
+      html,
+      slug,
+      content,
+      tags: data.tags || [],
     });
 
   } catch (error) {
