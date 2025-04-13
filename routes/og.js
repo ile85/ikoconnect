@@ -1,5 +1,4 @@
 import { ImageResponse } from "@vercel/og";
-import fs from "fs";
 import path from "path";
 import express from "express";
 

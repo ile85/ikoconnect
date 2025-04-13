@@ -1,5 +1,4 @@
 import express from "express";
-import fs from "fs-extra";
 import path from "path";
 
 const router = express.Router();
