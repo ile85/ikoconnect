@@ -1,3 +1,4 @@
+import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
@@ -20,7 +21,7 @@ export async function renderBlogPage(req, res) {
           slug,
           title: data.title || "Untitled",
           description: data.description || "",
-          date: data.date || "No date"
+          date: data.date || "No date",
         });
       }
     }

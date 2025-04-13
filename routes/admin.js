@@ -1,8 +1,8 @@
 import express from "express";
-import fs from "fs-extra"; // ✅ користиш само fs-extra овде
 import path from "path";
 import slugify from "slugify";
-import generateOgImage from "../utils/generateOgImage.js";
+
+await fs.writeFile(ogPath, Buffer.from(await image.arrayBuffer()));
 
 const router = express.Router();
 const blogDir = path.join(process.cwd(), "blog");
