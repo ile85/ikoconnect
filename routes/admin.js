@@ -62,15 +62,10 @@ ${markdown ? "\n---\n" + markdown : ""}
     await fs.writeFile(filePath, markdownContent, "utf-8");
 
     // 🧪 Cleanup + final URL
-    const cleanedLogo = logo
-      .replace(/^https?:\/\/[^/]+/, "")  // remove domain if any
-      .replace(/^\/?public\/?/, "")     // remove leading "public/"
-      .replace(/^\/+/, "");             // remove extra slashes at the beginning
-
-    const logoUrl = logo.startsWith("http")
-      ? logo
-      : `https://www.ikoconnect.com/${cleanedLogo}`;
-
+    const cleanedLogo = logo.replace(/^\/?public\/?/, "").replace(/^\/+/, "");
+const logoUrl = logo.startsWith("http")
+  ? logo
+  : `https://www.ikoconnect.com/${cleanedLogo}`;
     console.log("🧪 INPUT LOGO:", logo);
     console.log("🧼 CLEANED LOGO:", cleanedLogo);
     console.log("🌍 FINAL LOGO URL:", logoUrl);
