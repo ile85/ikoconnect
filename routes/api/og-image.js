@@ -1,74 +1,56 @@
 import express from "express";
-import satori from "satori";
-import fs from "fs";
-import { Resvg } from "@resvg/resvg-js";
-import { join } from "path";
+import puppeteer from "puppeteer";
 
 const router = express.Router();
 
-const fontPath = join(process.cwd(), "public/fonts/Inter-Bold.ttf");
-const fontData = fs.readFileSync(fontPath);
-
 router.get("/", async (req, res) => {
-  const { title = "IkoConnect", description = "Freelancing Made Easy" } = req.query;
+  const { title = "IkoConnect", description = "Your freelance hub" } = req.query;
 
-  const svg = await satori(
-    {
-      type: "div",
-      props: {
-        style: {
-          backgroundColor: "#fff",
-          width: "1200px",
-          height: "630px",
-          padding: "60px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          fontFamily: "Inter",
-        },
-        children: [
-          {
-            type: "h1",
-            props: {
-              style: {
-                fontSize: 60,
-                marginBottom: "20px",
-              },
-              children: title,
-            },
-          },
-          {
-            type: "p",
-            props: {
-              style: {
-                fontSize: 32,
-                color: "#444",
-              },
-              children: description,
-            },
-          },
-        ],
-      },
-    },
-    {
-      width: 1200,
-      height: 630,
-      fonts: [
-        {
-          name: "Inter",
-          data: fontData,
-          weight: 700,
-          style: "normal",
-        },
-      ],
-    }
-  );
+  const htmlContent = `
+    <html>
+      <head>
+        <style>
+          body {
+            width: 1200px;
+            height: 630px;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+          }
+          h1 {
+            font-size: 60px;
+            margin: 0;
+          }
+          p {
+            font-size: 30px;
+            color: #555555;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>${title}</h1>
+        <p>${description}</p>
+      </body>
+    </html>
+  `;
 
-  const resvg = new Resvg(svg);
-  const pngBuffer = resvg.render().asPng();
+  try {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.setContent(htmlContent);
+    const screenshotBuffer = await page.screenshot({ type: "png" });
+    await browser.close();
 
-  res.setHeader("Content-Type", "image/png");
-  res.send(pngBuffer);
+    res.set("Content-Type", "image/png");
+    res.send(screenshotBuffer);
+  } catch (error) {
+    console.error("Error generating OG image:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 export default router;

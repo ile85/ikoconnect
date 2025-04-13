@@ -23,6 +23,7 @@
     "mongoose": "^8.9.6",
     "morgan": "^1.10.0",
     "nodemailer": "^6.10.0",
+    "puppeteer": "^24.6.1",
     "satori": "^0.12.2",
     "sharp": "^0.34.1",
     "slugify": "^1.6.6"
