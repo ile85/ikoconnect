@@ -4,5 +4,11 @@
     "description": "All-in-one productivity tool",
     "url": "https://www.youtube.com/watch?v=FjEThTKY-YE&ab_channel=ParolesFran%C3%A7aises%E2%99%AA",
     "logo": "/images/logos/notion.png"
+  },
+  {
+    "name": "Ilcho Dimeski",
+    "description": "Simple, beautiful time tracking tool trusted by freelancers and teams.",
+    "url": "http://ikoconnect.com",
+    "logo": "/images/logos/notion.png"
   }
 ]

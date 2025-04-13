@@ -59,18 +59,22 @@ ${markdown ? "\n---\n" + markdown : ""}
 `;
 
   try {
-    // Save .md file
     await fs.writeFile(filePath, markdownContent, "utf-8");
 
-    // ✅ CLEAN logo path
-    let cleanedLogo = logo.replace(/^public/, "");
-    if (!cleanedLogo.startsWith("/")) cleanedLogo = "/" + cleanedLogo;
-    
+    // 🧪 Cleanup + final URL
+    const cleanedLogo = logo
+      .replace(/^https?:\/\/[^/]+/, "")  // remove domain if any
+      .replace(/^\/?public\/?/, "")     // remove leading "public/"
+      .replace(/^\/+/, "");             // remove extra slashes at the beginning
+
     const logoUrl = logo.startsWith("http")
       ? logo
-      : `https://www.ikoconnect.com${cleanedLogo}`;
+      : `https://www.ikoconnect.com/${cleanedLogo}`;
 
-    // Download image
+    console.log("🧪 INPUT LOGO:", logo);
+    console.log("🧼 CLEANED LOGO:", cleanedLogo);
+    console.log("🌍 FINAL LOGO URL:", logoUrl);
+
     const response = await axios.get(logoUrl, { responseType: "arraybuffer" });
     const buffer = Buffer.from(response.data);
 
@@ -78,7 +82,6 @@ ${markdown ? "\n---\n" + markdown : ""}
     await fs.mkdir(ogDir, { recursive: true });
     await fs.writeFile(ogPath, buffer);
 
-    // Save to JSON
     let tools = [];
     try {
       const raw = await fs.readFile(toolsPath, "utf-8");

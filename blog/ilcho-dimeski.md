@@ -1,14 +1,14 @@
 ---
 title: "Ilcho Dimeski"
 date: "2025-04-13"
-description: "All-in-one productivity tool"
+description: "Simple, beautiful time tracking tool trusted by freelancers and teams."
 ---
 
 ## Why We Recommend Ilcho Dimeski
 
-All-in-one productivity tool
+Simple, beautiful time tracking tool trusted by freelancers and teams.
 
-👉 [Try Ilcho Dimeski](https://www.youtube.com/watch?v=FjEThTKY-YE&ab_channel=ParolesFran%C3%A7aises%E2%99%AA)
+👉 [Try Ilcho Dimeski](http://ikoconnect.com)
 
 ---
-xyxyvxcv
+dsfvdbg
