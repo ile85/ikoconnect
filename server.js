@@ -44,6 +44,7 @@ app.use("/recommendations", recommendationRoutes);
 app.use("/admin", adminRoutes);
 
 app.set("view engine", "ejs");
+app.set('view cache', false);
 app.set("views", join(__dirname, "views"));
 
 connectDB();

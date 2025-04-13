@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vercel/og": "^0.6.8",
+    "axios": "^1.8.4",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
@@ -22,11 +23,13 @@
     "mongodb": "^6.13.0",
     "mongoose": "^8.9.6",
     "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^6.10.0",
     "puppeteer": "^24.6.1",
     "satori": "^0.12.2",
     "sharp": "^0.34.1",
-    "slugify": "^1.6.6"
+    "slugify": "^1.6.6",
+    "utils-merge": "^1.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
