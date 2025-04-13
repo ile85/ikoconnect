@@ -1,3 +1,4 @@
+// ✅ /routes/admin.js - финално, чиста, проверена
 import fs from "fs/promises";
 import express from "express";
 import path from "path";
@@ -30,11 +31,41 @@ router.get("/affiliate", async (req, res) => {
 });
 
 router.post("/affiliate", async (req, res) => {
-  const { logo, name, url, description, markdown } = req.body;
+  console.log("\ud83e\uddfa /admin/affiliate route HIT!");
+  const { logo, name, url, description, markdown, "g-recaptcha-response": token } = req.body;
+
+  if (!token) {
+    console.warn("\u26d4\ufe0f No reCAPTCHA token provided");
+    return res.status(400).json({ error: "No reCAPTCHA token provided." });
+  }
+
+  try {
+    const verifyResponse = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      new URLSearchParams({
+        secret: process.env.RECAPTCHA_SECRET,
+        response: token,
+      }).toString(),
+      {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      }
+    );
+
+    if (!verifyResponse.data.success) {
+      console.warn("\u274c reCAPTCHA verification failed", verifyResponse.data);
+      return res.status(400).json({ error: "reCAPTCHA verification failed." });
+    }
+  } catch (err) {
+    console.error("\u274c reCAPTCHA error:", err);
+    return res.status(500).json({ error: "reCAPTCHA verification failed." });
+  }
 
   if (!name || !url || !logo) {
     return res.status(400).json({ error: "Name, URL, and Logo are required." });
   }
+
+  const cleanedLogo = logo.replace(/^\/public\//, "").replace(/^\/+/, "");
+  const logoUrl = logo.startsWith("http") ? logo : `https://www.ikoconnect.com/${cleanedLogo}`;
 
   const slug = slugify(name.toLowerCase(), { strict: true });
   const filePath = path.join(blogDir, `${slug}.md`);
@@ -44,35 +75,17 @@ router.post("/affiliate", async (req, res) => {
     date: new Date().toISOString().split("T")[0],
   });
 
-  const markdownContent = `---
-title: "${validated.title}"
-date: "${validated.date}"
-description: "${validated.description}"
----
-
-## Why We Recommend ${validated.title}
-
-${validated.description}
-
-👉 [Try ${validated.title}](${url})
-${markdown ? "\n---\n" + markdown : ""}
-`;
+  const markdownContent = `---\ntitle: "${validated.title}"\ndate: "${validated.date}"\ndescription: "${validated.description}"\n---\n\n## Why We Recommend ${validated.title}\n\n${validated.description}\n\n\uD83D\uDC49 [Try ${validated.title}](${url})${markdown ? "\n---\n" + markdown : ""}`;
 
   try {
     await fs.writeFile(filePath, markdownContent, "utf-8");
 
-    // 🧪 Cleanup + final URL
-    const cleanedLogo = logo.replace(/^\/?public\/?/, "").replace(/^\/+/, "");
-const logoUrl = logo.startsWith("http")
-  ? logo
-  : `https://www.ikoconnect.com/${cleanedLogo}`;
-    console.log("🧪 INPUT LOGO:", logo);
-    console.log("🧼 CLEANED LOGO:", cleanedLogo);
-    console.log("🌍 FINAL LOGO URL:", logoUrl);
-
     const response = await axios.get(logoUrl, { responseType: "arraybuffer" });
-    const buffer = Buffer.from(response.data);
+    if (response.status !== 200 || !response.headers["content-type"].startsWith("image/")) {
+      throw new Error("\u274c Not a valid image or not found");
+    }
 
+    const buffer = Buffer.from(response.data);
     const ogPath = path.join(ogDir, `${slug}.png`);
     await fs.mkdir(ogDir, { recursive: true });
     await fs.writeFile(ogPath, buffer);
@@ -90,11 +103,10 @@ const logoUrl = logo.startsWith("http")
 
     res.redirect("/admin/affiliate");
   } catch (err) {
-    console.error("❌ Error saving tool:", err);
+    console.error("\u274c Error saving tool:", err);
     res.status(500).json({ error: "Failed to save affiliate post and tool." });
   }
 });
-
 
 router.post("/affiliate/delete", async (req, res) => {
   const { name } = req.body;
@@ -110,7 +122,7 @@ router.post("/affiliate/delete", async (req, res) => {
     await fs.writeFile(toolsPath, JSON.stringify(tools, null, 2));
     res.redirect("/admin/affiliate");
   } catch (err) {
-    console.error("❌ Error deleting tool:", err);
+    console.error("\u274c Error deleting tool:", err);
     res.status(500).json({ error: "Failed to delete tool." });
   }
 });

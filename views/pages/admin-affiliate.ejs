@@ -9,17 +9,22 @@
     <% } %>
 
     <form action="/admin/affiliate" method="POST" class="admin-form mt-3">
-      <input type="text" name="name" placeholder="Tool Name" required />
+      <label for="tool-name"><strong>Tool Name</strong></label>
+      <input type="text" id="tool-name" name="name" placeholder="Tool Name" required autocomplete="off" />
+
       <div id="og-preview" class="mt-2">
-        <label><strong>🔍 OG Image Preview:</strong></label><br>
+        <label for="tool-name"><strong>🔍 OG Image Preview:</strong></label><br>
         <img id="og-image" src="" alt="OG Preview" style="max-width: 100%; border: 1px solid #ccc; padding: 5px; display: none;">
       </div>
-      <input type="text" name="description" placeholder="Short Description" required />
-      <input type="url" name="url" placeholder="Affiliate URL" required />
-      <input type="text" name="logo" placeholder="Logo Path (e.g., /images/logos/notion.png)" required /> 
 
-      <label for="markdown" class="mt-2">✍️ Optional Markdown Content</label>
+      <input type="text" name="description" placeholder="Short Description" required autocomplete="off" />
+      <input type="url" name="url" placeholder="Affiliate URL" required autocomplete="off" />
+      <input type="text" name="logo" placeholder="Logo Path (e.g., /images/logos/fiverr.png)" required autocomplete="off" />
+
+      <label for="markdown"><strong>✍️ Optional Markdown Content</strong></label>
       <textarea id="markdown" name="markdown" rows="8" placeholder="Write your custom content here..."></textarea>
+
+      <div class="g-recaptcha mt-2" data-sitekey="6LfGQBcrAAAAAN0p4eMHPQ2gnTqpetUIAbHaVTZW"></div>
 
       <button type="submit" class="btn mt-2">➕ Add Tool</button>
     </form>
@@ -49,56 +54,55 @@
   </div>
 </section>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const nameInput = document.querySelector('input[name="name"]');
     const ogImage = document.getElementById('og-image');
     const input = document.getElementById("markdown");
     const preview = document.getElementById("markdown-preview");
-  
-    if (nameInput && ogImage) {
-  nameInput.addEventListener('input', () => {
-    const slug = nameInput.value.trim().toLowerCase().replace(/\s+/g, '-');
-    if (slug.length > 2) {
-      const ogUrl = `/images/og/${slug}.png`;
-      ogImage.src = ogUrl;
-      ogImage.style.display = "block";
 
-      fetch(ogUrl).then(res => {
-        if (!res.ok) {
-          ogImage.style.display = "none";
-        }
-      }).catch(() => {
-        ogImage.style.display = "none";
+    if (nameInput && ogImage) {
+      nameInput.addEventListener("input", () => {
+        const slug = nameInput.value.trim().toLowerCase().replace(/\s+/g, '-');
+        const ogUrl = `/images/og/${slug}.png`;
+        const fallback = `/images/og/default.png`;
+
+        console.log("🔎 Checking OG Preview:", ogUrl);
+
+        fetch(ogUrl).then(res => {
+          ogImage.src = res.ok ? ogUrl : fallback;
+          ogImage.style.display = "block";
+        }).catch(err => {
+          console.warn("❌ OG fetch error:", err);
+          ogImage.src = fallback;
+          ogImage.style.display = "block";
+        });
       });
-    } else {
-      ogImage.style.display = "none";
     }
-  });
-}
+
     if (input && preview) {
       input.addEventListener("input", async () => {
         preview.style.opacity = 0.5;
-  
+
         try {
           const res = await fetch("/api/markdown-preview", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ markdown: input.value }),
           });
-  
+
           const data = await res.json();
           preview.innerHTML = data.html;
-  
-          setTimeout(() => preview.style.opacity = 1, 100);
         } catch (err) {
           preview.innerHTML = "<p style='color:red'>❌ Failed to render preview</p>";
+        } finally {
           preview.style.opacity = 1;
         }
       });
     }
   });
-  </script>
+</script>
 
 <style>
 .markdown-preview-container {
