@@ -1,4 +1,4 @@
-// ✅ /routes/contact.js - финална, чиста, проверена
+// routes/contact.js
 import express from "express";
 import nodemailer from "nodemailer";
 import axios from "axios";
@@ -30,44 +30,48 @@ router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
   if (!token) {
-    console.warn("\u274C No reCAPTCHA token in request.");
-    return res.status(400).json({ error: "reCAPTCHA token missing." });
+    console.warn("❌ No reCAPTCHA token in request.");
+    return res.redirect("/contact?error=true");
   }
 
   try {
     const secretKey = process.env.RECAPTCHA_SECRET;
-    const { data } = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify`,
-      new URLSearchParams({
-        secret: secretKey,
-        response: token,
-      }).toString(),
-      { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
-    );
+    const verifyURL = "https://www.google.com/recaptcha/api/siteverify";
+    const params = new URLSearchParams({
+      secret: secretKey,
+      response: token,
+    });
+
+    const { data } = await axios.post(verifyURL, params.toString(), {
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    });
 
     if (!data.success) {
-      console.warn("\u274C reCAPTCHA failed:", data);
-      return res.status(403).json({ error: "reCAPTCHA verification failed." });
+      console.warn("❌ reCAPTCHA failed:", data);
+      return res.redirect("/contact?error=true");
     }
+
+    console.log("✅ reCAPTCHA passed!");
 
     await transporter.sendMail({
       from: `"${name}" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
       replyTo: email,
-      subject: "\ud83d\udcac New Contact Form Submission",
+      subject: "💬 New Contact Form Submission",
       text: message,
     });
 
     await transporter.sendMail({
       from: `"IkoConnect Team" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: "\u2705 We received your message",
-      text: `Hi ${name},\n\nThanks for reaching out to us at IkoConnect!\n\nWe\u2019ve received your message and will get back to you as soon as possible.\n\nBest regards,\nIkoConnect Team`,
+      subject: "✅ We received your message",
+      text: `Hi ${name},\n\nThanks for reaching out to us at IkoConnect!\n\nWe’ve received your message and will get back to you as soon as possible.\n\nBest regards,\nIkoConnect Team`,
     });
 
     return res.redirect("/contact?success=true");
+
   } catch (err) {
-    console.error("\u274C Email or reCAPTCHA error:", err);
+    console.error("❌ Email or reCAPTCHA error:", err);
     return res.redirect("/contact?error=true");
   }
 });
