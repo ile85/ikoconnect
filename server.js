@@ -20,6 +20,7 @@ import contactRoutes from "./routes/contact.js";
 import recommendationRoutes from "./routes/recommendations.js";
 import adminRoutes from "./routes/admin.js";
 import previewRoutes from "./routes/preview.js";
+import bodyParser from "body-parser";
 
 
 
@@ -34,7 +35,6 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -56,6 +56,8 @@ app.use("/resources", resourceRoutes);
 app.use("/jobs", jobsRoutes);
 app.use("/about", aboutRoutes);
 app.use("/api", previewRoutes);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 
@@ -78,6 +80,40 @@ app.use((err, req, res, next) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
 });
+
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "script-src": [
+          "'self'",
+          "https://www.google.com",
+          "https://www.gstatic.com",
+          "https://www.recaptcha.net"
+        ],
+        "script-src-elem": [
+          "'self'",
+          "https://www.google.com",
+          "https://www.gstatic.com",
+          "https://www.recaptcha.net"
+        ],
+        "frame-src": [
+          "'self'",
+          "https://www.google.com",
+          "https://www.gstatic.com",
+          "https://www.recaptcha.net"
+        ],
+        "connect-src": [
+          "'self'",
+          "https://www.google.com",
+          "https://www.gstatic.com"
+        ],
+      },
+    },
+  })
+);;
 
 
 

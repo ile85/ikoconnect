@@ -1,4 +1,4 @@
-// ✅ /routes/admin.js - финално, чиста, проверена
+// ✅ /routes/admin.js – финално, чисто
 import fs from "fs/promises";
 import express from "express";
 import path from "path";
@@ -31,11 +31,20 @@ router.get("/affiliate", async (req, res) => {
 });
 
 router.post("/affiliate", async (req, res) => {
-  console.log("\ud83e\uddfa /admin/affiliate route HIT!");
-  const { logo, name, url, description, markdown, "g-recaptcha-response": token } = req.body;
+  console.log("🧪 /admin/affiliate route HIT!");
 
+  const {
+    logo,
+    name,
+    url,
+    description,
+    markdown,
+    "g-recaptcha-response": token,
+  } = req.body;
+
+  // 🛡️ reCAPTCHA check
   if (!token) {
-    console.warn("\u26d4\ufe0f No reCAPTCHA token provided");
+    console.warn("⛔ No reCAPTCHA token provided");
     return res.status(400).json({ error: "No reCAPTCHA token provided." });
   }
 
@@ -52,20 +61,23 @@ router.post("/affiliate", async (req, res) => {
     );
 
     if (!verifyResponse.data.success) {
-      console.warn("\u274c reCAPTCHA verification failed", verifyResponse.data);
+      console.warn("❌ reCAPTCHA verification failed:", verifyResponse.data);
       return res.status(400).json({ error: "reCAPTCHA verification failed." });
     }
   } catch (err) {
-    console.error("\u274c reCAPTCHA error:", err);
+    console.error("❌ reCAPTCHA error:", err);
     return res.status(500).json({ error: "reCAPTCHA verification failed." });
   }
 
+  // ✅ Continue processing
   if (!name || !url || !logo) {
     return res.status(400).json({ error: "Name, URL, and Logo are required." });
   }
 
   const cleanedLogo = logo.replace(/^\/public\//, "").replace(/^\/+/, "");
-  const logoUrl = logo.startsWith("http") ? logo : `https://www.ikoconnect.com/${cleanedLogo}`;
+  const logoUrl = logo.startsWith("http")
+    ? logo
+    : `https://www.ikoconnect.com/${cleanedLogo}`;
 
   const slug = slugify(name.toLowerCase(), { strict: true });
   const filePath = path.join(blogDir, `${slug}.md`);
@@ -75,14 +87,30 @@ router.post("/affiliate", async (req, res) => {
     date: new Date().toISOString().split("T")[0],
   });
 
-  const markdownContent = `---\ntitle: "${validated.title}"\ndate: "${validated.date}"\ndescription: "${validated.description}"\n---\n\n## Why We Recommend ${validated.title}\n\n${validated.description}\n\n\uD83D\uDC49 [Try ${validated.title}](${url})${markdown ? "\n---\n" + markdown : ""}`;
+  const markdownContent = `---
+title: "${validated.title}"
+date: "${validated.date}"
+description: "${validated.description}"
+---
+
+## Why We Recommend ${validated.title}
+
+${validated.description}
+
+👉 [Try ${validated.title}](${url})
+${markdown ? "\n---\n" + markdown : ""}`;
 
   try {
+    // 1️⃣ Зачувај .md пост
     await fs.writeFile(filePath, markdownContent, "utf-8");
 
+    // 2️⃣ Генерирај OG слика
     const response = await axios.get(logoUrl, { responseType: "arraybuffer" });
-    if (response.status !== 200 || !response.headers["content-type"].startsWith("image/")) {
-      throw new Error("\u274c Not a valid image or not found");
+    if (
+      response.status !== 200 ||
+      !response.headers["content-type"].startsWith("image/")
+    ) {
+      throw new Error("🚫 Not a valid image or not found");
     }
 
     const buffer = Buffer.from(response.data);
@@ -90,6 +118,7 @@ router.post("/affiliate", async (req, res) => {
     await fs.mkdir(ogDir, { recursive: true });
     await fs.writeFile(ogPath, buffer);
 
+    // 3️⃣ Запиши tool во JSON
     let tools = [];
     try {
       const raw = await fs.readFile(toolsPath, "utf-8");
@@ -103,7 +132,7 @@ router.post("/affiliate", async (req, res) => {
 
     res.redirect("/admin/affiliate");
   } catch (err) {
-    console.error("\u274c Error saving tool:", err);
+    console.error("❌ Error saving tool:", err);
     res.status(500).json({ error: "Failed to save affiliate post and tool." });
   }
 });
@@ -118,11 +147,11 @@ router.post("/affiliate/delete", async (req, res) => {
     } catch {
       tools = [];
     }
-    tools = tools.filter(t => t.name !== name);
+    tools = tools.filter((t) => t.name !== name);
     await fs.writeFile(toolsPath, JSON.stringify(tools, null, 2));
     res.redirect("/admin/affiliate");
   } catch (err) {
-    console.error("\u274c Error deleting tool:", err);
+    console.error("❌ Error deleting tool:", err);
     res.status(500).json({ error: "Failed to delete tool." });
   }
 });

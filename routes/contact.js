@@ -29,11 +29,10 @@ router.post("/", async (req, res) => {
   const token = req.body["g-recaptcha-response"];
   const { name, email, message } = req.body;
 
-  if (!token) {
-    console.warn("❌ No reCAPTCHA token in request.");
-    return res.redirect("/contact?error=true");
+  if (!token || !name || !email || !message) {
+    console.warn("⛔ Bot-like submission detected");
+    return res.status(400).json({ error: "Missing required fields or token." });
   }
-
   try {
     const secretKey = process.env.RECAPTCHA_SECRET;
     const verifyURL = "https://www.google.com/recaptcha/api/siteverify";
