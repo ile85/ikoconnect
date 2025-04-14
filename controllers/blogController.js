@@ -43,6 +43,28 @@ export async function renderSinglePost(req, res) {
     const { data, content } = matter(fileContent);
     const html = marked(content);
 
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": data.title,
+      "description": data.description,
+      "author": {
+        "@type": "Person",
+        "name": data.author || "IkoConnect"
+      },
+      "datePublished": data.date,
+      "image": `https://www.ikoconnect.com${data.image || "/images/og/default.png"}`,
+      "url": `https://www.ikoconnect.com/blog/${slug}`,
+      "publisher": {
+        "@type": "Organization",
+        "name": "IkoConnect",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.ikoconnect.com/images/apple-touch-icon.png"
+        }
+      }
+    };
+
     res.render("pages/blog-post", {
       title: data.title,
       date: data.date,
@@ -51,6 +73,8 @@ export async function renderSinglePost(req, res) {
       slug,
       content,
       tags: data.tags || [],
+      jsonLd: JSON.stringify(jsonLd, null, 2),
+      image: data.image || "/images/og/default.png",
     });
 
   } catch (error) {

@@ -1,5 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Dynamic Title -->
+  <title><%= typeof title !== 'undefined' ? title + ' | IkoConnect' : 'IkoConnect - Remote Work Resources' %></title>
+
+  <!-- Meta Description -->
+  <meta name="description" content="<%= typeof description !== 'undefined' ? description : 'Tips, tools, and jobs for freelancers and remote workers.' %>">
+
+  <!-- Keywords (from tags) -->
+  <% if (typeof tags !== 'undefined') { %>
+    <meta name="keywords" content="<%= tags.join(', ') %>">
+  <% } else { %>
+    <meta name="keywords" content="freelancing, remote work, productivity, tools, jobs">
+  <% } %>
+
+  <!-- Author -->
+  <meta name="author" content="IkoConnect">
+
+  <!-- Open Graph / Facebook -->
   <% if (typeof post !== "undefined") { %>
     <meta property="og:title" content="<%= post.title %>" />
     <meta property="og:description" content="<%= post.description %>" />
@@ -7,12 +29,28 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://www.ikoconnect.com/blog/<%= post.slug %>" />
   <% } %>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= typeof title !== 'undefined' ? title : 'IkoConnect' %></title>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= typeof title !== 'undefined' ? title : 'IkoConnect' %>">
+  <meta name="twitter:description" content="<%= typeof description !== 'undefined' ? description : 'Join the future of work with our freelancer tips and remote job tools.' %>">
+  <meta name="twitter:image" content="https://www.ikoconnect.com/images/apple-touch-icon.jpg">
+
+  <link rel="canonical" href="https://www.ikoconnect.com<%= typeof slug !== 'undefined' ? '/blog/' + slug : (originalUrl || '/') %>" />
+
+
+
+
+  <!-- JSON-LD Structured Data -->
+  <% if (typeof jsonLd !== 'undefined') { %>
+    <script type="application/ld+json">
+      <%= jsonLd %>
+    </script>
+  <% } %>
+
   <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
   <header>
     <div class="navbar">
@@ -25,7 +63,7 @@
         <a href="/jobs">Jobs</a>
         <a href="/about">About</a>
         <a href="/signup">Sign Up</a>
-        <a href="/contact">Contact</a> <!-- нов линк -->
+        <a href="/contact">Contact</a>
       </nav>
     </div>
   </header>
