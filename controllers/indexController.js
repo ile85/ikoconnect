@@ -42,13 +42,20 @@ export function getHomepage(req, res) {
   }
   
   export function getResourcesPage(req, res) {
-    const tools = []; // можеш да ставиш и реални податоци
+    const tools = [
+      { name: "Notion", link: "https://notion.so" },
+      { name: "Trello", link: "https://trello.com" },
+      { name: "Fiverr", link: "https://fiverr.com" },
+      { name: "Slack", link: "https://slack.com" },
+    ];
+  
     res.render("pages/resources", {
       title: "Resources | IkoConnect",
       description: "Tools and guides for freelancers.",
-      tools: tools, // 👈 ова е клучно!
+      tools, // 👈 ова го праќа во EJS
     });
   }
+  
   
   
   export function getJobsPage(req, res) {
