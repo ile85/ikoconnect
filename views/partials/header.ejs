@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Dynamic Title -->
-  <title><%= typeof title !== 'undefined' ? title + ' | IkoConnect' : 'IkoConnect - Remote Work Resources' %></title>
+  <% if (typeof originalUrl !== 'undefined') { %>
+    <link rel="canonical" href="https://www.ikoconnect.com<%= originalUrl %>" />
+  <% } else { %>
+    <link rel="canonical" href="https://www.ikoconnect.com/" />
+  <% } %>
+
 
   <!-- Meta Description -->
   <meta name="description" content="<%= typeof description !== 'undefined' ? description : 'Tips, tools, and jobs for freelancers and remote workers.' %>">
@@ -36,7 +41,7 @@
   <meta name="twitter:description" content="<%= typeof description !== 'undefined' ? description : 'Join the future of work with our freelancer tips and remote job tools.' %>">
   <meta name="twitter:image" content="https://www.ikoconnect.com/images/apple-touch-icon.jpg">
 
-  <link rel="canonical" href="https://www.ikoconnect.com<%= typeof slug !== 'undefined' ? '/blog/' + slug : (originalUrl || '/') %>" />
+  
 
 
 
