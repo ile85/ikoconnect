@@ -1,3 +1,10 @@
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 export function getHomepage(req, res) {
     res.render("pages/index", {
       title: "Welcome to IkoConnect",
@@ -40,24 +47,7 @@ export function getHomepage(req, res) {
       blogPosts,
     });
   }
-  
-  export function getResourcesPage(req, res) {
-    const tools = [
-      { name: "Notion", link: "https://notion.so" },
-      { name: "Trello", link: "https://trello.com" },
-      { name: "Fiverr", link: "https://fiverr.com" },
-      { name: "Slack", link: "https://slack.com" },
-    ];
-  
-    res.render("pages/resources", {
-      title: "Resources | IkoConnect",
-      description: "Tools and guides for freelancers.",
-      tools, // 👈 ова го праќа во EJS
-    });
-  }
-  
-  
-  
+    
   export function getJobsPage(req, res) {
     res.render("pages/jobs", {
       title: "Job Board | IkoConnect",
