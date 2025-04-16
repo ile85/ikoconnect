@@ -87,14 +87,26 @@ app.post("/subscribe", (req, res) => {
 app.get("/favicon.ico", (req, res) => {
   res.status(200).sendFile(join(__dirname, "public", "images", "favicon.ico"));
 });
+app.get("/testjobs", (req, res) => {
+  const jobs = [
+    { title: "TEST JOB 1" },
+    { title: "TEST JOB 2" },
+  ];
+  res.render("pages/jobs", { title: "TEST", description: "", jobs });
+});
 
 // ❌ Error handler
 app.use((err, req, res, next) => {
   console.error("❌ Error:", err.stack);
   res.status(500).json({ message: "Something went wrong!" });
 });
+
 import fs from "fs";
 console.log("✅ resources.js is being loaded: ", fs.existsSync("./routes/resources.js"));
+app.get("/debug-jobs", (req, res) => {
+  res.render("pages/jobs", { title: "Debug Jobs", description: "", jobs: null });
+});
+
 // 🚀 Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);

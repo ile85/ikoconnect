@@ -24,12 +24,14 @@ export function getBlogPage(req, res) {
     {
       title: "5 Productivity Hacks for Freelancers",
       slug: "productivity-hacks",
-      summary: "Boost your freelance career with these powerful productivity hacks.",
+      summary:
+        "Boost your freelance career with these powerful productivity hacks.",
     },
     {
       title: "Best Tools for Remote Work in 2024",
       slug: "best-tools-remote-work",
-      summary: "Discover the best tools to make remote work easier and more efficient.",
+      summary:
+        "Discover the best tools to make remote work easier and more efficient.",
     },
     {
       title: "How to Get Clients on Upwork & Fiverr",
@@ -46,10 +48,27 @@ export function getBlogPage(req, res) {
 }
 
 export function getJobsPage(req, res) {
+  console.log("🔥 getJobsPage is being called!");
+
   const jobs = [
-    { title: "Remote Frontend Developer" },
-    { title: "Freelance Graphic Designer" },
-    { title: "Content Writer (Part-time)" },
+    {
+      title: "Remote Frontend Developer",
+      company: "TechNova Inc.",
+      location: "Remote - Europe",
+      link: "https://example.com/job/frontend"
+    },
+    {
+      title: "Freelance Graphic Designer",
+      company: "Creative Minds",
+      location: "Remote - Worldwide",
+      link: "https://example.com/job/designer"
+    },
+    {
+      title: "Content Writer (Part-time)",
+      company: "WriteHub",
+      location: "Remote - US",
+      link: "https://example.com/job/writer"
+    }
   ];
 
   res.render("pages/jobs", {

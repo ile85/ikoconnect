@@ -4,6 +4,14 @@
   <h2>Job Opportunities</h2>
 
   <% if (jobs.length > 0) { %>
+    <% const safeJobs = jobs || []; %>
+<% if (safeJobs.length > 0) { %>
+  <% safeJobs.forEach(job => { %>
+    <!-- job view -->
+  <% }) %>
+<% } else { %>
+  <p>No jobs available</p>
+<% } %>
     <% jobs.forEach(job => { %>
       <div class="job-posting">
         <h3><%= job.title %></h3>

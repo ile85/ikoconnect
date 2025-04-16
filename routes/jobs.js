@@ -1,9 +1,8 @@
-// routes/jobs.js
 import express from "express";
-import { renderJobsPage } from "../controllers/jobController.js";
+import { getJobsPage } from "../controllers/indexController.js";
 
 const router = express.Router();
 
-router.get("/", renderJobsPage);
+router.get("/", getJobsPage);
 
 export default router;
