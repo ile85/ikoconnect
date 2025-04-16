@@ -12,3 +12,4 @@ const tools = [
     res.render("pages/resources", { tools });
   }
   
+  

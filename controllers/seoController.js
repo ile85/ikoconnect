@@ -63,3 +63,4 @@ export async function getSitemapXml(req, res) {
   res.header("Content-Type", "application/xml");
   res.send(sitemap);
 }
+

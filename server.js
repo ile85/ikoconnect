@@ -11,7 +11,7 @@ import { fileURLToPath } from "url";
 // 📦 ROUTES
 import indexRoutes from "./routes/index.js";
 import blogRoutes from "./routes/blog.js";
-import resourceRoutes from "./routes/resources.js";
+import resourceRoutes from "./routes/resources.js"; 
 import jobsRoutes from "./routes/jobs.js";
 import aboutRoutes from "./routes/about.js";
 import contactRoutes from "./routes/contact.js";
@@ -93,7 +93,8 @@ app.use((err, req, res, next) => {
   console.error("❌ Error:", err.stack);
   res.status(500).json({ message: "Something went wrong!" });
 });
-
+import fs from "fs";
+console.log("✅ resources.js is being loaded: ", fs.existsSync("./routes/resources.js"));
 // 🚀 Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);

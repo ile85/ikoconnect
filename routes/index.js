@@ -14,3 +14,4 @@ router.get("/blog", getBlogPage);
 router.get("/jobs", getJobsPage);
 
 export default router;
+

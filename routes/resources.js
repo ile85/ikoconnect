@@ -1,4 +1,3 @@
-// routes/resources.js
 import express from "express";
 import { renderResourcesPage } from "../controllers/resourceController.js";
 
