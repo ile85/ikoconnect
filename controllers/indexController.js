@@ -12,12 +12,7 @@ export function getHomepage(req, res) {
   });
 }
 
-export function getAboutPage(req, res) {
-  res.render("pages/about", {
-    title: "About Us | IkoConnect",
-    description: "Learn more about IkoConnect and our mission.",
-  });
-}
+
 
 export function getBlogPage(req, res) {
   const blogPosts = [
@@ -43,31 +38,29 @@ export function getBlogPage(req, res) {
   res.render("pages/blog", {
     title: "Blog | IkoConnect",
     description: "Insights and tips for freelancers.",
-    blogPosts,
+    posts: blogPosts, 
   });
 }
 
 export function getJobsPage(req, res) {
-  console.log("🔥 getJobsPage is being called!");
-
   const jobs = [
     {
       title: "Remote Frontend Developer",
       company: "TechNova Inc.",
       location: "Remote - Europe",
-      link: "https://example.com/job/frontend"
+      link: "#"
     },
     {
       title: "Freelance Graphic Designer",
       company: "Creative Minds",
       location: "Remote - Worldwide",
-      link: "https://example.com/job/designer"
+      link: "#"
     },
     {
       title: "Content Writer (Part-time)",
       company: "WriteHub",
       location: "Remote - US",
-      link: "https://example.com/job/writer"
+      link: "#"
     }
   ];
 
@@ -77,3 +70,5 @@ export function getJobsPage(req, res) {
     jobs,
   });
 }
+
+

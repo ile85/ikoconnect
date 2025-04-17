@@ -87,14 +87,6 @@ app.post("/subscribe", (req, res) => {
 app.get("/favicon.ico", (req, res) => {
   res.status(200).sendFile(join(__dirname, "public", "images", "favicon.ico"));
 });
-app.get("/testjobs", (req, res) => {
-  const jobs = [
-    { title: "TEST JOB 1" },
-    { title: "TEST JOB 2" },
-  ];
-  res.render("pages/jobs", { title: "TEST", description: "", jobs });
-});
-
 // ❌ Error handler
 app.use((err, req, res, next) => {
   console.error("❌ Error:", err.stack);
@@ -103,6 +95,7 @@ app.use((err, req, res, next) => {
 
 import fs from "fs";
 console.log("✅ resources.js is being loaded: ", fs.existsSync("./routes/resources.js"));
+// Debugging route for jobs
 app.get("/debug-jobs", (req, res) => {
   res.render("pages/jobs", { title: "Debug Jobs", description: "", jobs: null });
 });
