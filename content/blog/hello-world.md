@@ -1,10 +1,9 @@
 ---
 title: "Welcome to IkoConnect"
-description: "This is the very first blog post!"
+description: "This is the first post!"
 date: "2025-05-04"
-tags: ["intro", "welcome"]
+tags: ["intro", "freelance"]
 coverImage: "/images/blog/hello.png"
 ---
 
-This is a **Markdown** blog post.  
-We’ll share tips on freelancing, tools, and productivity. 🚀
+Welcome to your first blog post powered by Markdown! 🚀
