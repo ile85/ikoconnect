@@ -1,36 +1,37 @@
 // src/app/page.tsx
+
+import Link from 'next/link';
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
-      <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6 animate-fadeInUp">
-          Welcome to <span className="text-purple-400">IkoConnect</span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 animate-fadeInUp delay-200">
-          Your ultimate hub for freelancers & remote workers — productivity tips, job boards, and affiliate tools to scale your digital hustle.
-        </p>
-        <div className="flex justify-center gap-4 animate-fadeInUp delay-400">
-          <a
-            href="/blog"
-            className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300"
-          >
-            📚 Read the Blog
-          </a>
-          <a
-            href="/resources"
-            className="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300"
-          >
-            🛠 Tools
-          </a>
-        </div>
-      </div>
+    <main className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-600 to-purple-700 text-white overflow-hidden">
+      {/* Animated bg glow */}
+      <div className="absolute inset-0 opacity-30 animate-pulse bg-gradient-to-r from-purple-800 via-pink-600 to-yellow-500 blur-3xl" />
 
-      {/* Decorative blobs */}
-      <div className="absolute top-0 right-0 -z-10 opacity-30">
-        <div className="w-96 h-96 bg-purple-700 rounded-full mix-blend-multiply blur-3xl animate-pulse"></div>
-      </div>
-      <div className="absolute bottom-0 left-0 -z-10 opacity-30">
-        <div className="w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply blur-3xl animate-pulse"></div>
+      {/* Content */}
+      <div className="relative z-10 text-center px-6">
+        <h1 className="text-5xl sm:text-7xl font-extrabold mb-4 drop-shadow-lg">
+          Empower Your Freelancing Journey
+        </h1>
+        <p className="text-lg sm:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
+          IkoConnect is your one-stop hub for the best tools, resources, and tips to boost productivity and grow your remote business.
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/blog"
+            className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur px-6 py-3 rounded-full font-semibold transition-transform transform hover:scale-105"
+          >
+            Explore Blog
+          </Link>
+          <Link
+            href="/resources"
+            className="inline-block border border-white/40 hover:border-white px-6 py-3 rounded-full font-semibold transition-transform transform hover:-translate-y-1"
+          >
+            Browse Tools
+          </Link>
+        </div>
       </div>
     </main>
   );

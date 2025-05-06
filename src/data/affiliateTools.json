@@ -1,0 +1,15 @@
+[
+    {
+      "name": "Frase",
+      "description": "AI-powered SEO and content optimization.",
+      "url": "https://www.frase.io",
+      "tags": ["AI", "SEO", "writing"]
+    },
+    {
+      "name": "Cal.com",
+      "description": "Open-source scheduling and appointment booking.",
+      "url": "https://cal.com",
+      "tags": ["scheduling", "productivity"]
+    }
+  ]
+  
