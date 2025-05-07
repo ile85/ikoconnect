@@ -1,0 +1,10 @@
+/* src/styles/input.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Now your custom @apply rules: */
+@layer components {
+  .btn  { @apply px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700; }
+  .card { @apply border border-gray-200 rounded-xl p-6 shadow hover:shadow-md transition; }
+}

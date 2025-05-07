@@ -1,8 +1,8 @@
-/** @type {import('postcss-load-config').Config} */
+// postcss.config.js
 module.exports = {
   plugins: {
-    // use the new adapter, not the core tailwindcss package
-    '@tailwindcss/postcss': {},
+    'postcss-import': {},
+    '@tailwindcss/postcss': {},  // legacy adapter, required for Next 15
     autoprefixer: {},
   },
-}
+};
