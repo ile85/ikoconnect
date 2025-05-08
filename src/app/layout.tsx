@@ -1,18 +1,21 @@
 // src/app/layout.tsx
-"use client";
-import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
+import Navbar from "@/components/Navbar"; // <-- ова е точно
 
-type Props = { children: ReactNode };
+export const metadata = {
+  title: "ikoConnect",
+  description: "Your freelance hub",
+};
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        <link rel="stylesheet" href="/tailwind.css" />
+      </head>
       <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors">
-        <ThemeProvider attribute="class">
-          {children}
-        </ThemeProvider>
+        <Navbar />         {/* <— тука го вметнуваш */}
+        {children}
       </body>
     </html>
   );
