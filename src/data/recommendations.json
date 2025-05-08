@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Fiverr",
+    "description": "Top freelance marketplace for digital services.",
+    "url": "https://go.fiverr.com/visit/?bta=12345&brand=fiverr",
+    "logo": "/images/logos/fiverr.png"
+  },
+  {
+    "name": "Upwork",
+    "description": "Find high-paying freelance jobs easily.",
+    "url": "https://upwork.com/your-affiliate-link",
+    "logo": "/images/logos/upwork.png"
+  },
+  {
+    "name": "Notion",
+    "description": "All-in-one productivity tool",
+    "url": "https://notion.so/?ref=iko",
+    "logo": "/images/logos/notion.png"
+  },
+  {
+    "name": "Trello — Organize Your Freelance Projects Like a Pro",
+    "description": "Trello is a visual project management tool that helps freelancers stay organized, collaborate with clients, and track tasks easily.",
+    "url": "https://trello.com",
+    "logo": "/images/logos/notion.png"
+  }
+]
