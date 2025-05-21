@@ -1,4 +1,13 @@
-import React from "react";
+// src/app/newsletter/page.tsx
+import { buildBasicMetadata } from "@/lib/metadata";
+import NewsletterForm from "./NewsletterForm";
+
+export const metadata = buildBasicMetadata({
+  title: "Newsletter – IkoConnect",
+  description: "Join our newsletter for weekly freelance tips & tools.",
+  path: "/newsletter",
+  ogImage: "/images/og-newsletter.png",
+});
 
 export default function NewsletterPage() {
   return (
@@ -8,21 +17,7 @@ export default function NewsletterPage() {
         Get weekly remote work tips, tool reviews, and exclusive deals delivered
         straight to your inbox.
       </p>
-      <form action="/api/newsletter" method="POST" className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="you@example.com"
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00957F] focus:border-[#00957F]"
-        />
-        <button
-          type="submit"
-          className="px-6 py-3 bg-[#00957F] text-white font-semibold rounded-md hover:bg-[#007A60] transition"
-        >
-          Subscribe
-        </button>
-      </form>
+      <NewsletterForm />
     </section>
   );
 }

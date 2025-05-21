@@ -1,14 +1,13 @@
-// tsconfig.json
 {
   "compilerOptions": {
+    "baseUrl": ".",            // ← Еве го додадовме
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-    ],
+    "lib": ["dom","dom.iterable","esnext"],
     "typeRoots": ["node_modules/@types"],
-    "types": ["node", "react", "react-dom"],
+    "types": ["node","react","react-dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,25 +19,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "plugins": [{ "name": "next" }]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-     "global.d.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "global.d.ts"
+, "scripts/generate-affiliate-posts.js", "src/app/api/og/[slug]/route.tsx"  ],
+  "exclude": ["node_modules"]
 }

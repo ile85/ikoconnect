@@ -1,11 +1,12 @@
 // tailwind.config.js
 const plugin = require("tailwindcss/plugin");
 module.exports = {
+  darkMode: "class",
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
-    './src/app/globals.css',
-    './src/styles/input.css',   // we need this so it sees your @apply
+    './src/styles/globals.css',
+      
   ],
   theme: { extend: {} },
   plugins: [

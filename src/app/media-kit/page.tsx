@@ -1,4 +1,14 @@
+// src/app/media-kit/page.tsx
 import React from "react";
+import Image from "next/image";
+import { buildBasicMetadata } from "@/lib/metadata";
+
+export const metadata = buildBasicMetadata({
+  title: "Media Kit – IkoConnect",
+  description: "Download our logos, screenshots & brand assets.",
+  path: "/media-kit",
+  ogImage: "/images/og-media-kit.png",
+});
 
 export default function MediaKitPage() {
   return (
@@ -10,7 +20,14 @@ export default function MediaKitPage() {
       </p>
 
       <ul className="list-disc list-inside space-y-4 text-gray-800">
-        <li>
+        <li className="flex items-center gap-4">
+          <Image
+            src="/images/logos/ikoconnect-square.png"
+            alt="IkoConnect Logo"
+            width={48}
+            height={48}
+            className="rounded"
+          />
           <a
             href="/images/logos/ikoconnect-square.png"
             download

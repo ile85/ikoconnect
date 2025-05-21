@@ -1,10 +1,15 @@
 // src/components/Navbar.tsx
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import React from "react";
-import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import dynamic from "next/dynamic";
+
+// Dynamically import ThemeToggle on client only
+const ThemeToggle = dynamic(() => import("./ThemeToggle"), {
+  ssr: false,
+});
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,6 +28,7 @@ export default function Navbar() {
     { href: "/resources", label: "Resources" },
     { href: "/jobs", label: "Jobs" },
     { href: "/contact", label: "Contact" },
+    { href: "/about", label: "About" },
   ];
 
   return (
@@ -33,7 +39,7 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold text-[#00957F]">
-          ikoConnect
+          IkoConnect
         </Link>
 
         {/* Desktop nav */}
@@ -48,26 +54,33 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+          <li>
+            <Link
+              href="/newsletter"
+              className="px-4 py-2 bg-[#00957F] text-white text-sm font-semibold rounded-md hover:bg-[#007965] transition"
+            >
+              Join the Community
+            </Link>
+          </li>
+          <li>
+            <ThemeToggle />
+          </li>
         </ul>
 
-        <Link
-          href="/newsletter"
-          className="hidden md:inline-block px-4 py-2 bg-[#00957F] text-white text-sm font-semibold rounded-md hover:bg-[#007965] transition"
-        >
-          Join the Community
-        </Link>
-
-        {/* Hamburger Icon */}
-        <button
-          className="md:hidden text-gray-800"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Mobile controls */}
+        <div className="flex items-center md:hidden">
+          <ThemeToggle />
+          <button
+            className="ml-4 text-gray-800"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </nav>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile dropdown */}
       {mobileOpen && (
         <div className="md:hidden bg-white shadow-md px-6 py-4">
           <ul className="flex flex-col gap-4">

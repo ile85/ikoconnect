@@ -1,0 +1,68 @@
+/* src/styles/input.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Now your custom @apply rules: */
+@layer components {
+  .btn  { @apply px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700; }
+  .card { @apply border border-gray-200 rounded-xl p-6 shadow hover:shadow-md transition; }
+}
+.skip-link {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  transition: all 0.2s;
+}
+.sr-only:focus:not(.sr-only) {
+  clip: auto !important;
+  clip-path: none !important;
+  height: auto !important;
+  width: auto !important;
+  opacity: 1 !important;
+  background: yellow;
+}
+@layer utilities {
+  /* 3D perspective wrapper */
+  .tilt-wrapper {
+    perspective: 800px;
+  }
+  /* 3D inner card */
+  .tilt-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-out;
+  }
+  .tilt-wrapper:hover .tilt-inner {
+    transform: rotateY(8deg) rotateX(4deg);
+  }
+  /* Слоевиран shadow за cards */
+  .shadow-layered {
+    box-shadow:
+      0 4px 6px rgba(0,0,0,0.1),
+      0 8px 20px rgba(0,0,0,0.1),
+      inset 0 0 0 1px rgba(255,255,255,0.2);
+  }
+  /* Glassy gradient backdrop */
+  .glass-backdrop {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+  }
+}
+
+@layer utilities {
+  .blob-mask {
+    /* final mask */
+    mask-image: url("/blob.svg");
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    /* WebKit prefix for Safari */
+    -webkit-mask-image: url("/blob.svg");
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+  }
+}

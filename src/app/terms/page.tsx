@@ -1,4 +1,12 @@
 import React from "react";
+import { buildBasicMetadata } from "@/lib/metadata";
+
+export const metadata = buildBasicMetadata({
+  title: "Terms of Service – IkoConnect",
+  description: "Review the terms & conditions for using IkoConnect.",
+  path: "/terms",
+  ogImage: "/images/og-terms.png",
+});
 
 export default function TermsPage() {
   return (

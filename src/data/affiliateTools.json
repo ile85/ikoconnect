@@ -3,7 +3,7 @@
     "name": "Fiverr",
     "description": "Launch your freelance career with Fiverr \u2013 the easiest platform for beginners!",
     "url": "https://go.fiverr.com/visit/?bta=1031917&brand=fiverrmarketplace",
-    "logo": "https://www.ikoconnect.com/images/og/fiverr.png",
+    "logo": "https://www.ikoconnect.com/images/logos/fiverr.png",
     "tags": [
       "freelancing",
       "remote work",
@@ -12,23 +12,10 @@
     ]
   },
   {
-    "name": "5 Things You Can Design with Canva Even If You\u2019re Not a Designer",
-    "description": "Discover how Canva lets anyone create stunning designs in minutes\u2014no experience required.",
-    "url": "http://ikoconnect.com",
-    "logo": "https://www.ikoconnect.com/images/og/canva.png",
-    "tags": [
-      "canva",
-      "design",
-      "tools",
-      "freelance",
-      "productivity"
-    ]
-  },
-  {
     "name": "Canva",
     "description": "Discover how Canva lets anyone create stunning designs in minutes\u2014no experience required.",
     "url": "https://www.canva.com/",
-    "logo": "https://www.ikoconnect.com/images/og/canva.png",
+    "logo": "https://www.ikoconnect.com/images/logos/canva.png",
     "tags": [
       "canva",
       "design",
@@ -41,7 +28,7 @@
     "name": "Freelancer",
     "description": "Find the perfect freelance job or hire top talent on Freelancer\u2014the world\u2019s largest freelancing platform.",
     "url": "https://www.freelancer.com/",
-    "logo": "https://www.ikoconnect.com/images/og/freelancer.png",
+    "logo": "https://www.ikoconnect.com/images/logos/freelancer.png",
     "tags": [
       "freelancing",
       "remote work",
@@ -53,7 +40,7 @@
     "name": "LinkedIn Learning",
     "description": "Learn new skills and advance your career with LinkedIn Learning\u2014the world\u2019s largest online learning platform.",
     "url": "https://www.linkedin.com/learning/",
-    "logo": "https://www.ikoconnect.com/images/og/linkedin-learning.png",
+    "logo": "https://www.ikoconnect.com/images/logos/linkedin-learning.png",
     "tags": [
       "online learning",
       "courses",
@@ -65,7 +52,7 @@
     "name": "Mailchimp",
     "description": "Mailchimp is the All-In-One integrated marketing platform for small businesses, to grow your business on your terms.",
     "url": "https://mailchimp.com/",
-    "logo": "https://www.ikoconnect.com/images/og/mailchimp.png",
+    "logo": "https://www.ikoconnect.com/images/logos/mailchimp.png",
     "tags": [
       "email marketing",
       "marketing",
@@ -76,7 +63,7 @@
     "name": "Skillshare",
     "description": "Learn new skills and advance your career with Skillshare\u2014the world\u2019s largest online learning community.",
     "url": "https://www.skillshare.com/",
-    "logo": "https://www.ikoconnect.com/images/og/skillshare.png",
+    "logo": "https://www.ikoconnect.com/images/logos/skillshare.png",
     "tags": [
       "online learning",
       "courses",
@@ -88,12 +75,19 @@
     "name": "Upwork",
     "description": "Find the perfect freelance job or hire top talent on Upwork\u2014the world\u2019s largest freelancing platform.",
     "url": "https://www.upwork.com/",
-    "logo": "https://www.ikoconnect.com/images/og/upwork.png",
+    "logo": "https://www.ikoconnect.com/images/logos/upwork.png",
     "tags": [
       "freelancing",
       "remote work",
       "online jobs",
       "side hustle"
     ]
-  }
+  },
+  {
+  
+  "name": "IkoConnect",
+  "description": "Your ultimate portal for remote work tools, guides, and jobs.",
+  "logo": "https://www.ikoconnect.com/images/logos/ikoconnect.png"
+}
+
 ]

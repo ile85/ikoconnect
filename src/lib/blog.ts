@@ -5,7 +5,7 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-// Типови за Markdown постови и нивно резиме
+// Типови
 export interface Post {
   slug: string;
   title: string;
@@ -14,6 +14,7 @@ export interface Post {
   tags: string[];
   coverImage: string;
   html: string;
+  author?: string;
 }
 
 export interface PostSummary {
@@ -24,10 +25,9 @@ export interface PostSummary {
   coverImage: string;
 }
 
-// Патеката кон фолдерот со .md фајлови
 const POSTS_PATH = path.join(process.cwd(), "content", "blog");
 
-// 1️⃣ Врати ја листата на сите slug-ови (без екстензија)
+// 1️⃣ Врати slug-ови
 export function getPostSlugs(): string[] {
   return fs
     .readdirSync(POSTS_PATH)
@@ -35,43 +35,53 @@ export function getPostSlugs(): string[] {
     .map((file) => file.replace(/\.md$/, ""));
 }
 
-// 2️⃣ Врати ги сите постови како резиме за листање
+// 2️⃣ Врати сите постови за листање
 export function getAllPosts(): PostSummary[] {
   return getPostSlugs().map((slug) => {
     const fullPath = path.join(POSTS_PATH, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    const excerpt = content.trim().slice(0, 200) + "...";
+
+    const title = String(data.title || "Untitled");
+    const dateRaw = new Date(data.date);
+    const date = isNaN(dateRaw.getTime()) ? "" : dateRaw.toISOString().split("T")[0];
+
+    const coverImage = String(data.coverImage || data.ogImage || data.image || "");
+
+    const plainText = content
+      .replace(/[#>*_`~\-!\[\]()]/g, "") // отстрани Markdown карактери
+      .split("\n")
+      .filter((line) => line.trim() !== "")[0] || "";
+
+    const excerpt = plainText.slice(0, 200) + "...";
+
     return {
       slug,
-      title: String(data.title),
-      date: String(data.date),
+      title,
+      date,
       excerpt,
-      coverImage: String(data.coverImage),
+      coverImage,
     };
   });
 }
 
-// 3️⃣ Врати го цел HTML + мета за еден пост
-export async function getPostHtmlBySlug(
-  slug: string
-): Promise<Post | null> {
+// 3️⃣ Врати HTML + детали за еден пост
+export async function getPostHtmlBySlug(slug: string): Promise<Post | null> {
   const fullPath = path.join(POSTS_PATH, `${slug}.md`);
   if (!fs.existsSync(fullPath)) return null;
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-
-  // Конвертирај markdown кон HTML
   const html = await marked(content);
 
   return {
     slug,
-    title: data.title,
-    description: data.description || "",
-    date: data.date,
-    tags: data.tags || [],
-    coverImage: data.coverImage || "",
+    title: String(data.title || "Untitled"),
+    description: String(data.description || ""),
+    date: new Date(data.date).toISOString().split("T")[0] || "",
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    coverImage: String(data.coverImage || data.ogImage || data.image || ""),
     html,
+    author: String(data.author || ""),
   };
 }

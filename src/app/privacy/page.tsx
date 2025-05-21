@@ -1,4 +1,12 @@
 import React from "react";
+import { buildBasicMetadata } from "@/lib/metadata";
+
+export const metadata = buildBasicMetadata({
+  title: "Privacy Policy – IkoConnect",
+  description: "Read our privacy practices and data policy.",
+  path: "/privacy",
+  ogImage: "/images/og-privacy.png",
+});
 
 export default function PrivacyPage() {
   return (
