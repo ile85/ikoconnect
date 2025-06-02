@@ -25,6 +25,13 @@ export async function POST(req: Request) {
     tools.push(newTool);
     fs.writeFileSync(filePath, JSON.stringify(tools, null, 2));
 
+    // 🔁 OG Image generation
+    try {
+      await fetch(`https://www.ikoconnect.com/api/generate-og?slug=${newTool.slug}`);
+    } catch (ogErr) {
+      console.warn("⚠️ OG image generation failed:", ogErr);
+    }
+
     return NextResponse.json({ message: "Tool saved successfully ✅" });
   } catch (err: any) {
     return NextResponse.json({ error: "Internal server error", details: err.message }, { status: 500 });

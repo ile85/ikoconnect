@@ -1,45 +1,46 @@
-// scripts/generate-affiliate-posts.js
-const fs = require('fs');
-const path = require('path');
-const matter = require('gray-matter');
+const fs = require("fs/promises");
+const path = require("path");
 
-// Папката каде се креираат blog постовите
-const postsDir = path.join(process.cwd(), 'content', 'blog');
-if (!fs.existsSync(postsDir)) fs.mkdirSync(postsDir, { recursive: true });
+const tools = require("../src/data/affiliateTools.json");
+const postsDir = path.join(process.cwd(), "content", "blog");
 
-// Affiliate алатки
-const tools = require('../src/data/affiliateTools.json');
+async function run() {
+  try {
+    await fs.mkdir(postsDir, { recursive: true });
 
-tools.forEach(tool => {
-  const slug = tool.id
-    ? tool.id
-    : tool.name
+    for (const tool of tools) {
+      const slug = (tool.id || tool.name)
         .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '');
+        .replace(/[^a-z0-9]+/g, "-");
 
-  const filename = path.join(postsDir, `${slug}.md`);
-  if (fs.existsSync(filename)) {
-    console.log(`🔸 Skipping existing post: ${slug}`);
-    return;
+      const filename = path.join(postsDir, `${slug}.md`);
+
+      try {
+        await fs.access(filename);
+        console.log(`🔸 Skipping existing post: ${slug}`);
+        continue;
+      } catch (_) {
+        // File doesn't exist
+      }
+
+      const frontmatter = [
+        `title: "${tool.name}"`,
+        `description: "${(tool.description || "").replace(/"/g, '\\"')}"`,
+        `date: "${new Date().toISOString()}"`,
+        `tags: ${JSON.stringify(tool.tags || [])}`,
+        `coverImage: "${tool.logo || "/images/og/default.png"}"`,
+        `author: "IkoConnect Team"`
+      ].join("\n");
+
+      const markdown = `---\n${frontmatter}\n---\n\nDiscover more: [Visit Website](${tool.url || "#"})\n`;
+
+      await fs.writeFile(filename, markdown, "utf-8");
+      console.log(`✅ Created: ${slug}.md`);
+    }
+  } catch (err) {
+    console.error("🔥 FATAL ERROR:", err.message);
+    process.exit(1);
   }
+}
 
-  // Генерираме frontmatter
-  const frontmatter = {
-    title: tool.name,
-    date: new Date().toISOString().split('T')[0], // само датум
-    description: tool.description || '',
-    tags: tool.tags || [],
-    coverImage: `/images/og/${slug}.png`, // ✅ точна OG слика патека
-  };
-
-  // Конвертираме во .md
-  const markdown = matter.stringify(
-    `Welcome to our deep dive of **${tool.name}**!\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-    frontmatter
-  );
-
-  // Запишуваме
-  fs.writeFileSync(filename, markdown.trim() + '\n');
-  console.log(`✅ Generated post: ${slug}`);
-});
+run();

@@ -1,7 +1,8 @@
-// src/app/media-kit/page.tsx
 import React from "react";
 import Image from "next/image";
-import { buildBasicMetadata } from "@/lib/metadata";
+import { buildBasicMetadata } from "../../lib/metadata";
+import JSONLD from "../../components/JSONLD";
+import { generateOrganizationJsonLD } from "../../lib/jsonldGenerator";
 
 export const metadata = buildBasicMetadata({
   title: "Media Kit – IkoConnect",
@@ -11,8 +12,16 @@ export const metadata = buildBasicMetadata({
 });
 
 export default function MediaKitPage() {
+  const jsonldData = generateOrganizationJsonLD({
+    name: "IkoConnect",
+    url: "https://ikoconnect.com",
+    logoUrl: "https://ikoconnect.com/images/logos/ikoconnect-square.png",
+  });
+
   return (
     <section className="container mx-auto px-6 py-16 space-y-8">
+      <JSONLD data={jsonldData} />
+
       <h1 className="text-4xl font-bold">Media Kit</h1>
       <p className="text-gray-700">
         Download our official logos, brand guidelines, and pre-made assets

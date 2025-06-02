@@ -1,6 +1,6 @@
 // /var/www/ikoconnect/src/app/api/og/[slug]/route.ts
 import { NextRequest } from "next/server";
-import { getToolById } from "@/lib/tools";
+import { getToolById } from "../../../../lib/tools";
 import puppeteer from "puppeteer";
 import fs from "fs";
 import path from "path";
@@ -31,11 +31,12 @@ export async function GET(req: NextRequest) {
   // 3. Prepare logo as base64 (resize local PNG to ≤300px)
   let safeLogo = "https://dummyimage.com/200x200/ccc/000.png&text=Tool";
   if (tool.logo) {
-    const filename = path.basename(tool.logo);
-    const local = path.join(process.cwd(), "public", "images", "logos", filename);
-    if (fs.existsSync(local)) {
+    const filename = tool.logo.startsWith("/")
+  ? path.join(process.cwd(), "public", tool.logo)
+  : path.join(process.cwd(), "public", "images", "logos", path.basename(tool.logo));
+    if (fs.existsSync(filename)) {
       try {
-        const buf = await sharp(local)
+        const buf = await sharp(filename)
           .resize(300, 300, { fit: "inside" })
           .png()
           .toBuffer();

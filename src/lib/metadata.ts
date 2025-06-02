@@ -1,6 +1,6 @@
 // src/lib/metadata.ts
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/lib/url"; // сега ова ќе работи
+import { absoluteUrl } from "../lib/url"; // сега ова ќе работи
 
 export function buildBasicMetadata({
   title,

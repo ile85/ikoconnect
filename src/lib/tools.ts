@@ -1,43 +1,36 @@
 // src/lib/tools.ts
 
-// Овозможува import на JSON
+// Овозможува import на JSON.
 // Во tsconfig.json мораш да имаш:
 // {
 //   "compilerOptions": {
 //     "resolveJsonModule": true,
 //     "esModuleInterop": true,
 //     …
-import raw from '@/data/affiliateTools.json';
+// }
+import raw from "../data/affiliateTools.json";
+
+export type Tier = "free" | "freemium" | "paid";
 
 export interface Tool {
-  id: string;
+  id: string;                 // previously slugified name
   name: string;
   description: string;
   url: string;
   logo?: string;
-  tags?: string[];
-  ogImage?: string;
+
+  // New fields, matching the enriched JSON:
+  categories: string[];
+  features: string[];
+  tier: Tier;
+  rating?: number;
 }
 
-// Генерираме типизиран масив од JSON и автоматски сетуваме id
-const tools: Tool[] = (raw as Omit<Tool, 'id'>[]).map((t) => {
-  // slugify на name → id
-  const id = t.name
-    .toLowerCase()
-    .replace(/’/g, '')            // отстрани апострофи
-    .replace(/[^a-z0-9]+/g, '-')  // нек-алфанумерички → црта
-    .replace(/(^-|-$)/g, '');     // тримирај црти на рабовите
-
-  return {
-    id,
-    name: t.name,
-    description: t.description,
-    url: t.url,
-    logo: t.logo,
-    tags: t.tags,
-    ogImage: t.logo,  // ако сакаш да користиш логото како OG
-  };
-});
+/**
+ * Сега, бидејќи affiliateTools.json секој објект веќе има "id",
+ * можеме едноставно да го типизираме raw како Tool[].
+ */
+export const tools: Tool[] = raw as Tool[];
 
 /** Врати ја листата со сите алатки */
 export function getAllTools(): Tool[] {

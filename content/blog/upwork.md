@@ -1,16 +1,10 @@
 ---
-title: Upwork
-date: '2025-05-14'
-description: >-
-  Find the perfect freelance job or hire top talent on Upwork—the world’s
-  largest freelancing platform.
-tags:
-  - freelancing
-  - remote work
-  - online jobs
-  - side hustle
-coverImage: /images/og/upwork.png
+title: "Upwork"
+description: "Find the perfect freelance job or hire top talent on Upwork—the world’s largest freelancing platform."
+date: "2025-05-27T00:13:37.995Z"
+tags: ["freelancing","remote work","online jobs","side hustle"]
+coverImage: "https://www.ikoconnect.com/images/logos/upwork.png"
+author: "IkoConnect Team"
 ---
-Welcome to our deep dive of **Upwork**!
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Discover more: [Visit Website](https://www.upwork.com/)

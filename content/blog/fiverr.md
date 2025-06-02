@@ -1,14 +1,10 @@
 ---
-title: Fiverr
-date: '2025-05-19'
-description: Launch your freelance career with Fiverr – the easiest platform for beginners!
-tags:
-  - freelancing
-  - remote work
-  - online jobs
-  - side hustle
-coverImage: /images/og/fiverr.png
+title: "Fiverr"
+description: "Launch your freelance career with Fiverr – the easiest platform for beginners!"
+date: "2025-05-27T00:13:37.982Z"
+tags: ["freelancing","remote work","online jobs","side hustle"]
+coverImage: "https://www.ikoconnect.com/images/logos/fiverr.png"
+author: "IkoConnect Team"
 ---
-Welcome to our deep dive of **Fiverr**!
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Discover more: [Visit Website](https://go.fiverr.com/visit/?bta=1031917&brand=fiverrmarketplace)

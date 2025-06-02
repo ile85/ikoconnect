@@ -7,13 +7,20 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
+
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+
+   serverExternalPackages: ["puppeteer"],
+
 
   // Остава TypeScript проверки да се игнорираат за production build
   typescript: {
     ignoreBuildErrors: true,
   },
+
+  
 
   images: {
   remotePatterns: [
@@ -62,6 +69,11 @@ const nextConfig: NextConfig = {
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
       "@": path.resolve(__dirname, "src"),
+      // **SHIM** for the missing instrumentation client
+      "private-next-instrumentation-client": path.resolve(
+        __dirname,
+        "private-next-instrumentation-client.js"
+      )
     };
     return config;
   },

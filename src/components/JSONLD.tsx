@@ -1,4 +1,3 @@
-// src/components/JSONLD.tsx
 import React from "react";
 
 interface JSONLDProps {
@@ -8,9 +7,10 @@ interface JSONLDProps {
 export default function JSONLD({ data }: JSONLDProps) {
   return (
     <script
+      key="jsonld"
       type="application/ld+json"
-      // dangerouslySetInnerHTML е безбедно тука бидејќи data доаѓа од вашиот код
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      // БЕЗБЕДНО: content доаѓа само од backend или строго дефинирани објекти
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data, null, 0) }}
     />
   );
 }

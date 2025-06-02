@@ -3,7 +3,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-import type { Recommendation } from "@/lib/recommendations";
+import type { Recommendation } from "../lib/recommendations";
 
 // Lazy‐load вистинскиот RecommendationsList
 const RecommendationsList = dynamic(

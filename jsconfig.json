@@ -1,0 +1,12 @@
+// /var/www/ikoconnect/jsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": "src",        // so "@/foo" maps to "src/foo"
+    "paths": {
+      "@/*": ["*"]
+    },
+    "allowJs": true          // include both .js and .jsx files under “src”
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/node_modules/*"]
+}

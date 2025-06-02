@@ -1,110 +1,136 @@
-// @ts-nocheck
 // src/app/tools/[id]/page.tsx
 
+import { getToolById, getAllToolIds, Tool } from "@/lib/tools";
 import { notFound } from "next/navigation";
-import { getAllToolIds, getToolById } from "@/lib/tools";
-import { buildBasicMetadata } from "@/lib/metadata";
 import JSONLD from "@/components/JSONLD";
-import fs from "fs";
-import path from "path";
+import { buildBasicMetadata } from "@/lib/metadata";
+import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
 
-// 1️⃣ Generate all dynamic /tools/[id] routes
-export async function generateStaticParams(): Promise<{ id: string }[]> {
+interface PageParams {
+  params: { id: string };
+}
+
+export async function generateStaticParams() {
   return getAllToolIds().map((id) => ({ id }));
 }
 
-// 2️⃣ Build per-page metadata (must include params + searchParams)
-export async function generateMetadata(
-  args: {
-    params: { id: string };
-    searchParams: Record<string, string | string[] | undefined>;
-  }
-): Promise<Metadata> {
-  const { params, searchParams } = args; // now typed
-  const tool = getToolById(params.id);
-  if (!tool) {
+export async function generateMetadata({
+  params,
+}: PageParams): Promise<Metadata> {
+  const maybeTool = getToolById(params.id);
+  if (!maybeTool) {
     return {
-      title: "Tool Not Found – IkoConnect",
-      description: "This tool does not exist.",
+      title: "Tool Not Found | IkoConnect",
+      description: "No such tool exists on IkoConnect.",
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ikoconnect.com";
-  let ogImage = tool.ogImage;
-  if (!ogImage) {
-    const local = path.join(
-      process.cwd(),
-      "public",
-      "images",
-      "og",
-      `${params.id}.png`
-    );
-    ogImage = fs.existsSync(local)
-      ? `/images/og/${params.id}.png`
-      : `/api/og/${params.id}`;
-  }
-
   return buildBasicMetadata({
-    title: `${tool.name} – IkoConnect`,
-    description: tool.description,
-    path: `/tools/${params.id}`,
-    ogImage: `${siteUrl}${ogImage}`,
+    title: `${maybeTool.name} – IkoConnect Tool`,
+    description: maybeTool.description,
+    path: `/tools/${maybeTool.id}`,
+    ogImage: maybeTool.logo,
   });
 }
 
-// 3️⃣ Page component itself
-export default async function Page({
-   params,
- }: {
-   params: Promise<{ id: string }>;
- }) {
-   // await the promise
-   const { id } = await params;   // then use `id` instead of `params.id`
+export default function ToolDetailPage({ params }: PageParams) {
   const tool = getToolById(params.id);
-  if (!tool) return notFound();
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ikoconnect.com";
-  const toolUrl = `${siteUrl}/tools/${params.id}`;
+  if (!tool) {
+    notFound();
+    return null;
+  }
 
-  const breadcrumbSchema = {
+  // Now TS knows `tool` is a valid Tool
+  const t: Tool = tool;
+
+  const jsonldTool = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-      { "@type": "ListItem", position: 2, name: "Tools", item: `${siteUrl}/tools` },
-      { "@type": "ListItem", position: 3, name: tool.name, item: toolUrl },
-    ],
-  };
-  const toolSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: tool.name,
-    description: tool.description,
-    url: tool.url,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "All",
-    image: tool.ogImage ?? `${siteUrl}/api/og/${params.id}`,
+    "@type": "Service",
+    name: t.name,
+    provider: {
+      "@type": "Organization",
+      name: t.name,
+      url: t.url,
+    },
+    description: t.description,
+    url: t.url,
   };
 
   return (
-    <>
-      <JSONLD data={breadcrumbSchema} />
-      <JSONLD data={toolSchema} />
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <JSONLD data={jsonldTool} />
 
-      <article className="prose lg:prose-xl mx-auto py-16 px-4">
-        <h1>{tool.name}</h1>
-        <p className="mt-4">{tool.description}</p>
-        <div className="mt-8">
-          <a
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-[#00957F] text-white rounded shadow hover:bg-green-600 transition"
-          >
-            Visit {tool.name}
-          </a>
+      <header className="text-center mb-12">
+        <div className="mx-auto mb-4 h-24 w-24 relative">
+          {/* 
+            Use "!" to assert `t.logo` is definitely a string.
+            This removes the "string | undefined" complaint from TS.
+          */}
+          <Image
+            src={t.logo!}
+            alt={`${t.name} logo`}
+            fill
+            sizes="(max-width: 640px) 100px, 150px"
+            className="object-contain"
+          />
         </div>
-      </article>
-    </>
+        <h1 className="text-4xl font-bold mb-4 dark:text-gray-100">
+          {t.name}
+        </h1>
+        <p className="text-lg text-gray-700 dark:text-gray-300">
+          {t.description}
+        </p>
+      </header>
+
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4 dark:text-gray-100">
+          Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+          {t.features.map((feat, idx) => (
+            <li key={idx}>{feat}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-2 dark:text-gray-100">
+          Categories
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {t.categories.map((cat) => (
+            <span
+              key={cat}
+              className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-sm rounded-full"
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <div className="text-center mb-12">
+        <a
+          href={t.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn px-8 py-3"
+        >
+          Visit {t.name} →
+        </a>
+      </div>
+
+      <div className="text-center">
+        <Link
+          href="/tools"
+          className="text-teal-600 hover:underline dark:text-teal-400"
+        >
+          ← Back to all tools
+        </Link>
+      </div>
+    </main>
   );
 }

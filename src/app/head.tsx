@@ -1,5 +1,5 @@
 // src/app/head.tsx
-import { buildBasicMetadata } from "@/lib/metadata";
+import { buildBasicMetadata } from "../lib/metadata";
 
 export const metadata = buildBasicMetadata({
   title: "IkoConnect – Empowering Freelancers",

@@ -1,8 +1,10 @@
-// src/app/layout.tsx
+// /var/www/ikoconnect/src/app/layout.tsx
 import "@/styles/globals.css";
 import type { ReactNode } from "react";
-import Providers from "@/components/Providers";
-import Navbar from "@/components/Navbar";
+import Providers from "../components/Providers";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import ClientOnly from "../components/ClientOnly";
 
 export const metadata = {
   metadataBase: new URL("https://ikoconnect.com"),
@@ -45,41 +47,19 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors">
-        <Providers>
-        <Navbar />
+        <ClientOnly>
+          <Providers>
+            <Navbar />
 
-        {/* ——————————————————————————————— */}
-        {/* 1) GLOBAL SVG CLIP-PATH (zero-sized, with viewBox) */}
-        <svg
-          width="0"
-          height="0"
-          viewBox="0 0 200 200"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute"
-        >
-          <defs>
-<clipPath id="blobClip" clipPathUnits="userSpaceOnUse">
-     {/* прво преведи до центарот, па скалирај 3х */}
-     <path
-       d="M64.2,-23.7
-          C67.8,-9.9 44.5,9.7 25.5,20
-          C6.4,30.4 -8.6,31.4 -24.8,22.4
-          C-41,13.4 -58.5,-5.6 -54.6,-19.9
-          C-50.6,-34.2 -25.3,-43.7 2.5,-44.5
-          C30.3,-45.3 60.7,-37.4 64.2,-23.7
-          Z"
-       transform="translate(100 100) scale(3)"
-     />
-   </clipPath>
-          </defs>
-        </svg>
-        {/* ——————————————————————————————— */}
+            <main id="main-content" className="relative z-10 pt-24 overflow-x-hidden">
+              {children}
+            </main>
 
-         {/* Wrap your page content */}
-          <main id="main-content">{children}</main>
-        </Providers>
+            <Footer />
+          </Providers>
+        </ClientOnly>
       </body>
     </html>
   );

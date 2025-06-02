@@ -4,7 +4,6 @@ const fs = require("fs");
 const { resolve } = require("path");
 
 (async () => {
-  // Dynamically import the ESM‐only globby
   const { globby } = await import("globby");
 
   const baseUrl = "https://ikoconnect.com";
@@ -20,6 +19,7 @@ const { resolve } = require("path");
     "terms",
     "media-kit",
     "resources",
+    "legal", // ✅ додадена legal страница
   ];
 
   // 2) Dynamic blog slugs
@@ -48,12 +48,9 @@ const { resolve } = require("path");
       .join("\n") +
     `\n</urlset>`;
 
-  // 5) Write sitemap.xml
-  const outSitemap = resolve(__dirname, "../public/sitemap.xml");
-  fs.writeFileSync(outSitemap, sitemap, "utf8");
-  console.log("✅ sitemap.xml generated at", outSitemap);
+  fs.writeFileSync(resolve(__dirname, "../public/sitemap.xml"), sitemap, "utf8");
+  console.log("✅ sitemap.xml generated at", resolve(__dirname, "../public/sitemap.xml"));
 
-  // 6) Write robots.txt
   const robots = `User-agent: *\nAllow: /\nSitemap: ${baseUrl}/sitemap.xml\n`;
   fs.writeFileSync(resolve(__dirname, "../public/robots.txt"), robots, "utf8");
   console.log("✅ robots.txt generated");

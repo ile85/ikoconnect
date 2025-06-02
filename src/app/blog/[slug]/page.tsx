@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getPostHtmlBySlug, getPostSlugs } from "@/lib/blog";
-import { getAllTools } from "@/lib/tools";
+import { getPostHtmlBySlug, getPostSlugs } from "../../../lib/blog";
+import { getAllTools } from "../../../lib/tools";
 import Link from "next/link";
 import Image from "next/image";
-import CopyButton from "@/components/CopyButton";
+import CopyButton from "../../../components/CopyButton";
+import JSONLD from "../../../components/JSONLD";
+import { generateBlogPostJsonLD } from "../../../lib/jsonldGenerator";
+
 
 interface PageParams {
   params: { slug: string };
@@ -59,6 +62,25 @@ export default async function BlogPost({ params }: PageParams) {
   if (!post) return notFound();
 
   const { title, html, date, tags, author, coverImage, description } = post;
+const jsonldData = generateBlogPostJsonLD({
+  url: `https://ikoconnect.com/blog/${params.slug}`,
+  title,
+  description,
+  authorName: author || "IkoConnect Team",
+  datePublished: date,
+  dateModified: date,
+});
+  // Define tag color classes
+  const tagColors: Record<string, string> = {
+  Tools: "bg-blue-100 text-blue-800",
+  Jobs: "bg-green-100 text-green-800",
+  Tips: "bg-yellow-100 text-yellow-800",
+  SEO: "bg-purple-100 text-purple-800",
+  Freelance: "bg-pink-100 text-pink-800",
+  Marketing: "bg-red-100 text-red-800",
+  Remote: "bg-cyan-100 text-cyan-800",
+};
+
 
   const readingTime = Math.ceil(html.split(" ").length / 200);
 
@@ -70,6 +92,7 @@ export default async function BlogPost({ params }: PageParams) {
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-16 space-y-10">
+       <JSONLD data={jsonldData} />
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500">
         <Link href="/" className="hover:underline">Home</Link> /{" "}
@@ -81,25 +104,60 @@ export default async function BlogPost({ params }: PageParams) {
       <h1 className="text-4xl font-extrabold text-[#00957F]">{title}</h1>
 
       {/* Meta */}
-      <div className="flex items-center gap-4 text-sm text-gray-500">
-        <p>📅 {date}</p>
-        <p>✍️ {author || "IkoConnect Team"}</p>
-        <p>⏱️ {readingTime} min. reading</p>
+      <div className="flex items-center gap-4 text-sm text-gray-500 flex-wrap">
+        <div className="flex items-center gap-2">
+          <Image
+            src="/images/ikoconnect-square.png"
+            alt="Author"
+            width={28}
+            height={28}
+            className="rounded-full border"
+          />
+          <span className="font-medium text-gray-800">{author || "IkoConnect Team"}</span>
+        </div>
+        <span className="bg-gray-100 px-2 py-1 rounded text-xs">{readingTime} min read</span>
+        <span>📅 {date}</span>
       </div>
 
-      {/* OG Image */}
-      {coverImage && (
-        <div className="rounded-lg overflow-hidden shadow">
-          <Image
-            src={coverImage}
-            alt={title}
-            width={1000}
-            height={500}
-            className="w-full h-auto object-cover"
-            priority
-          />
-        </div>
-      )}
+      {/* OG Image + Info Layout */}
+<div className="mt-6 grid md:grid-cols-2 gap-6 items-center">
+  {/* OG Image */}
+  <div className="rounded-xl overflow-hidden shadow border max-h-[300px]">
+    <img
+      src={coverImage}
+      alt={`OG image for ${title}`}
+      className="object-contain w-full h-full"
+      loading="eager"
+    />
+  </div>
+
+  {/* Text description */}
+  <div className="space-y-4">
+    <h2 className="text-xl font-semibold text-[#00957F]">{title}</h2>
+    <p className="text-gray-700 text-sm leading-relaxed">{description}</p>
+    {tags.length > 0 && (
+      <div className="flex flex-wrap gap-2 mt-2">
+        {tags.map((tag: string) => {
+          const colorClasses =
+            tagColors[tag] || "bg-gray-100 text-gray-800";
+          return (
+            <Link
+              key={tag}
+              href={`/blog?tag=${tag}`}
+              className={`text-xs px-3 py-1 rounded-full font-medium hover:brightness-95 transition ${colorClasses}`}
+            >
+              #{tag}
+            </Link>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</div>
+
+
+
+
 
       {/* Content */}
       <div
@@ -107,18 +165,22 @@ export default async function BlogPost({ params }: PageParams) {
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag: string) => (
-          <Link
-            key={tag}
-            href={`/blog?tag=${tag}`}
-            className="text-sm px-3 py-1 rounded-full bg-[#E0F7F2] text-[#00957F] font-medium"
-          >
-            #{tag}
-          </Link>
-        ))}
-      </div>
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag: string) => {
+            const colorClasses =
+              tagColors[tag] || "bg-gray-100 text-gray-800"; // fallback
+            return (
+              <Link
+                key={tag}
+                href={`/blog?tag=${tag}`}
+                className={`text-sm px-3 py-1 rounded-full font-medium hover:brightness-95 transition ${colorClasses}`}
+              >
+                <span className="mr-1">🏷️</span>#{tag}
+              </Link>
+            );
+          })}
+        </div>
 
       {/* Share buttons */}
       <div className="flex gap-4 items-center mt-6">

@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { marked } from "marked";
+// import { readFileAsUTF8 } from "/lib/readFileUTF8";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = getJobPostBySlug(params.slug);
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 function getJobPostBySlug(slug: string) {
   const filePath = path.join(process.cwd(), "content", "blog", "jobs", `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
-  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const fileContent = fs.readFileSync(filePath, "utf8");
   return matter(fileContent);
 }
 

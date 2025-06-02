@@ -1,5 +1,5 @@
-import JobsList from "@/components/JobsList";
-import { buildBasicMetadata } from "@/lib/metadata";
+import JobsList from "../../components/JobsList";
+import { buildBasicMetadata } from "../../lib/metadata";
 
 export const metadata = buildBasicMetadata({
   title: "Remote Job Board – IkoConnect",
@@ -10,11 +10,14 @@ export const metadata = buildBasicMetadata({
 
 export default function JobsPage() {
   return (
-    <section className="container mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold mb-6">Remote Job Board</h1>
-      <p className="text-lg text-gray-700 mb-8">
-        Discover freelance & remote opportunities from top platforms.
-      </p>
+    <section className="container mx-auto px-6 pt-28 pb-16 max-w-screen-lg">
+  <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center mb-4">
+    🚀 Remote Job Board
+  </h1>
+  <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-10">
+    Discover freelance & remote opportunities curated from top platforms.
+  </p>
+
       <JobsList />
     </section>
   );

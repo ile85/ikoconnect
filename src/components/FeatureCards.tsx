@@ -1,3 +1,4 @@
+// /var/www/ikoconnect/src/components/FeatureCards.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -30,8 +31,19 @@ const features = [
 
 export default function FeatureCards() {
   return (
-    <section className="w-full bg-background py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+    <section className="relative overflow-hidden bg-background py-16">
+      {/* Animated gradient glow behind cards */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-r from-[#E0FFF9]/40 via-[#D5FAF0]/40 to-[#E0FFF9]/40
+          bg-[length:200%_200%]
+          animate-gradient-pan
+          z-0
+        "
+      />
+
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

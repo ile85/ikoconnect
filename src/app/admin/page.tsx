@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import OGPreview from "@/components/OGPreview";
+import OGPreview from "../../components/OGPreview";
 
 export default function AdminPage() {
   const [slug, setSlug] = useState("");

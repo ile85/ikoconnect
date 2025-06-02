@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { getToolById } from "@/lib/tools";
+import { getToolById } from "../../../lib/tools";
 import puppeteer from "puppeteer";
 import fs from "fs";
 import path from "path";

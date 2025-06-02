@@ -1,10 +1,10 @@
 ---
-title: IkoConnect
-date: '2025-05-14'
-description: 'Your ultimate portal for remote work tools, guides, and jobs.'
+title: "IkoConnect"
+description: "Your ultimate portal for remote work tools, guides, and jobs."
+date: "2025-05-27T00:13:37.996Z"
 tags: []
-coverImage: /images/og/ikoconnect.png
+coverImage: "https://www.ikoconnect.com/images/logos/ikoconnect.png"
+author: "IkoConnect Team"
 ---
-Welcome to our deep dive of **IkoConnect**!
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Discover more: [Visit Website](#)

@@ -1,4 +1,4 @@
-// src/app/resources/ResourcesClient.tsx
+// /var/www/ikoconnect/src/app/resources/ResourcesClient.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -9,12 +9,13 @@ interface Props {
 }
 
 export default function ResourcesClient({ tools }: Props) {
-  // Осигуруваме се tags е дефиниран
+  // Collect all unique tags
   const allTags = Array.from(
     new Set(tools.flatMap((t) => t.tags ?? []))
   );
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
+  // Filter tools by the selected tag (or show all if none)
   const filtered = activeTag
     ? tools.filter((t) => (t.tags ?? []).includes(activeTag))
     : tools;
@@ -48,7 +49,7 @@ export default function ResourcesClient({ tools }: Props) {
         ))}
       </div>
 
-      {/* Tool cards */}
+      {/* Tool cards grid */}
       <div className="grid gap-6 md:grid-cols-2">
         {filtered.map((tool) => (
           <a

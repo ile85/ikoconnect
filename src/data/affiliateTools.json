@@ -1,93 +1,674 @@
 [
   {
+    "id": "fiverr",
     "name": "Fiverr",
-    "description": "Launch your freelance career with Fiverr \u2013 the easiest platform for beginners!",
+    "description": "Launch your freelance career with Fiverr – the easiest platform for beginners!",
     "url": "https://go.fiverr.com/visit/?bta=1031917&brand=fiverrmarketplace",
     "logo": "https://www.ikoconnect.com/images/logos/fiverr.png",
-    "tags": [
+    "categories": [
       "freelancing",
       "remote work",
       "online jobs",
       "side hustle"
-    ]
+    ],
+    "features": [
+      "Helps with freelancing",
+      "Helps with remote work",
+      "Helps with online jobs"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
   },
   {
+    "id": "canva",
     "name": "Canva",
-    "description": "Discover how Canva lets anyone create stunning designs in minutes\u2014no experience required.",
+    "description": "Discover how Canva lets anyone create stunning designs in minutes—no experience required.",
     "url": "https://www.canva.com/",
     "logo": "https://www.ikoconnect.com/images/logos/canva.png",
-    "tags": [
+    "categories": [
       "canva",
       "design",
       "tools",
       "freelance",
       "productivity"
-    ]
+    ],
+    "features": [
+      "Helps with canva",
+      "Helps with design",
+      "Helps with tools"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
   },
   {
+    "id": "freelancer",
     "name": "Freelancer",
-    "description": "Find the perfect freelance job or hire top talent on Freelancer\u2014the world\u2019s largest freelancing platform.",
+    "description": "Find the perfect freelance job or hire top talent on Freelancer—the world’s largest freelancing platform.",
     "url": "https://www.freelancer.com/",
     "logo": "https://www.ikoconnect.com/images/logos/freelancer.png",
-    "tags": [
+    "categories": [
       "freelancing",
       "remote work",
       "online jobs",
       "side hustle"
-    ]
+    ],
+    "features": [
+      "Helps with freelancing",
+      "Helps with remote work",
+      "Helps with online jobs"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
   },
   {
+    "id": "linkedin-learning",
     "name": "LinkedIn Learning",
-    "description": "Learn new skills and advance your career with LinkedIn Learning\u2014the world\u2019s largest online learning platform.",
+    "description": "Learn new skills and advance your career with LinkedIn Learning—the world’s largest online learning platform.",
     "url": "https://www.linkedin.com/learning/",
     "logo": "https://www.ikoconnect.com/images/logos/linkedin-learning.png",
-    "tags": [
+    "categories": [
       "online learning",
       "courses",
       "education",
       "freelancing"
-    ]
+    ],
+    "features": [
+      "Helps with online learning",
+      "Helps with courses",
+      "Helps with education"
+    ],
+    "tier": "paid",
+    "rating": 4.5
   },
   {
+    "id": "mailchimp",
     "name": "Mailchimp",
     "description": "Mailchimp is the All-In-One integrated marketing platform for small businesses, to grow your business on your terms.",
     "url": "https://mailchimp.com/",
     "logo": "https://www.ikoconnect.com/images/logos/mailchimp.png",
-    "tags": [
+    "categories": [
       "email marketing",
       "marketing",
       "tools"
-    ]
+    ],
+    "features": [
+      "Helps with email marketing",
+      "Helps with marketing",
+      "Helps with tools"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
   },
   {
-    "name": "Skillshare",
-    "description": "Learn new skills and advance your career with Skillshare\u2014the world\u2019s largest online learning community.",
-    "url": "https://www.skillshare.com/",
-    "logo": "https://www.ikoconnect.com/images/logos/skillshare.png",
-    "tags": [
+    "id": "notion",
+    "name": "Notion",
+    "description": "Notion is your all-in-one workspace: notes, docs, kanban boards, wikis, and databases.",
+    "url": "https://www.notion.so/?ref=ikoconnect",
+    "logo": "https://www.ikoconnect.com/images/logos/notion.png",
+    "categories": [
+      "productivity",
+      "notes",
+      "collaboration",
+      "tools"
+    ],
+    "features": [
+      "Helps with productivity",
+      "Helps with notes",
+      "Helps with collaboration"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "todoist",
+    "name": "Todoist",
+    "description": "Todoist keeps track of your tasks so you don’t have to. Simple, smart, and available everywhere.",
+    "url": "https://todoist.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/todoist.png",
+    "categories": [
+      "productivity",
+      "tasks",
+      "tools"
+    ],
+    "features": [
+      "Helps with productivity",
+      "Helps with tasks",
+      "Helps with tools"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "description": "Grammarly is an AI-powered writing assistant that ensures your writing is clear, correct, and impactful.",
+    "url": "https://www.grammarly.com/?utm_source=ikoconnect",
+    "logo": "https://www.ikoconnect.com/images/logos/grammarly.png",
+    "categories": [
+      "writing",
+      "proofreading",
+      "productivity",
+      "tools"
+    ],
+    "features": [
+      "Helps with writing",
+      "Helps with proofreading",
+      "Helps with productivity"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "hemingway-editor",
+    "name": "Hemingway Editor",
+    "description": "Hemingway Editor highlights common writing errors—like passive voice and overly complex sentences—so you can simplify your writing.",
+    "url": "http://www.hemingwayapp.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/hemingway-editor.png",
+    "categories": [
+      "writing",
+      "productivity",
+      "editing"
+    ],
+    "features": [
+      "Helps with writing",
+      "Helps with productivity",
+      "Helps with editing"
+    ],
+    "tier": "free",
+    "rating": 4.5
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "description": "Figma is a collaborative interface design tool that lets you prototype, design, and share in real time.",
+    "url": "https://www.figma.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/figma.png",
+    "categories": [
+      "design",
+      "prototyping",
+      "collaboration"
+    ],
+    "features": [
+      "Helps with design",
+      "Helps with prototyping",
+      "Helps with collaboration"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "loom",
+    "name": "Loom",
+    "description": "Loom is a fast, free screen recorder that lets you instantly share video messages of your screen, cam, or both.",
+    "url": "https://www.loom.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/loom.png",
+    "categories": [
+      "video",
+      "screen recording",
+      "communication"
+    ],
+    "features": [
+      "Helps with video",
+      "Helps with screen recording",
+      "Helps with communication"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "visual-studio-code",
+    "name": "Visual Studio Code",
+    "description": "Visual Studio Code is a free, lightweight code editor that runs on your desktop and is available for Windows, macOS, and Linux.",
+    "url": "https://code.visualstudio.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/vscode.png",
+    "categories": [
+      "development",
+      "code editor",
+      "tools"
+    ],
+    "features": [
+      "Helps with development",
+      "Helps with code editor",
+      "Helps with tools"
+    ],
+    "tier": "free",
+    "rating": 4.5
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "description": "GitHub is the largest host of source code in the world. Collaborate on code, discover projects, and build software alongside millions of developers.",
+    "url": "https://github.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/github.png",
+    "categories": [
+      "development",
+      "version control",
+      "collaboration"
+    ],
+    "features": [
+      "Helps with development",
+      "Helps with version control",
+      "Helps with collaboration"
+    ],
+    "tier": "free",
+    "rating": 4.5
+  },
+  {
+    "id": "postman",
+    "name": "Postman",
+    "description": "Postman simplifies API development so you can create better APIs—faster. Build, test, and document your APIs all in one place.",
+    "url": "https://www.postman.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/postman.png",
+    "categories": [
+      "development",
+      "api testing",
+      "tools"
+    ],
+    "features": [
+      "Helps with development",
+      "Helps with api testing",
+      "Helps with tools"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "trello",
+    "name": "Trello",
+    "description": "Trello is a visual tool for organizing your work. Create boards, lists, and cards so you can organize and prioritize projects in a fun, flexible way.",
+    "url": "https://trello.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/trello.png",
+    "categories": [
+      "project management",
+      "kanban",
+      "tools"
+    ],
+    "features": [
+      "Helps with project management",
+      "Helps with kanban",
+      "Helps with tools"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "asana",
+    "name": "Asana",
+    "description": "Asana is a work management platform that helps teams orchestrate their work, from daily tasks to strategic initiatives.",
+    "url": "https://asana.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/asana.png",
+    "categories": [
+      "project management",
+      "workflow",
+      "collaboration"
+    ],
+    "features": [
+      "Helps with project management",
+      "Helps with workflow",
+      "Helps with collaboration"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "clickup",
+    "name": "ClickUp",
+    "description": "ClickUp is a productivity platform that offers docs, reminders, goals, calendars, and an inbox—all in one place.",
+    "url": "https://clickup.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/clickup.png",
+    "categories": [
+      "project management",
+      "productivity",
+      "collaboration"
+    ],
+    "features": [
+      "Helps with project management",
+      "Helps with productivity",
+      "Helps with collaboration"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "description": "Slack is a channel-based messaging platform. Think of it as IRC for the modern workplace, with all the integrations you need.",
+    "url": "https://slack.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/slack.png",
+    "categories": [
+      "communication",
+      "messaging",
+      "collaboration"
+    ],
+    "features": [
+      "Helps with communication",
+      "Helps with messaging",
+      "Helps with collaboration"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "description": "Zoom is a video-first unified communications platform that empowers reliable meetings, chat, and webinars across any device.",
+    "url": "https://zoom.us/",
+    "logo": "https://www.ikoconnect.com/images/logos/zoom.png",
+    "categories": [
+      "video conferencing",
+      "communication",
+      "webinars"
+    ],
+    "features": [
+      "Helps with video conferencing",
+      "Helps with communication",
+      "Helps with webinars"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "miro",
+    "name": "Miro",
+    "description": "Miro is an online collaborative whiteboard platform to bring teams together, anytime, anywhere.",
+    "url": "https://miro.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/miro.png",
+    "categories": [
+      "whiteboard",
+      "collaboration",
+      "productivity"
+    ],
+    "features": [
+      "Helps with whiteboard",
+      "Helps with collaboration",
+      "Helps with productivity"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "freshbooks",
+    "name": "FreshBooks",
+    "description": "FreshBooks is the #1 invoicing and accounting software for self-employed professionals and small business owners.",
+    "url": "https://www.freshbooks.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/freshbooks.png",
+    "categories": [
+      "finance",
+      "invoicing",
+      "accounting"
+    ],
+    "features": [
+      "Helps with finance",
+      "Helps with invoicing",
+      "Helps with accounting"
+    ],
+    "tier": "paid",
+    "rating": 4.5
+  },
+  {
+    "id": "quickbooks-self-employed",
+    "name": "QuickBooks Self-Employed",
+    "description": "QuickBooks Self-Employed helps you track mileage, organize expenses, and prepare for taxes—perfect for freelancers.",
+    "url": "https://quickbooks.intuit.com/self-employed/",
+    "logo": "https://www.ikoconnect.com/images/logos/quickbooks.png",
+    "categories": [
+      "finance",
+      "taxes",
+      "invoicing"
+    ],
+    "features": [
+      "Helps with finance",
+      "Helps with taxes",
+      "Helps with invoicing"
+    ],
+    "tier": "paid",
+    "rating": 4.5
+  },
+  {
+    "id": "wave",
+    "name": "Wave",
+    "description": "Wave offers free, easy-to-use software for invoicing, accounting, and receipt scanning—built for freelancers and small businesses.",
+    "url": "https://www.waveapps.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/wave.png",
+    "categories": [
+      "finance",
+      "invoicing",
+      "accounting"
+    ],
+    "features": [
+      "Helps with finance",
+      "Helps with invoicing",
+      "Helps with accounting"
+    ],
+    "tier": "free",
+    "rating": 4.5
+  },
+  {
+    "id": "zapier",
+    "name": "Zapier",
+    "description": "Zapier automates tasks between two or more apps—no code needed. Connect the apps you use every day to automate your work.",
+    "url": "https://zapier.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/zapier.png",
+    "categories": [
+      "automation",
+      "integrations",
+      "productivity"
+    ],
+    "features": [
+      "Helps with automation",
+      "Helps with integrations",
+      "Helps with productivity"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "ifttt",
+    "name": "IFTTT",
+    "description": "IFTTT lets you connect the apps and devices you love so they work together. Create “applets” that automate everyday tasks.",
+    "url": "https://ifttt.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/ifttt.png",
+    "categories": [
+      "automation",
+      "integrations",
+      "smart home"
+    ],
+    "features": [
+      "Helps with automation",
+      "Helps with integrations",
+      "Helps with smart home"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "description": "ChatGPT is a conversational AI model from OpenAI that helps you generate content, answer questions, and brainstorm ideas.",
+    "url": "https://chat.openai.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/chatgpt.png",
+    "categories": [
+      "ai",
+      "writing",
+      "productivity"
+    ],
+    "features": [
+      "Helps with ai",
+      "Helps with writing",
+      "Helps with productivity"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "jasper-ai",
+    "name": "Jasper AI",
+    "description": "Jasper AI is an AI-powered copywriting platform that helps you create high-converting marketing copy, blog posts, and more.",
+    "url": "https://www.jasper.ai/",
+    "logo": "https://www.ikoconnect.com/images/logos/jasper.png",
+    "categories": [
+      "ai",
+      "writing",
+      "marketing"
+    ],
+    "features": [
+      "Helps with ai",
+      "Helps with writing",
+      "Helps with marketing"
+    ],
+    "tier": "paid",
+    "rating": 4.5
+  },
+  {
+    "id": "descript",
+    "name": "Descript",
+    "description": "Descript is an all-in-one audio/video editing tool that transcribes your content, lets you edit like a document, and publishes it anywhere.",
+    "url": "https://www.descript.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/descript.png",
+    "categories": [
+      "ai",
+      "audio",
+      "video"
+    ],
+    "features": [
+      "Helps with ai",
+      "Helps with audio",
+      "Helps with video"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "udemy",
+    "name": "Udemy",
+    "description": "Udemy is an online learning platform with thousands of courses taught by expert instructors in topics ranging from development to design.",
+    "url": "https://www.udemy.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/udemy.png",
+    "categories": [
       "online learning",
       "courses",
-      "education",
-      "freelancing"
-    ]
+      "education"
+    ],
+    "features": [
+      "Helps with online learning",
+      "Helps with courses",
+      "Helps with education"
+    ],
+    "tier": "paid",
+    "rating": 4.5
   },
   {
-    "name": "Upwork",
-    "description": "Find the perfect freelance job or hire top talent on Upwork\u2014the world\u2019s largest freelancing platform.",
-    "url": "https://www.upwork.com/",
-    "logo": "https://www.ikoconnect.com/images/logos/upwork.png",
-    "tags": [
-      "freelancing",
-      "remote work",
-      "online jobs",
-      "side hustle"
-    ]
+    "id": "coursera",
+    "name": "Coursera",
+    "description": "Coursera partners with top universities and organizations to offer courses, certifications, and degrees across a wide range of subjects.",
+    "url": "https://www.coursera.org/",
+    "logo": "https://www.ikoconnect.com/images/logos/coursera.png",
+    "categories": [
+      "online learning",
+      "courses",
+      "education"
+    ],
+    "features": [
+      "Helps with online learning",
+      "Helps with courses",
+      "Helps with education"
+    ],
+    "tier": "paid",
+    "rating": 4.5
   },
   {
-  
-  "name": "IkoConnect",
-  "description": "Your ultimate portal for remote work tools, guides, and jobs.",
-  "logo": "https://www.ikoconnect.com/images/logos/ikoconnect.png"
-}
-
+    "id": "skillshare",
+    "name": "Skillshare",
+    "description": "Skillshare is an online learning community with thousands of classes in design, business, tech, and more.",
+    "url": "https://www.skillshare.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/skillshare.png",
+    "categories": [
+      "online learning",
+      "courses",
+      "education"
+    ],
+    "features": [
+      "Helps with online learning",
+      "Helps with courses",
+      "Helps with education"
+    ],
+    "tier": "paid",
+    "rating": 4.5
+  },
+  {
+    "id": "shopify",
+    "name": "Shopify",
+    "description": "Shopify is an all-in-one commerce platform to start, run, and grow a business. Create an online store or sell in person with ease.",
+    "url": "https://www.shopify.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/shopify.png",
+    "categories": [
+      "e-commerce",
+      "online store",
+      "business"
+    ],
+    "features": [
+      "Helps with e-commerce",
+      "Helps with online store",
+      "Helps with business"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "woocommerce",
+    "name": "WooCommerce",
+    "description": "WooCommerce is a customizable, open-source eCommerce platform built on WordPress. Sell anything, anywhere.",
+    "url": "https://woocommerce.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/woocommerce.png",
+    "categories": [
+      "e-commerce",
+      "online store",
+      "wordpress"
+    ],
+    "features": [
+      "Helps with e-commerce",
+      "Helps with online store",
+      "Helps with wordpress"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "bigcommerce",
+    "name": "BigCommerce",
+    "description": "BigCommerce is a leading eCommerce platform that provides businesses with the tools to create and manage online stores.",
+    "url": "https://www.bigcommerce.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/bigcommerce.png",
+    "categories": [
+      "e-commerce",
+      "online store",
+      "business"
+    ],
+    "features": [
+      "Helps with e-commerce",
+      "Helps with online store",
+      "Helps with business"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  },
+  {
+    "id": "etsy",
+    "name": "Etsy",
+    "description": "Etsy is a global marketplace for unique and creative goods, connecting millions of buyers and sellers around the world.",
+    "url": "https://www.etsy.com/",
+    "logo": "https://www.ikoconnect.com/images/logos/etsy.png",
+    "categories": [
+      "e-commerce",
+      "handmade",
+      "vintage"
+    ],
+    "features": [
+      "Helps with e-commerce",
+      "Helps with handmade",
+      "Helps with vintage"
+    ],
+    "tier": "freemium",
+    "rating": 4.5
+  }
 ]
