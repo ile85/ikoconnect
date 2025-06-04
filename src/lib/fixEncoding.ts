@@ -1,31 +1,23 @@
-// /src/lib/fixEncoding.ts
+// src/lib/fixEncoding.ts
 import he from "he";
+import iconv from "iconv-lite";
 
-
+/**
+ * Attempts to fix common encoding issues in job descriptions.
+ * First decodes HTML entities then, if the text appears to be
+ * misinterpreted as Latin-1, decodes it using iconv-lite.
+ */
 export function fixEncoding(input: string): string {
   try {
-  // 1) HTML entities
-  let str = he.decode(input);
+    let str = he.decode(input);
 
-  // 2) Legacy замени
-  str = str
-    .replace(/â|â/g, '"')
-    .replace(/â¦/g, "…")
-    .replace(/â/g, "–")
-    .replace(/â/g, "—")
-    .replace(/â¢/g, "•")
-    .replace(/â˜|â™/g, "'")
-    .replace(/&amp;/g, "&")
-    .trim();
+    // Detect sequences that typically indicate UTF-8 bytes interpreted as Latin-1
+    if (/[\u00c2-\u00f4][\u0080-\u00bf]/.test(str)) {
+      const buf = Buffer.from(str, "binary");
+      str = iconv.decode(buf, "utf8");
+    }
 
-  // 3) Double‐decode (Latin-1 → UTF-8)
-  if (/Ã[¡-ÿ]/.test(str)) {
-    const bytes = Uint8Array.from([...str].map((c) => c.charCodeAt(0)));
-    str = new TextDecoder("utf-8").decode(bytes);
-  }
-
-  // 4) Normalize whitespace
-  return decodeURIComponent(escape(input));
+    return str;
   } catch {
     return input;
   }
