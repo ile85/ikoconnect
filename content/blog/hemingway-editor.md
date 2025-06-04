@@ -7,4 +7,4 @@ coverImage: "https://www.ikoconnect.com/images/logos/hemingway-editor.png"
 author: "IkoConnect Team"
 ---
 
-Discover more: [Visit Website](http://www.hemingwayapp.com/)
+Discover more: [Visit Website](https://www.hemingwayapp.com/)

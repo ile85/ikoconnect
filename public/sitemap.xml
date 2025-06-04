@@ -196,11 +196,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ikoconnect.com/blog/ikoconnect</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://ikoconnect.com/blog/jasper-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

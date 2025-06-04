@@ -1,33 +1,107 @@
 // src/app/resources/page.tsx
-import { buildBasicMetadata } from "@/lib/metadata";
-import ResourcesClient from "./ResourcesClient";
 import { getAllTools } from "@/lib/tools";
+import { absoluteUrl } from "@/lib/url";
 import JSONLD from "@/components/JSONLD";
+import ResourcesClient from "./ResourcesClient";
+import type { Metadata } from "next";
 
-export const metadata = buildBasicMetadata({
-  title: "Resources – IkoConnect",
-  description: "Curated tools, guides & resources for freelancers.",
-  path: "/resources",
-  ogImage: "/images/og-resources.png",
-});
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
 
-const jsonldData = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Resources – IkoConnect",
-  "url": "https://ikoconnect.com/resources",
-  "description": metadata.description,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Resources – IkoConnect",
+    description: "Curated tools, guides & productivity resources for freelancers and remote workers.",
+    alternates: {
+      canonical: `${siteUrl}/resources`,
+    },
+    openGraph: {
+      title: "Resources – IkoConnect",
+      description: "Explore top tools and guides for freelancers and digital nomads.",
+      url: `${siteUrl}/resources`,
+      siteName: "IkoConnect",
+      images: [
+        {
+          url: `${siteUrl}/images/og-resources.png`,
+          width: 1200,
+          height: 630,
+          alt: "Freelance Tools Preview",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Resources – IkoConnect",
+      description: "Explore top tools and guides for freelancers and digital nomads.",
+      images: [`${siteUrl}/images/og-resources.png`],
+    },
+    keywords: ["freelance tools", "remote work", "productivity", "resources", "IkoConnect"],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
+  };
+}
 
 export default function ResourcesPage() {
   const tools = getAllTools();
 
-  return (
-    <main className="max-w-4xl mx-auto p-8">
-      <JSONLD data={jsonldData} />
+  // JSON-LD: ItemList
+  const itemListJsonLD = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Freelance Tools – IkoConnect",
+    description: "Handpicked productivity tools for remote work and freelancing.",
+    url: `${siteUrl}/resources`,
+    itemListElement: tools.map((tool, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${siteUrl}/tools/${tool.id}`,
+      name: tool.name,
+      description: tool.description,
+    })),
+  };
 
-      <h1 className="text-4xl font-bold mb-4">Resources</h1>
-      <ResourcesClient tools={tools} />
+  // JSON-LD: Breadcrumb
+  const breadcrumbJsonLD = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${siteUrl}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Resources",
+        item: `${siteUrl}/resources`,
+      },
+    ],
+  };
+
+  return (
+    <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <JSONLD data={itemListJsonLD} />
+      <JSONLD data={breadcrumbJsonLD} />
+
+      <h1 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+  🧰 Curated Tools for Freelancers
+      </h1>
+      <p className="mb-8 text-gray-600 dark:text-gray-400">
+        Browse curated tools and guides crafted to help freelancers and remote professionals succeed.
+      </p>
+
+      <ResourcesClient />
     </main>
   );
 }

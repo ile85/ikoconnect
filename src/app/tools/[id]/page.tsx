@@ -90,7 +90,7 @@ export default function ToolDetailPage({ params }: PageParams) {
           Features
         </h2>
         <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-          {t.features.map((feat, idx) => (
+          {t.features?.map((feat, idx) => (
             <li key={idx}>{feat}</li>
           ))}
         </ul>

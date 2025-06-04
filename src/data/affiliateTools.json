@@ -2,14 +2,14 @@
   {
     "id": "fiverr",
     "name": "Fiverr",
-    "description": "Launch your freelance career with Fiverr – the easiest platform for beginners!",
+    "description": "Launch your freelance career with Fiverr \u2013 the easiest platform for beginners!",
     "url": "https://go.fiverr.com/visit/?bta=1031917&brand=fiverrmarketplace",
     "logo": "https://www.ikoconnect.com/images/logos/fiverr.png",
     "categories": [
+      "side-hustle",
       "freelancing",
-      "remote work",
-      "online jobs",
-      "side hustle"
+      "remote-work",
+      "online-jobs"
     ],
     "features": [
       "Helps with freelancing",
@@ -17,20 +17,21 @@
       "Helps with online jobs"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "canva",
     "name": "Canva",
-    "description": "Discover how Canva lets anyone create stunning designs in minutes—no experience required.",
+    "description": "Discover how Canva lets anyone create stunning designs in minutes\u2014no experience required.",
     "url": "https://www.canva.com/",
     "logo": "https://www.ikoconnect.com/images/logos/canva.png",
     "categories": [
       "canva",
-      "design",
-      "tools",
       "freelance",
-      "productivity"
+      "productivity",
+      "tools",
+      "design"
     ],
     "features": [
       "Helps with canva",
@@ -38,19 +39,20 @@
       "Helps with tools"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "freelancer",
     "name": "Freelancer",
-    "description": "Find the perfect freelance job or hire top talent on Freelancer—the world’s largest freelancing platform.",
+    "description": "Find the perfect freelance job or hire top talent on Freelancer\u2014the world\u2019s largest freelancing platform.",
     "url": "https://www.freelancer.com/",
     "logo": "https://www.ikoconnect.com/images/logos/freelancer.png",
     "categories": [
+      "side-hustle",
       "freelancing",
-      "remote work",
-      "online jobs",
-      "side hustle"
+      "remote-work",
+      "online-jobs"
     ],
     "features": [
       "Helps with freelancing",
@@ -58,18 +60,19 @@
       "Helps with online jobs"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "linkedin-learning",
     "name": "LinkedIn Learning",
-    "description": "Learn new skills and advance your career with LinkedIn Learning—the world’s largest online learning platform.",
+    "description": "Learn new skills and advance your career with LinkedIn Learning\u2014the world\u2019s largest online learning platform.",
     "url": "https://www.linkedin.com/learning/",
     "logo": "https://www.ikoconnect.com/images/logos/linkedin-learning.png",
     "categories": [
-      "online learning",
-      "courses",
       "education",
+      "online-learning",
+      "courses",
       "freelancing"
     ],
     "features": [
@@ -78,7 +81,8 @@
       "Helps with education"
     ],
     "tier": "paid",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "mailchimp",
@@ -87,9 +91,9 @@
     "url": "https://mailchimp.com/",
     "logo": "https://www.ikoconnect.com/images/logos/mailchimp.png",
     "categories": [
-      "email marketing",
-      "marketing",
-      "tools"
+      "email-marketing",
+      "tools",
+      "marketing"
     ],
     "features": [
       "Helps with email marketing",
@@ -97,7 +101,8 @@
       "Helps with tools"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "notion",
@@ -106,10 +111,10 @@
     "url": "https://www.notion.so/?ref=ikoconnect",
     "logo": "https://www.ikoconnect.com/images/logos/notion.png",
     "categories": [
-      "productivity",
       "notes",
-      "collaboration",
-      "tools"
+      "tools",
+      "productivity",
+      "collaboration"
     ],
     "features": [
       "Helps with productivity",
@@ -117,18 +122,19 @@
       "Helps with collaboration"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "todoist",
     "name": "Todoist",
-    "description": "Todoist keeps track of your tasks so you don’t have to. Simple, smart, and available everywhere.",
+    "description": "Todoist keeps track of your tasks so you don\u2019t have to. Simple, smart, and available everywhere.",
     "url": "https://todoist.com/",
     "logo": "https://www.ikoconnect.com/images/logos/todoist.png",
     "categories": [
+      "tools",
       "productivity",
-      "tasks",
-      "tools"
+      "tasks"
     ],
     "features": [
       "Helps with productivity",
@@ -136,7 +142,8 @@
       "Helps with tools"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "grammarly",
@@ -145,10 +152,10 @@
     "url": "https://www.grammarly.com/?utm_source=ikoconnect",
     "logo": "https://www.ikoconnect.com/images/logos/grammarly.png",
     "categories": [
+      "tools",
       "writing",
-      "proofreading",
       "productivity",
-      "tools"
+      "proofreading"
     ],
     "features": [
       "Helps with writing",
@@ -156,12 +163,13 @@
       "Helps with productivity"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "hemingway-editor",
     "name": "Hemingway Editor",
-    "description": "Hemingway Editor highlights common writing errors—like passive voice and overly complex sentences—so you can simplify your writing.",
+    "description": "Hemingway Editor highlights common writing errors\u2014like passive voice and overly complex sentences\u2014so you can simplify your writing.",
     "url": "http://www.hemingwayapp.com/",
     "logo": "https://www.ikoconnect.com/images/logos/hemingway-editor.png",
     "categories": [
@@ -175,7 +183,8 @@
       "Helps with editing"
     ],
     "tier": "free",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "figma",
@@ -184,8 +193,8 @@
     "url": "https://www.figma.com/",
     "logo": "https://www.ikoconnect.com/images/logos/figma.png",
     "categories": [
-      "design",
       "prototyping",
+      "design",
       "collaboration"
     ],
     "features": [
@@ -194,7 +203,8 @@
       "Helps with collaboration"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "loom",
@@ -203,9 +213,9 @@
     "url": "https://www.loom.com/",
     "logo": "https://www.ikoconnect.com/images/logos/loom.png",
     "categories": [
-      "video",
-      "screen recording",
-      "communication"
+      "communication",
+      "screen-recording",
+      "video"
     ],
     "features": [
       "Helps with video",
@@ -213,7 +223,8 @@
       "Helps with communication"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "visual-studio-code",
@@ -222,9 +233,9 @@
     "url": "https://code.visualstudio.com/",
     "logo": "https://www.ikoconnect.com/images/logos/vscode.png",
     "categories": [
+      "tools",
       "development",
-      "code editor",
-      "tools"
+      "code-editor"
     ],
     "features": [
       "Helps with development",
@@ -232,7 +243,8 @@
       "Helps with tools"
     ],
     "tier": "free",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "github",
@@ -241,8 +253,8 @@
     "url": "https://github.com/",
     "logo": "https://www.ikoconnect.com/images/logos/github.png",
     "categories": [
+      "version-control",
       "development",
-      "version control",
       "collaboration"
     ],
     "features": [
@@ -251,18 +263,19 @@
       "Helps with collaboration"
     ],
     "tier": "free",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "postman",
     "name": "Postman",
-    "description": "Postman simplifies API development so you can create better APIs—faster. Build, test, and document your APIs all in one place.",
+    "description": "Postman simplifies API development so you can create better APIs\u2014faster. Build, test, and document your APIs all in one place.",
     "url": "https://www.postman.com/",
     "logo": "https://www.ikoconnect.com/images/logos/postman.png",
     "categories": [
-      "development",
-      "api testing",
-      "tools"
+      "api-testing",
+      "tools",
+      "development"
     ],
     "features": [
       "Helps with development",
@@ -270,7 +283,8 @@
       "Helps with tools"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "trello",
@@ -279,9 +293,9 @@
     "url": "https://trello.com/",
     "logo": "https://www.ikoconnect.com/images/logos/trello.png",
     "categories": [
-      "project management",
-      "kanban",
-      "tools"
+      "project-management",
+      "tools",
+      "kanban"
     ],
     "features": [
       "Helps with project management",
@@ -289,7 +303,8 @@
       "Helps with tools"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "asana",
@@ -298,7 +313,7 @@
     "url": "https://asana.com/",
     "logo": "https://www.ikoconnect.com/images/logos/asana.png",
     "categories": [
-      "project management",
+      "project-management",
       "workflow",
       "collaboration"
     ],
@@ -308,16 +323,17 @@
       "Helps with collaboration"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "clickup",
     "name": "ClickUp",
-    "description": "ClickUp is a productivity platform that offers docs, reminders, goals, calendars, and an inbox—all in one place.",
+    "description": "ClickUp is a productivity platform that offers docs, reminders, goals, calendars, and an inbox\u2014all in one place.",
     "url": "https://clickup.com/",
     "logo": "https://www.ikoconnect.com/images/logos/clickup.png",
     "categories": [
-      "project management",
+      "project-management",
       "productivity",
       "collaboration"
     ],
@@ -327,7 +343,8 @@
       "Helps with collaboration"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "slack",
@@ -337,8 +354,8 @@
     "logo": "https://www.ikoconnect.com/images/logos/slack.png",
     "categories": [
       "communication",
-      "messaging",
-      "collaboration"
+      "collaboration",
+      "messaging"
     ],
     "features": [
       "Helps with communication",
@@ -346,7 +363,8 @@
       "Helps with collaboration"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "zoom",
@@ -355,8 +373,8 @@
     "url": "https://zoom.us/",
     "logo": "https://www.ikoconnect.com/images/logos/zoom.png",
     "categories": [
-      "video conferencing",
       "communication",
+      "video-conferencing",
       "webinars"
     ],
     "features": [
@@ -365,7 +383,8 @@
       "Helps with webinars"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "miro",
@@ -375,8 +394,8 @@
     "logo": "https://www.ikoconnect.com/images/logos/miro.png",
     "categories": [
       "whiteboard",
-      "collaboration",
-      "productivity"
+      "productivity",
+      "collaboration"
     ],
     "features": [
       "Helps with whiteboard",
@@ -384,7 +403,8 @@
       "Helps with productivity"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "freshbooks",
@@ -403,18 +423,19 @@
       "Helps with accounting"
     ],
     "tier": "paid",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "quickbooks-self-employed",
     "name": "QuickBooks Self-Employed",
-    "description": "QuickBooks Self-Employed helps you track mileage, organize expenses, and prepare for taxes—perfect for freelancers.",
+    "description": "QuickBooks Self-Employed helps you track mileage, organize expenses, and prepare for taxes\u2014perfect for freelancers.",
     "url": "https://quickbooks.intuit.com/self-employed/",
     "logo": "https://www.ikoconnect.com/images/logos/quickbooks.png",
     "categories": [
       "finance",
-      "taxes",
-      "invoicing"
+      "invoicing",
+      "taxes"
     ],
     "features": [
       "Helps with finance",
@@ -422,12 +443,13 @@
       "Helps with invoicing"
     ],
     "tier": "paid",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "wave",
     "name": "Wave",
-    "description": "Wave offers free, easy-to-use software for invoicing, accounting, and receipt scanning—built for freelancers and small businesses.",
+    "description": "Wave offers free, easy-to-use software for invoicing, accounting, and receipt scanning\u2014built for freelancers and small businesses.",
     "url": "https://www.waveapps.com/",
     "logo": "https://www.ikoconnect.com/images/logos/wave.png",
     "categories": [
@@ -441,17 +463,18 @@
       "Helps with accounting"
     ],
     "tier": "free",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "zapier",
     "name": "Zapier",
-    "description": "Zapier automates tasks between two or more apps—no code needed. Connect the apps you use every day to automate your work.",
+    "description": "Zapier automates tasks between two or more apps\u2014no code needed. Connect the apps you use every day to automate your work.",
     "url": "https://zapier.com/",
     "logo": "https://www.ikoconnect.com/images/logos/zapier.png",
     "categories": [
-      "automation",
       "integrations",
+      "automation",
       "productivity"
     ],
     "features": [
@@ -460,18 +483,19 @@
       "Helps with productivity"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "ifttt",
     "name": "IFTTT",
-    "description": "IFTTT lets you connect the apps and devices you love so they work together. Create “applets” that automate everyday tasks.",
+    "description": "IFTTT lets you connect the apps and devices you love so they work together. Create \u201capplets\u201d that automate everyday tasks.",
     "url": "https://ifttt.com/",
     "logo": "https://www.ikoconnect.com/images/logos/ifttt.png",
     "categories": [
-      "automation",
+      "smart-home",
       "integrations",
-      "smart home"
+      "automation"
     ],
     "features": [
       "Helps with automation",
@@ -479,7 +503,8 @@
       "Helps with smart home"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "chatgpt",
@@ -498,7 +523,8 @@
       "Helps with productivity"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "jasper-ai",
@@ -517,7 +543,8 @@
       "Helps with marketing"
     ],
     "tier": "paid",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "descript",
@@ -536,7 +563,8 @@
       "Helps with video"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "udemy",
@@ -545,9 +573,9 @@
     "url": "https://www.udemy.com/",
     "logo": "https://www.ikoconnect.com/images/logos/udemy.png",
     "categories": [
-      "online learning",
-      "courses",
-      "education"
+      "education",
+      "online-learning",
+      "courses"
     ],
     "features": [
       "Helps with online learning",
@@ -555,7 +583,8 @@
       "Helps with education"
     ],
     "tier": "paid",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "coursera",
@@ -564,9 +593,9 @@
     "url": "https://www.coursera.org/",
     "logo": "https://www.ikoconnect.com/images/logos/coursera.png",
     "categories": [
-      "online learning",
-      "courses",
-      "education"
+      "education",
+      "online-learning",
+      "courses"
     ],
     "features": [
       "Helps with online learning",
@@ -574,7 +603,8 @@
       "Helps with education"
     ],
     "tier": "paid",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "skillshare",
@@ -583,9 +613,9 @@
     "url": "https://www.skillshare.com/",
     "logo": "https://www.ikoconnect.com/images/logos/skillshare.png",
     "categories": [
-      "online learning",
-      "courses",
-      "education"
+      "education",
+      "online-learning",
+      "courses"
     ],
     "features": [
       "Helps with online learning",
@@ -593,7 +623,8 @@
       "Helps with education"
     ],
     "tier": "paid",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "shopify",
@@ -603,8 +634,8 @@
     "logo": "https://www.ikoconnect.com/images/logos/shopify.png",
     "categories": [
       "e-commerce",
-      "online store",
-      "business"
+      "business",
+      "online-store"
     ],
     "features": [
       "Helps with e-commerce",
@@ -612,7 +643,8 @@
       "Helps with business"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "woocommerce",
@@ -622,8 +654,8 @@
     "logo": "https://www.ikoconnect.com/images/logos/woocommerce.png",
     "categories": [
       "e-commerce",
-      "online store",
-      "wordpress"
+      "wordpress",
+      "online-store"
     ],
     "features": [
       "Helps with e-commerce",
@@ -631,7 +663,8 @@
       "Helps with wordpress"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "bigcommerce",
@@ -641,8 +674,8 @@
     "logo": "https://www.ikoconnect.com/images/logos/bigcommerce.png",
     "categories": [
       "e-commerce",
-      "online store",
-      "business"
+      "business",
+      "online-store"
     ],
     "features": [
       "Helps with e-commerce",
@@ -650,7 +683,8 @@
       "Helps with business"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   },
   {
     "id": "etsy",
@@ -660,8 +694,8 @@
     "logo": "https://www.ikoconnect.com/images/logos/etsy.png",
     "categories": [
       "e-commerce",
-      "handmade",
-      "vintage"
+      "vintage",
+      "handmade"
     ],
     "features": [
       "Helps with e-commerce",
@@ -669,6 +703,7 @@
       "Helps with vintage"
     ],
     "tier": "freemium",
-    "rating": 4.5
+    "rating": 4.5,
+    "cta": "Visit Site"
   }
 ]

@@ -1,48 +1,32 @@
 // src/lib/tools.ts
+import affiliateToolsData from "@/data/affiliateTools.json";
 
-// Овозможува import на JSON.
-// Во tsconfig.json мораш да имаш:
-// {
-//   "compilerOptions": {
-//     "resolveJsonModule": true,
-//     "esModuleInterop": true,
-//     …
-// }
-import raw from "../data/affiliateTools.json";
-
-export type Tier = "free" | "freemium" | "paid";
-
+// Ова е вашиот Tool интерфејс. Ја задржуваме union типизацијата за tier:
 export interface Tool {
-  id: string;                 // previously slugified name
+  id: string;
   name: string;
   description: string;
   url: string;
   logo?: string;
-
-  // New fields, matching the enriched JSON:
   categories: string[];
-  features: string[];
-  tier: Tier;
+  features?: string[];
+  tier: "free" | "freemium" | "paid"; // Union од овие три вредности
   rating?: number;
+  tags?: string[]; 
 }
 
-/**
- * Сега, бидејќи affiliateTools.json секој објект веќе има "id",
- * можеме едноставно да го типизираме raw како Tool[].
- */
-export const tools: Tool[] = raw as Tool[];
+// Оваа линија ќе го „фрли“ affiliateToolsData кон Tool[] и ќе го спречи
+// TypeScript да се жали дека фактулните JSON вредности (string) не се точни literal union:
+export const tools: Tool[] = affiliateToolsData as Tool[];
 
-/** Врати ја листата со сите алатки */
 export function getAllTools(): Tool[] {
   return tools;
 }
 
-/** За generateStaticParams: вратете list на id */
-export function getAllToolIds(): string[] {
-  return tools.map((t) => t.id);
-}
-
-/** Врати еден Tool по неговото id */
 export function getToolById(id: string): Tool | undefined {
   return tools.find((t) => t.id === id);
+}
+
+export function getAllToolIds(): string[] {
+  return tools.map((t) => t.id);
 }

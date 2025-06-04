@@ -1,31 +1,48 @@
-// /var/www/ikoconnect/src/app/layout.tsx
-import "@/styles/globals.css";
+// src/app/layout.tsx
+import "../styles/globals.css";
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Providers from "../components/Providers";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ClientOnly from "../components/ClientOnly";
+import Providers from "@/components/Providers";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import JSONLD from "@/components/JSONLD";
+import {
+  generateOrganizationJsonLD,
+  generateWebPageJsonLD,
+} from "@/lib/jsonldGenerator";
 
-export const metadata = {
-  metadataBase: new URL("https://ikoconnect.com"),
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "IkoConnect",
     template: "%s | IkoConnect",
   },
   description:
     "IkoConnect – your ultimate portal for remote work: tools, guides, and freelance jobs.",
+  keywords: [
+    "remote work",
+    "freelance jobs",
+    "tools for freelancers",
+    "blog",
+    "IkoConnect",
+  ],
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     title: "IkoConnect",
     description:
-      "Discover the best remote work tools, guides, and job listings for freelancers.",
-    url: "https://ikoconnect.com",
+      "IkoConnect – your ultimate portal for remote work: tools, guides, and freelance jobs.",
+    url: siteUrl,
     siteName: "IkoConnect",
     images: [
       {
-        url: "https://ikoconnect.com/og-default.png",
+        url: `${siteUrl}/og-default.png`,
         width: 1200,
         height: 630,
-        alt: "IkoConnect Logo",
+        alt: "IkoConnect – Remote Work Portal",
       },
     ],
     locale: "en_US",
@@ -35,31 +52,90 @@ export const metadata = {
     card: "summary_large_image",
     title: "IkoConnect",
     description:
-      "Discover the best remote work tools, guides, and job listings for freelancers.",
-    images: ["https://ikoconnect.com/og-default.png"],
-    site: "@ikoconnect",
+      "IkoConnect – your ultimate portal for remote work: tools, guides, and freelance jobs.",
+    creator: "@ikoconnect",
+    images: [`${siteUrl}/og-default.png`],
   },
-  robots: {
-    index: true,
-    follow: true,
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-touch-icon.png",
+    other: [
+      {
+        url: "/android-chrome-192x192.png",
+        type: "image/png",
+        sizes: "192x192",
+      },
+      {
+        url: "/android-chrome-512x512.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
   },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const orgJson = generateOrganizationJsonLD({
+    name: "IkoConnect",
+    url: siteUrl,
+    logoUrl: `${siteUrl}/android-chrome-512x512.png`,
+  });
+
+  const webJson = generateWebPageJsonLD({
+    name: "IkoConnect",
+    url: siteUrl,
+    description:
+      "IkoConnect – your ultimate portal for remote work: tools, guides, and freelance jobs.",
+  });
+
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
-      <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors">
-        <ClientOnly>
-          <Providers>
-            <Navbar />
+    <html lang="en" className="scroll-smooth bg-white dark:bg-gray-900">
+      <head>
+        {/* SEO & performance meta */}
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-            <main id="main-content" className="relative z-10 pt-24 overflow-x-hidden">
-              {children}
-            </main>
+        {/* Google Fonts */}
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+          rel="stylesheet"
+        />
 
-            <Footer />
-          </Providers>
-        </ClientOnly>
+        {/* JSON-LD structured data */}
+        <JSONLD data={orgJson} />
+        <JSONLD data={webJson} />
+
+        {/* Analytics – optional */}
+        {process.env.NEXT_PUBLIC_UMAMI_ID && (
+          <script
+            async
+            defer
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
+            src="https://umami.ikoconnect.com/umami.js"
+          ></script>
+        )}
+      </head>
+      <body className="flex flex-col min-h-screen antialiased text-gray-800 dark:text-gray-200">
+        <Providers>
+          <Navbar />
+          <main id="main-content" className="flex-1 pt-20">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

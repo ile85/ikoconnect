@@ -26,6 +26,7 @@ export default function Navbar() {
     { href: "/blog", label: "Blog" },
     { href: "/jobs", label: "Jobs" },
     { href: "/community", label: "Community" },
+    { href: "/media-kit", label: "Media Kit" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];

@@ -1,4 +1,4 @@
-// /var/www/ikoconnect/src/app/page.tsx
+// src/app/page.tsx
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import FeatureCards from "@/components/FeatureCards";
@@ -10,41 +10,71 @@ import { getAllPosts, PostSummary } from "@/lib/blog";
 import { generateOrganizationJsonLD } from "@/lib/jsonldGenerator";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "IkoConnect – Empowering Freelancers to Work Smarter",
-  description: "Discover tools, jobs & guides to boost your remote workflow.",
-  openGraph: {
-    title: "IkoConnect – Freelance Tools & Jobs",
-    description: "Explore the top remote tools, freelance jobs, and tips.",
-    url: "https://ikoconnect.com",
-    images: [{ url: "/images/og-home.png" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "IkoConnect – Remote Work Tools",
-    description: "Freelance smarter with curated resources and guides.",
-    images: ["/images/og-home.png"],
-  },
-};
+interface HomePageProps {}
 
-export default function HomePage() {
-  // Fetch data
-  const recommendations = getAllRecommendations();
-  const allPosts: PostSummary[] = getAllPosts();
-  const posts = allPosts.slice(0, 4); // Show exactly 4 posts now
+// Dynamic Metadata (Next.js 15+)
+export async function generateMetadata(): Promise<Metadata> {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
+  const title = "IkoConnect – Empowering Freelancers to Work Smarter";
+  const description = "Discover tools, jobs & guides to boost your remote workflow.";
+
+  const orgJson = generateOrganizationJsonLD({
+    name: "IkoConnect",
+    url: siteUrl,
+    logoUrl: `${siteUrl}/images/logos/default.png`,
+  });
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: "IkoConnect – Freelance Tools & Jobs",
+      description: "Explore the top remote tools, freelance jobs, and tips.",
+      url: siteUrl,
+      images: [
+        {
+          url: `${siteUrl}/images/og-home.png`,
+          width: 1200,
+          height: 630,
+          alt: "IkoConnect Home OG",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "IkoConnect – Remote Work Tools",
+      description: "Freelance smarter with curated resources and guides.",
+      images: [`${siteUrl}/images/og-home.png`],
+    },
+    // Include JSON-LD for Organization as part of metadata’s scripts if desired:
+    // No direct “script” property here—Next.js injects JSON-LD via component below.
+  };
+}
+
+export default async function HomePage({}: HomePageProps) {
+  // 🌐 Асинхронно fetch-ирање пред рендер:
+  const recommendations = await getAllRecommendations();
+  const allPosts: PostSummary[] = await getAllPosts();
+  const posts = allPosts.slice(0, 4); // флексибилно – show top 4
+
+  // JSON-LD за Organization (пуштаме низ body, може и во <head> преку layout)
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
   const jsonld = generateOrganizationJsonLD({
     name: "IkoConnect",
-    url: "https://ikoconnect.com",
-    logoUrl: "https://ikoconnect.com/images/logos/default.png",
+    url: siteUrl,
+    logoUrl: `${siteUrl}/images/logos/default.png`,
   });
 
   return (
     <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-      {/* JSON-LD for Organization */}
+      {/* JSON-LD for Org */}
       <JSONLD data={jsonld} />
 
       {/* HERO SECTION */}
-      <Hero />
+      <section className="py-20">
+        <Hero />
+      </section>
 
       {/* FEATURE CARDS */}
       <section className="py-24 bg-white dark:bg-gray-900">
@@ -64,7 +94,7 @@ export default function HomePage() {
             >
               <Link href={`/blog/${post.slug}`} className="group block flex-1">
                 <div className="flex flex-col h-full">
-                  {/* ICON / IMAGE CONTAINER – make it larger so icons display */}
+                  {/* ICON / IMAGE CONTAINER */}
                   <div className="w-full h-32 sm:h-40 bg-gray-100 flex items-center justify-center overflow-hidden rounded-md mb-4">
                     <img
                       alt={post.title}

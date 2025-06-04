@@ -5,6 +5,7 @@ export function generateWebPageJsonLD({
   name,
   description,
   dateModified,
+  
 }: {
   url: string;
   name: string;
@@ -28,6 +29,7 @@ export function generateBlogPostJsonLD({
   authorName,
   datePublished,
   dateModified,
+  image,
 }: {
   url: string;
   title: string;
@@ -35,6 +37,7 @@ export function generateBlogPostJsonLD({
   authorName: string;
   datePublished: string;
   dateModified?: string;
+  image?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -55,10 +58,12 @@ export function generateOrganizationJsonLD({
   name,
   url,
   logoUrl,
+  sameAs,       // ← allow passing sameAs[]
 }: {
   name: string;
   url: string;
   logoUrl: string;
+  sameAs?: string[];  // ← add sameAs to the type
 }) {
   return {
     "@context": "https://schema.org",
@@ -69,8 +74,10 @@ export function generateOrganizationJsonLD({
       "@type": "ImageObject",
       url: logoUrl,
     },
+    ...(sameAs && { sameAs }),  // ← include sameAs if it exists
   };
 }
+
 export function generateJobPostingJsonLD({
   title,
   description,
@@ -118,10 +125,16 @@ export function generateJobPostingJsonLD({
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        ...(jobLocation.address.streetAddress && { streetAddress: jobLocation.address.streetAddress }),
+        ...(jobLocation.address.streetAddress && {
+          streetAddress: jobLocation.address.streetAddress,
+        }),
         addressLocality: jobLocation.address.addressLocality,
-        ...(jobLocation.address.addressRegion && { addressRegion: jobLocation.address.addressRegion }),
-        ...(jobLocation.address.postalCode && { postalCode: jobLocation.address.postalCode }),
+        ...(jobLocation.address.addressRegion && {
+          addressRegion: jobLocation.address.addressRegion,
+        }),
+        ...(jobLocation.address.postalCode && {
+          postalCode: jobLocation.address.postalCode,
+        }),
         addressCountry: jobLocation.address.addressCountry,
       },
     },
