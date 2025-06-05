@@ -20,6 +20,9 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
+    "@headlessui/react": "^2.2.4",
+    "@heroicons/react": "^2.2.0",
     "@svgr/webpack": "^8.1.0",
     "@types/mongoose": "^5.11.96",
     "@vercel/og": "^0.6.8",
@@ -34,6 +37,7 @@
     "marked": "^15.0.11",
     "mongoose": "^8.15.0",
     "next": "^15.3.3",
+    "next-mdx-remote": "^5.0.0",
     "next-pwa": "^5.6.0",
     "next-themes": "^0.4.6",
     "node-fetch": "^2.7.0",
@@ -52,6 +56,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.28.0",
     "@next/bundle-analyzer": "^15.3.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
@@ -73,19 +78,23 @@
     "@types/postcss-import": "^14.0.3",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
+    "eslint": "^9.28.0",
     "eslint-config-next": "15.3.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-next": "^0.0.0",
+    "globals": "^16.2.0",
     "globby": "^14.1.0",
     "jsdom": "^26.1.0",
     "madge": "^8.0.0",
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.17",
     "ts-node": "^10.9.2",
     "ts-prune": "^0.10.3",
-    "typescript": "^5.8.3",
-    "prettier": "^3.2.5",
-    "eslint-config-prettier": "^9.1.0"
+    "typescript": "^5.8.3"
   }
 }

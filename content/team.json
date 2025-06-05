@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Ile",
+    "role": "Founder & Designer",
+    "bio": "Hey, I’m Ile – I’ve been hustling in the freelance design world since 2019. I’ve built brand identities for 50+ startups and now I’m on a mission to help fellow nomads and side-hustlers find their perfect toolkit.",
+    "photoUrl": "/images/team/ile.jpg",
+    "twitter": "https://x.com/DimeskiIlco",
+    "linkedin": "https://www.linkedin.com/in/ilcho-dimeski-7893b7114"
+  },
+  {
+    "id": 2,
+    "name": "Sara Nakamura",
+    "role": "Content Lead",
+    "bio": "What’s up? I’m Sara. Before joining IkoConnect, I ran content at a remote-first SaaS for two years. Now I craft in-depth reviews and guides that actually help you pick the right tools (not just fluff).",
+    "photoUrl": "/images/team/sara.jpg",
+    "twitter": "https://x.com/saranakamura",
+    "linkedin": "https://www.linkedin.com/in/saranakamura"
+  },
+  {
+    "id": 3,
+    "name": "Thiago Gomes",
+    "role": "Full-Stack Dev",
+    "bio": "Oi! I’m Thiago, I build everything under the hood. From our fast Next.js setup to custom API routes for that slick blog generation—if it’s code-related, I’m on it.",
+    "photoUrl": "/images/team/thiago.jpg",
+    "twitter": "https://x.com/thiagogomes",
+    "linkedin": "https://www.linkedin.com/in/thiagogomes"
+  }
+]

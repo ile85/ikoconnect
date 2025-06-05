@@ -174,4 +174,4 @@ No credit card required. Cancel anytime.
 📚 Looking for other tools like AWeber?  
 Check out our curated [Resources page](/resources) for more email, SEO, and freelance tools!
 
-![AWeber Dashboard Screenshot](https://www.ikoconnect.com/images/blog/aweber-example.png)
+![AWeber Dashboard Screenshot](https://www.ikoconnect.com/images/logos/aweber.png)

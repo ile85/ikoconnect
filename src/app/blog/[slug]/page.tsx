@@ -9,6 +9,8 @@ import Image from "next/image";
 import CopyButton from "../../../components/CopyButton";
 import JSONLD from "../../../components/JSONLD";
 import { generateBlogPostJsonLD } from "../../../lib/jsonldGenerator";
+import BlogComments from "@/components/BlogComments";
+import { MDXRemote } from "next-mdx-remote";
 
 interface PageParams {
   params: { slug: string };
@@ -55,7 +57,8 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 }
 
 export default async function BlogPost({ params }: PageParams) {
-  const post = await getPostHtmlBySlug(params.slug);
+  const slug = params.slug;
+  const post = await getPostHtmlBySlug(slug);
   if (!post) return notFound();
 
   const { title, html, date, tags, author, coverImage, description } = post;
@@ -64,7 +67,7 @@ export default async function BlogPost({ params }: PageParams) {
   // Compute reading time (200 wpm)
   const readingTime = Math.ceil(html.split(" ").length / 200);
 
-  // Find related tools whose categories overlap with post tags (case-insensitive)
+  // Find related tools whose categories overlap with post tags
   const relatedTools: Tool[] = allTools.filter((tool) =>
     tool.categories.some((toolCategory: string) =>
       tags.some((postTag: string) => toolCategory.toLowerCase() === postTag.toLowerCase())
@@ -72,13 +75,15 @@ export default async function BlogPost({ params }: PageParams) {
   );
 
   const jsonldData = generateBlogPostJsonLD({
-    url: `https://www.ikoconnect.com/blog/${params.slug}`,
+    url: `https://www.ikoconnect.com/blog/${slug}`,
     title,
     description,
     authorName: author || "IkoConnect Team",
     datePublished: date,
     dateModified: date,
-    image: coverImage?.startsWith("http") ? coverImage : `/blog/${params.slug}/og.png`,
+    image: coverImage?.startsWith("http")
+      ? coverImage
+      : `/blog/${slug}/og.png`,
   });
 
   // Tag color map
@@ -98,21 +103,28 @@ export default async function BlogPost({ params }: PageParams) {
       <JSONLD data={jsonldData} />
 
       {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500">
-        <Link href="/" className="hover:underline">
-          Home
-        </Link>{" "}
-        /{" "}
-        <Link href="/blog" className="hover:underline">
-          Blog
-        </Link>{" "}
-        / <span className="text-gray-700">{title}</span>
+      <nav className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+        <ol className="flex space-x-2">
+          <li>
+            <Link href="/" className="hover:underline">
+              Home
+            </Link>
+          </li>
+          <li>›</li>
+          <li>
+            <Link href="/blog" className="hover:underline">
+              Blog
+            </Link>
+          </li>
+          <li>›</li>
+          <li className="font-semibold text-gray-800 dark:text-gray-200">{title}</li>
+        </ol>
       </nav>
 
       {/* Title & Meta */}
       <header className="space-y-4">
         <h1 className="text-4xl font-extrabold text-[#00957F]">{title}</h1>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
           <div className="flex items-center gap-2">
             <Image
               src="/images/ikoconnect-square.png"
@@ -180,6 +192,9 @@ export default async function BlogPost({ params }: PageParams) {
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
+      {/* Giscus Comments */}
+      <BlogComments urlPath={`/blog/${slug}`} />
+
       {/* Share Buttons */}
       <div className="flex flex-wrap items-center gap-4 mt-8">
         <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">
@@ -187,15 +202,17 @@ export default async function BlogPost({ params }: PageParams) {
         </span>
         {[
           {
-            href: `https://twitter.com/intent/tweet?url=https://www.ikoconnect.com/blog/${params.slug}&text=${encodeURIComponent(title)}`,
+            href: `https://twitter.com/intent/tweet?url=https://www.ikoconnect.com/blog/${slug}&text=${encodeURIComponent(
+              title
+            )}`,
             label: "Twitter (X)",
           },
           {
-            href: `https://www.linkedin.com/sharing/share-offsite/?url=https://www.ikoconnect.com/blog/${params.slug}`,
+            href: `https://www.linkedin.com/sharing/share-offsite/?url=https://www.ikoconnect.com/blog/${slug}`,
             label: "LinkedIn",
           },
           {
-            href: `https://www.facebook.com/sharer/sharer.php?u=https://www.ikoconnect.com/blog/${params.slug}`,
+            href: `https://www.facebook.com/sharer/sharer.php?u=https://www.ikoconnect.com/blog/${slug}`,
             label: "Facebook",
           },
         ].map((btn) => (
@@ -209,69 +226,70 @@ export default async function BlogPost({ params }: PageParams) {
             {btn.label}
           </a>
         ))}
-        <CopyButton text={`https://www.ikoconnect.com/blog/${params.slug}`} />
+        <CopyButton text={`https://www.ikoconnect.com/blog/${slug}`} />
       </div>
 
       {/* Related Tools */}
-{relatedTools.length > 0 && (
-  <section className="mt-12 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl p-8 shadow-xl">
-    <h3 className="text-3xl font-extrabold text-center text-gray-900 dark:text-white mb-8">
-      🔧 Related Tools You’ll Love
-    </h3>
+      {relatedTools.length > 0 && (
+        <section className="mt-12 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl p-8 shadow-xl">
+          <h3 className="text-3xl font-extrabold text-center text-gray-900 dark:text-white mb-8">
+            🔧 Related Tools You’ll Love
+          </h3>
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {relatedTools.map((tool) => (
-        <li
-          key={tool.id}
-          className="border border-gray-200 dark:border-gray-700 rounded-xl p-5 shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all bg-white dark:bg-gray-800 flex items-start gap-4"
-        >
-          {/* Logo */}
-          <div className="w-12 h-12 flex-shrink-0">
-            <Image
-              src={tool.logo || "/images/logos/default.png"}
-              alt={`${tool.name} logo`}
-              width={48}
-              height={48}
-              className="rounded-md"
-            />
-          </div>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {relatedTools.map((tool) => (
+              <li
+                key={tool.id}
+                className="border border-gray-200 dark:border-gray-700 rounded-xl p-5 shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all bg-white dark:bg-gray-800 flex items-start gap-4"
+              >
+                {/* Logo */}
+                <div className="w-12 h-12 flex-shrink-0">
+                  <Image
+                    src={tool.logo || "/images/logos/default.png"}
+                    alt={`${tool.name} logo`}
+                    width={48}
+                    height={48}
+                    className="rounded-md"
+                  />
+                </div>
 
-          {/* Text */}
-          <div className="flex-1">
-            <Link
-              href={`/api/redirect-tools/${tool.id}`}
-              className="block hover:underline"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              <h4 className="text-xl font-semibold text-[#00957F] mb-1">
-                {tool.name}
-              </h4>
-            </Link>
-            <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              {tool.description}
-            </p>
+                {/* Text */}
+                <div className="flex-1">
+                  <Link
+                    href={`/api/redirect-tools/${tool.id}`}
+                    className="block hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                  >
+                    <h4 className="text-xl font-semibold text-[#00957F] mb-1">
+                      {tool.name}
+                    </h4>
+                  </Link>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                    {tool.description}
+                  </p>
 
-            {/* Optional: Show first tag */}
-            {tool.categories?.length > 0 && (
-              <span className="inline-block text-xs bg-[#00957F]/10 text-[#00957F] px-3 py-1 rounded-full font-medium">
-                #{tool.categories[0]}
-              </span>
-            )}
-          </div>
-        </li>
-      ))}
-    </ul>
-  </section>
-)}
-
-
+                  {/* Optional: Show first tag */}
+                  {tool.categories?.length > 0 && (
+                    <span className="inline-block text-xs bg-[#00957F]/10 text-[#00957F] px-3 py-1 rounded-full font-medium">
+                      #{tool.categories[0]}
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* Newsletter CTA */}
       <section className="bg-[#00957F] text-white rounded-lg p-8 mt-16 text-center shadow-lg">
-        <h3 className="text-2xl font-bold mb-2">Do you want more articles like this?</h3>
+        <h3 className="text-2xl font-bold mb-2">
+          Do you want more articles like this?
+        </h3>
         <p className="mb-4">
-          Join our newsletter and receive the latest tips, tools, and remote job offers.
+          Join our newsletter and receive the latest tips, tools, and remote job
+          offers.
         </p>
         <Link
           href="/newsletter"

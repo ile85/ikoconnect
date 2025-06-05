@@ -227,4 +227,4 @@ No experience needed. Get started in 2 minutes. Free & Pro options available.
 
 🔗 Also check out our [Resources](/resources) and [Blog](/blog) for more visual tools!
 
-![Canva social media editor UI](https://www.ikoconnect.com/images/blog/canva-preview.png)
+![Canva social media editor UI](https://www.ikoconnect.com/images/logos/canva.png)

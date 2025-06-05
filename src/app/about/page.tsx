@@ -1,29 +1,57 @@
+// File: /var/www/ikoconnect/src/app/about/page.tsx
+
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import JSONLD from "@/components/JSONLD";
 import PageWrapper from "@/components/PageWrapper";
+import Team from "@/components/Team";
 
 export const metadata: Metadata = {
   title: "About IkoConnect",
   description:
     "IkoConnect is your remote work ally — built to empower freelancers with curated tools, job resources, and actionable strategies.",
+  openGraph: {
+    title: "About IkoConnect",
+    description:
+      "IkoConnect is your remote work ally — built to empower freelancers with curated tools, job resources, and actionable strategies.",
+    url: "https://ikoconnect.com/about",
+    siteName: "IkoConnect",
+    images: [
+      {
+        url: "https://ikoconnect.com/images/social/about-og.png",
+        width: 1200,
+        height: 630,
+        alt: "About IkoConnect",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About IkoConnect",
+    description:
+      "IkoConnect is your remote work ally — built to empower freelancers with curated tools, job resources, and actionable strategies.",
+    images: ["https://ikoconnect.com/images/social/about-og.png"],
+  },
 };
 
 const jsonldData = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "About IkoConnect",
-  "url": "https://ikoconnect.com/about",
-  "description": metadata.description,
+  name: "About IkoConnect",
+  url: "https://ikoconnect.com/about",
+  description: metadata.description,
 };
 
 export default function AboutPage() {
   return (
     <>
+      {/* JSON-LD structured data for SEO */}
       <JSONLD data={jsonldData} />
 
-      {/* HERO SECTION - full width */}
+      {/* HERO SECTION */}
       <section>
         <div className="max-w-screen-lg mx-auto px-4 mt-32 mb-16">
           <div className="tilt-wrapper">
@@ -40,7 +68,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION: Slogan + Blob Video */}
+      {/* SLOGAN + BLOB VIDEO */}
       <PageWrapper className="py-20">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="flex-shrink-0 tilt-wrapper">
@@ -99,6 +127,11 @@ export default function AboutPage() {
         </div>
       </PageWrapper>
 
+      {/* TEAM SECTION */}
+      <PageWrapper>
+        <Team />
+      </PageWrapper>
+
       {/* TIMELINE */}
       <PageWrapper className="bg-[#FAFAFA] dark:bg-gray-800 rounded-2xl">
         <div className="max-w-3xl mx-auto text-center space-y-12">
@@ -138,9 +171,9 @@ export default function AboutPage() {
       <PageWrapper className="text-center bg-white dark:bg-gray-900 rounded-2xl p-12">
         <h2 className="text-3xl font-bold mb-4">🧑‍💻 Meet the Creator</h2>
         <p className="text-gray-700 dark:text-gray-300">
-          Hi, I’m <strong>Ilcho Dimeski</strong>, based in Germany — a
-          developer, affiliate marketer, and digital nomad who believes
-          freelancers deserve better tools and resources.
+          Hi, I’m <strong>Ilcho Dimeski</strong>, based in Germany — a developer,
+          affiliate marketer, and digital nomad who believes freelancers deserve
+          better tools and resources.
         </p>
         <p className="mt-4 text-gray-700 dark:text-gray-300">
           IkoConnect is 100% solo-built — crafted with love, late nights,

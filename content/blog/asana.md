@@ -190,4 +190,4 @@ No credit card needed. Cancel anytime.
 Looking for more productivity tools like this?  
 Explore our full list on the [Resources page](/resources).
 
-![Asana interface](https://www.ikoconnect.com/images/blog/asana-example.png)
+![Asana interface](https://www.ikoconnect.com/images/logos/asana.png)

@@ -112,15 +112,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <JSONLD data={orgJson} />
         <JSONLD data={webJson} />
 
-        {/* Analytics – optional */}
-        {process.env.NEXT_PUBLIC_UMAMI_ID && (
-          <script
-            async
-            defer
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
-            src="https://umami.ikoconnect.com/umami.js"
-          ></script>
-        )}
+        {/* Google reCAPTCHA */}
+        <script
+          src="https://www.google.com/recaptcha/api.js?render=explicit"
+          async
+          defer
+        ></script>
       </head>
       <body className="flex flex-col min-h-screen antialiased text-gray-800 dark:text-gray-200">
         <Providers>

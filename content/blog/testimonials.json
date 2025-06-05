@@ -1,0 +1,43 @@
+
+[
+  {
+    "id": 1,
+    "name": "Nina Kovačević",
+    "role": "UI/UX Designer",
+    "company": "PixelCraft Studio",
+    "photoUrl": "/images/testimonials/nina.jpg",
+    "quote": "IkoConnect’s curated tool lists helped me cut my design workflow time in half. Absolutely a game-changer!"
+  },
+  {
+    "id": 2,
+    "name": "Carlos Mendoza",
+    "role": "Full-Stack Developer",
+    "company": "DevWave Co.",
+    "photoUrl": "/images/testimonials/carlos.jpg",
+    "quote": "Thanks to IkoConnect, I discovered the perfect stack for my freelance gigs. My earnings increased by 40% in just two months!"
+  },
+  {
+    "id": 3,
+    "name": "Priya Sharma",
+    "role": "Content Strategist",
+    "company": "MediaPulse",
+    "photoUrl": "/images/testimonials/priya.jpg",
+    "quote": "Their in-depth reviews and honest opinions saved me hours of research. I know I can trust their recommendations 100%."
+  },
+  {
+    "id": 4,
+    "name": "Liam O’Connor",
+    "role": "Remote Project Manager",
+    "company": "CloudBridge Solutions",
+    "photoUrl": "/images/testimonials/liam.jpg",
+    "quote": "IkoConnect helped me find the perfect project management tool for my distributed team. Collaboration has never been smoother."
+  },
+  {
+    "id": 5,
+    "name": "Amina Diouf",
+    "role": "Digital Marketer",
+    "company": "RiseUp Agency",
+    "photoUrl": "/images/testimonials/amina.jpg",
+    "quote": "Their recommendations for SEO and analytics tools skyrocketed my client traffic. I can’t recommend IkoConnect enough!"
+  }
+]

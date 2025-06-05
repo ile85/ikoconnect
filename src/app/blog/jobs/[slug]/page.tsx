@@ -1,10 +1,11 @@
+// /var/www/ikoconnect/src/app/blog/jobs/[slug]/page.tsx
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { marked } from "marked";
-// import { readFileAsUTF8 } from "/lib/readFileUTF8";
+import Link from "next/link"; // ← Added for breadcrumb links
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = getJobPostBySlug(params.slug);
@@ -42,6 +43,25 @@ export default function JobPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <section className="max-w-3xl mx-auto px-4 py-16">
+      {/* ─────────── Breadcrumb ─────────── */}
+      <nav aria-label="Breadcrumb" className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+        <ol className="flex space-x-2">
+          <li>
+            <Link href="/" className="hover:underline">
+              Home
+            </Link>
+          </li>
+          <li>›</li>
+          <li>
+            <Link href="/blog/jobs" className="hover:underline">
+              Jobs
+            </Link>
+          </li>
+          <li>›</li>
+          <li className="font-semibold">{post.data.title}</li>
+        </ol>
+      </nav>
+
       <h1 className="text-4xl font-bold mb-4">{post.data.title}</h1>
       <div className="text-gray-600 mb-6">
         <p>{post.data.date?.slice(0, 10)}</p>
@@ -52,7 +72,10 @@ export default function JobPostPage({ params }: { params: { slug: string } }) {
         <img src={post.data.coverImage} alt="Cover" className="mb-8 rounded-lg shadow" />
       )}
 
-      <article className="prose dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <article
+        className="prose dark:prose-invert max-w-none"
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+      />
     </section>
   );
 }

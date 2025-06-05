@@ -163,4 +163,4 @@ No credit card. Cancel anytime. No pressure.
 
 💡 Bonus: Check out our [Resources page](/resources) for other top marketing tools!
 
-![Buffer UI Screenshot](https://www.ikoconnect.com/images/blog/buffer-preview.png)
+![Buffer UI Screenshot](https://www.ikoconnect.com/images/logos/buffer.png)

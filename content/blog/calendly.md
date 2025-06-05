@@ -155,4 +155,4 @@ No credit card. Cancel anytime. Automate your calendar today.
 
 🛠️ Want more tools like this? Check out our [Resources](/resources) and [Blog](/blog) for tutorials, tips, and comparisons.
 
-![Calendly dashboard screenshot](https://www.ikoconnect.com/images/blog/calendly-preview.png)
+![Calendly dashboard screenshot](https://www.ikoconnect.com/images/logos/calendly.png)

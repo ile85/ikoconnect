@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "question": "How often is the content on IkoConnect updated?",
+    "answer": "We refresh our tool reviews and resources at least once every quarter. For high-impact tools—like Canva or Slack—we revisit them monthly to reflect the latest features and UI changes. Every page shows a 'Last Updated' date at the top so you always know how fresh the info is."
+  },
+  {
+    "id": 2,
+    "question": "Are all links on IkoConnect affiliate links?",
+    "answer": "Most of the tool recommendations include affiliate links, which means we may earn a small commission if you make a purchase at no extra cost to you. We only partner with tools we genuinely use and trust. For transparency, every review page has an 'Affiliate Disclosure' section at the top. If a link is not an affiliate link, we explicitly note it in the review."
+  },
+  {
+    "id": 3,
+    "question": "How do I contact the IkoConnect team for collaborations or support?",
+    "answer": "You can reach out via our Contact page at '/contact', where there’s a form to send us a message directly. We aim to reply to all inquiries within 48 hours. For press or partnership requests, use the email address listed at the bottom of our Media Kit page."
+  },
+  {
+    "id": 4,
+    "question": "Can I request a tool review or suggest a resource?",
+    "answer": "Absolutely! We welcome suggestions. Visit our 'Suggest a Tool' form under '/contact' and submit any tool or resource that you think the community should know about. Our Content Lead, Sara Nakamura, reviews submissions weekly and will update you if we plan to cover it."
+  },
+  {
+    "id": 5,
+    "question": "Do you accept sponsored posts or paid reviews?",
+    "answer": "Yes, we do consider sponsored content, but only if the tool or service aligns with our mission to support remote workers and freelancers. Our sponsored posts are clearly labeled at the top of the article. To inquire about sponsorships, please email us at 'sponsorships@ikoconnect.com' with details about your service."
+  },
+  {
+    "id": 6,
+    "question": "Is my personal data safe on IkoConnect?",
+    "answer": "We take your privacy seriously. Our Privacy Policy (linked in the footer) outlines how we collect and store data, including analytics and newsletter signup info. We use Google Analytics for site performance tracking, and we never sell your data to third parties. If you have any data-related concerns, you can request deletion by emailing 'privacy@ikoconnect.com'."
+  },
+  {
+    "id": 7,
+    "question": "How can I subscribe to your newsletter?",
+    "answer": "Click the 'Newsletter' link in the main navigation or visit '/newsletter' directly. Enter your email address, and you’ll receive a confirmation prompt. We send out a weekly roundup of new blog posts, exclusive how-tos, and curated tool recommendations. No spam, promise."
+  },
+  {
+    "id": 8,
+    "question": "Do you have a way for community discussions?",
+    "answer": "Yes! We’ve set up a Discord server for IkoConnect users. Click 'Community' in the main menu to join. It’s a place to ask questions, share your freelance wins, or get help troubleshooting tools. We also moderate it to keep spam out and ensure productive conversations."
+  }
+,
+{
+  "id": 9,
+  "question": "Can I contribute content to IkoConnect?",
+  "answer": "We love community contributions! If you’re a remote worker or freelancer with expertise to share, check out our 'Write for Us' page under '/contact'. We accept guest posts, tool reviews, and how-to guides. Just follow the submission guidelines there, and our Content Lead will get back to you within a week."
+}
+,
+{
+  "id": 10,
+  "question": "Do you have a mobile app?",
+  "answer": "Currently, we do not have a dedicated mobile app for IkoConnect. However, our website is fully responsive and optimized for mobile use. You can access all our content seamlessly on your smartphone or tablet. We’re exploring the possibility of a mobile app in the future based on user demand."
+  } 
+,
+{
+  "id": 11,
+  "question": "What is the best way to search for specific tools or resources on IkoConnect?",
+  "answer": "You can use the search bar located at the top right corner of every page. Just type in keywords related to the tool or resource you’re looking for, and it will show you relevant articles, reviews, and guides. You can also browse by category from the main menu to find tools grouped by function."
+}
+,
+{
+  "id": 12,
+  "question": "Do you have a referral program?",
+  "answer": "Yes, we do! If you refer a friend to IkoConnect and they sign up for our newsletter, you both receive a free eBook on 'Top 10 Tools for Remote Work'. You can find your unique referral link in your account settings under 'Referral Program'. Share it on social media or directly with friends to start earning rewards!"
+}
+]

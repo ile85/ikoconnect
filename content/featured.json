@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "TechCrunch",
+    "logoUrl": "/images/featured/techcrunch.svg",
+    "link": "https://techcrunch.com/"
+  },
+  {
+    "id": 2,
+    "name": "Forbes",
+    "logoUrl": "/images/featured/forbes.svg",
+    "link": "https://www.forbes.com/"
+  },
+  {
+    "id": 3,
+    "name": "Entrepreneur",
+    "logoUrl": "/images/featured/entrepreneur.svg",
+    "link": "https://www.entrepreneur.com/"
+  },
+  {
+    "id": 4,
+    "name": "Wired",
+    "logoUrl": "/images/featured/wired.svg",
+    "link": "https://www.wired.com/"
+  },
+  {
+    "id": 5,
+    "name": "Inc.",
+    "logoUrl": "/images/featured/inc.svg",
+    "link": "https://www.inc.com/"
+  }
+]

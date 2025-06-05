@@ -199,4 +199,4 @@ If you’re tired of managing spreadsheets that break or apps that don’t sync 
 
 Want more productivity tool breakdowns? Check out our full [Resources page](/resources) on IkoConnect!
 
-![Airtable in action](https://www.ikoconnect.com/images/blog/airtable-example.png)
+![Airtable in action](https://www.ikoconnect.com/images/logos/airtable.png)

@@ -2,8 +2,10 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import FeatureCards from "@/components/FeatureCards";
+import Testimonials from "@/components/Testimonials";
 import RecommendationsClient from "@/components/RecommendationsClient";
 import FeaturedJobs from "@/components/FeaturedJobs";
+import FeaturedIn from "@/components/FeaturedIn";
 import JSONLD from "@/components/JSONLD";
 import { getAllRecommendations } from "@/lib/recommendations";
 import { getAllPosts, PostSummary } from "@/lib/blog";
@@ -135,6 +137,20 @@ export default async function HomePage({}: HomePageProps) {
             Curated tools to level up your freelance workflow — productivity, automation, writing & more.
           </p>
           <RecommendationsClient items={recommendations} />
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-gray-50 dark:bg-gray-800 py-20">
+        <div className="max-w-screen-lg mx-auto px-4 sm:px-6">
+          <Testimonials />
+        </div>
+      </section>
+
+      {/* AS SEEN ON / FEATURED IN */}
+      <section className="bg-gray-100 dark:bg-gray-800 py-20">
+        <div className="max-w-screen-lg mx-auto px-4 sm:px-6">
+          <FeaturedIn />
         </div>
       </section>
 

@@ -181,4 +181,4 @@ No credit card required. Cancel anytime.
 
 🧰 Check more store-building tools on our [Resources page](/resources) or explore side-by-side comparisons on our [Blog](/blog)!
 
-![BigCommerce dashboard preview](https://www.ikoconnect.com/images/blog/bigcommerce-preview.png)
+![BigCommerce dashboard preview](https://www.ikoconnect.com/images/logos/bigcommerce.png)

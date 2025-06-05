@@ -199,4 +199,4 @@ No time limits, no ads, no credit card needed.
 📚 Want to explore other tools?  
 Check out our full [Resources page](/resources) for top project management and collaboration apps!
 
-![Basecamp Screenshot](https://www.ikoconnect.com/images/blog/basecamp-preview.png)
+![Basecamp Screenshot](https://www.ikoconnect.com/images/logos/basecamp.png)
