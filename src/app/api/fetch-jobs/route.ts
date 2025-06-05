@@ -66,5 +66,6 @@ export async function GET() {
     }))
   );
 
-  return NextResponse.json(jobs);
+  return NextResponse.json(jobs, { status: 200 });
+
 }
