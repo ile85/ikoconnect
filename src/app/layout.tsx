@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import "../styles/globals.css";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
@@ -12,6 +13,11 @@ import {
 } from "@/lib/jsonldGenerator";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "800"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -94,27 +100,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   });
 
   return (
-    <html lang="en" className="scroll-smooth bg-white dark:bg-gray-900">
+    <html lang="en" className={`${inter.className} scroll-smooth bg-white dark:bg-gray-900`}>
       <head>
         {/* SEO & performance meta */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* Google Fonts */}
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-          rel="stylesheet"
-        />
+        {/* Google Fonts handled via next/font */}
 
         {/* JSON-LD structured data */}
         <JSONLD data={orgJson} />
