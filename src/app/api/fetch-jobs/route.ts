@@ -27,7 +27,8 @@ async function translateDescription(raw: string): Promise<string> {
 }
 
 export async function GET() {
-  let jobsData: any[];
+  try {
+    let jobsData: any[];
 
   // 1) обиди од remotive.com
   try {
@@ -49,10 +50,10 @@ export async function GET() {
   }
 
   // 3) map + превод на description
-  const jobs = await Promise.all(
-    jobsData.map(async (j: any) => ({
-      id: j.id.toString(),
-      title: j.title ?? "Untitled Job",
+    const jobs = await Promise.all(
+      jobsData.map(async (j: any) => ({
+        id: j.id.toString(),
+        title: j.title ?? "Untitled Job",
       company_name: j.company_name ?? "Unknown Company",
       candidate_required_location: j.candidate_required_location ?? "Remote",
       job_type: j.job_type ?? "Full-time",
@@ -63,8 +64,15 @@ export async function GET() {
       company_logo: j.company_logo_url ?? j.company_logo,
       description: await translateDescription(j.description ?? ""),
       tags: j.tags ?? [],
-    }))
-  );
+      }))
+    );
 
-  return NextResponse.json(jobs);
+    return NextResponse.json({ status: 200 }, { status: 200 });
+  } catch (err: any) {
+    console.error("Failed to fetch jobs:", err);
+    return NextResponse.json(
+      { status: 500, error: err.message ?? "Unknown error" },
+      { status: 500 }
+    );
+  }
 }

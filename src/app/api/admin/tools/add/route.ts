@@ -32,8 +32,8 @@ export async function POST(req: Request) {
       console.warn("⚠️ OG image generation failed:", ogErr);
     }
 
-    return NextResponse.json({ message: "Tool saved successfully ✅" });
+    return NextResponse.json({ status: 200 }, { status: 200 });
   } catch (err: any) {
-    return NextResponse.json({ error: "Internal server error", details: err.message }, { status: 500 });
+    return NextResponse.json({ status: 500, error: err.message }, { status: 500 });
   }
 }
