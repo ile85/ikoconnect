@@ -10,17 +10,17 @@ export async function GET() {
     exec(`node "${scriptPath}"`, (error, stdout, stderr) => {
       if (error) {
         console.error("❌ Error running update-jobs.js:", stderr);
-        resolve(
-          NextResponse.json(
-            { error: "Failed to update jobs.", details: stderr },
-            { status: 500 }
-          )
-        );
+      resolve(
+        NextResponse.json(
+          { status: 500, error: stderr || "Failed to update jobs." },
+          { status: 500 }
+        )
+      );
         return;
       }
 
       console.log("✅ Job update log:", stdout);
-      resolve(NextResponse.json({ message: "Jobs updated successfully!" }));
+      resolve(NextResponse.json({ status: 200 }, { status: 200 }));
     });
   });
 }

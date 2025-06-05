@@ -7,11 +7,13 @@ export async function GET() {
   const filePath = path.join(process.cwd(), "data", "jobs.json");
 
   try {
-    const json = fs.readFileSync(filePath, "utf-8");
-    const jobs = JSON.parse(json);
-    return NextResponse.json({ jobs });
-  } catch (err) {
+    fs.readFileSync(filePath, "utf-8");
+    return NextResponse.json({ status: 200 }, { status: 200 });
+  } catch (err: any) {
     console.error("Failed to load cached jobs:", err);
-    return NextResponse.json({ error: "Cannot load jobs" }, { status: 500 });
+    return NextResponse.json(
+      { status: 500, error: err.message ?? "Cannot load jobs" },
+      { status: 500 }
+    );
   }
 }
