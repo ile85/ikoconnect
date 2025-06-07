@@ -23,36 +23,44 @@ export default function FeaturedJobs() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchJobs() {
       try {
-        const res = await fetch("/api/jobs");
+        const res = await fetch("/api/jobs", { signal: controller.signal });
         const data = await res.json();
         const raw = Array.isArray(data.jobs) ? data.jobs : [];
         const clean = raw[0]?.title === "Title" ? raw.slice(1) : raw;
         setJobs(clean.slice(0, 6)); // limit to 6
-      } catch (err) {
-        console.error("❌ Failed to load featured jobs:", err);
+      } catch (err: any) {
+        if (err.name !== "AbortError") {
+          console.error("❌ Failed to load featured jobs:", err);
+        }
       } finally {
         setLoading(false);
       }
     }
 
     fetchJobs();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
     <section className="w-full py-20 bg-background">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-3 text-foreground">
-          Featured Jobs
-        </h2>
+        <h2 className="text-3xl font-bold mb-3 text-foreground">Featured Jobs</h2>
         <p className="text-muted-foreground mb-10">
           Fresh freelance & remote job listings curated for you.
         </p>
 
         {loading ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[...Array(6)].map((_, i) => <JobSkeleton key={i} />)}
+            {[...Array(6)].map((_, i) => (
+              <JobSkeleton key={i} />
+            ))}
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,25 +69,15 @@ export default function FeaturedJobs() {
                 key={job.id}
                 className="bg-card p-6 rounded-xl border border-border text-left shadow hover:shadow-md transition-all"
               >
-                <h3 className="text-lg font-semibold text-foreground mb-1">
-                  {job.title}
-                </h3>
+                <h3 className="text-lg font-semibold text-foreground mb-1">{job.title}</h3>
                 <p className="text-sm text-muted-foreground mb-1">
                   {job.company_name} – {job.candidate_required_location}
                 </p>
                 <div className="flex gap-2 text-xs mt-2">
-                  <span
-                    className={`px-2 py-1 rounded ${getBadgeColor(
-                      job.category || ""
-                    )}`}
-                  >
+                  <span className={`px-2 py-1 rounded ${getBadgeColor(job.category || "")}`}>
                     {job.category}
                   </span>
-                  <span
-                    className={`px-2 py-1 rounded ${getBadgeColor(
-                      job.job_type || ""
-                    )}`}
-                  >
+                  <span className={`px-2 py-1 rounded ${getBadgeColor(job.job_type || "")}`}>
                     {job.job_type}
                   </span>
                 </div>

@@ -34,21 +34,29 @@ export default function JobsList() {
   const jobsPerPage = 6;
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchJobs() {
       try {
-        const res = await fetch("/api/fetch-jobs");
+        const res = await fetch("/api/fetch-jobs", { signal: controller.signal });
         if (!res.ok) throw new Error(`API error ${res.status}`);
         const data: Job[] = await res.json();
         setJobs(data);
         setFiltered(data);
-      } catch (err) {
-        console.error("❌ Failed to load jobs:", err);
-        setError(true);
+      } catch (err: any) {
+        if (err.name !== "AbortError") {
+          console.error("❌ Failed to load jobs:", err);
+          setError(true);
+        }
       } finally {
         setLoading(false);
       }
     }
     fetchJobs();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   useEffect(() => {
@@ -71,9 +79,7 @@ export default function JobsList() {
     setFiltered(result);
   }, [searchTerm, activeType, activeCategory, jobs]);
 
-  const categories = Array.from(
-    new Set(jobs.map((j) => j.category ?? "").filter(Boolean))
-  ).sort();
+  const categories = Array.from(new Set(jobs.map((j) => j.category ?? "").filter(Boolean))).sort();
   const types = Array.from(new Set(jobs.map((j) => j.job_type ?? ""))).sort();
 
   const indexOfLast = currentPage * jobsPerPage;
@@ -134,10 +140,7 @@ export default function JobsList() {
         {loading ? (
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
             {[...Array(jobsPerPage)].map((_, i) => (
-              <div
-                key={i}
-                className="rounded-2xl p-6 bg-white dark:bg-gray-800 overflow-hidden"
-              >
+              <div key={i} className="rounded-2xl p-6 bg-white dark:bg-gray-800 overflow-hidden">
                 <div className="h-6 w-3/4 mb-4 shimmer rounded"></div>
                 <div className="h-4 w-1/2 mb-6 shimmer rounded"></div>
                 <div className="space-y-2">
@@ -159,8 +162,9 @@ export default function JobsList() {
               {currentJobs.map((job) => {
                 const desc = job.description ?? "";
                 const preview =
-                  fixEncoding(desc.replace(/<[^>]+>/g, "")).slice(0, 160).trim() +
-                  "…";
+                  fixEncoding(desc.replace(/<[^>]+>/g, ""))
+                    .slice(0, 160)
+                    .trim() + "…";
 
                 return (
                   <div
@@ -208,9 +212,7 @@ export default function JobsList() {
                       </div>
                     </div>
 
-                    <p className="text-gray-700 text-sm mt-2 line-clamp-3">
-                      {preview}
-                    </p>
+                    <p className="text-gray-700 text-sm mt-2 line-clamp-3">{preview}</p>
 
                     <Link
                       href={`/jobs/${job.id}`}
