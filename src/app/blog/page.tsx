@@ -24,9 +24,10 @@ interface BlogPageProps {
   searchParams: { page?: string; tag?: string };
 }
 
-export default function BlogPage({ searchParams }: BlogPageProps) {
-  const rawPage = searchParams.page || "1";
-  const activeTag = searchParams.tag || "";
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const params = await searchParams;
+  const rawPage = params.page || "1";
+  const activeTag = params.tag || "";
 
   let currentPage = parseInt(rawPage, 10);
   if (isNaN(currentPage) || currentPage < 1) {
