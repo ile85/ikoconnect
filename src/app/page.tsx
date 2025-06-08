@@ -11,6 +11,7 @@ import { getAllRecommendations } from "@/lib/recommendations";
 import { getAllPosts, PostSummary } from "@/lib/blog";
 import { generateOrganizationJsonLD } from "@/lib/jsonldGenerator";
 import Link from "next/link";
+import Image from "next/image";
 
 interface HomePageProps {}
 
@@ -97,11 +98,13 @@ export default async function HomePage({}: HomePageProps) {
               <Link href={`/blog/${post.slug}`} className="group block flex-1">
                 <div className="flex flex-col h-full">
                   {/* ICON / IMAGE CONTAINER */}
-                  <div className="w-full h-32 sm:h-40 bg-gray-100 flex items-center justify-center overflow-hidden rounded-md mb-4">
-                    <img
+                  <div className="w-full h-32 sm:h-40 bg-gray-100 flex items-center justify-center overflow-hidden rounded-md mb-4 relative">
+                    <Image
                       alt={post.title}
                       src={post.coverImage}
-                      className="max-w-full max-h-full object-contain"
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-contain"
                     />
                   </div>
 
