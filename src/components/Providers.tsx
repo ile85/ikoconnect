@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import Script from "next/script";
 import JSONLD from "./JSONLD";
 import NavbarClient from "./NavbarClient";
+import Footer from "./Footer";
 
 export default function Providers({ children }: { children: ReactNode }) {
   const orgSchema = {
@@ -51,6 +52,9 @@ export default function Providers({ children }: { children: ReactNode }) {
         )}
 
         {children}
+        <Footer />
+
+        {/* Google reCAPTCHA */}
       </ThemeProvider>
     </>
   );

@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import JSONLD from "@/components/JSONLD";
 import {
   generateOrganizationJsonLD,
@@ -100,7 +99,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   });
 
   return (
-    <html lang="en" className={`${inter.className} scroll-smooth bg-white dark:bg-gray-900`}>
+    <html lang="en" className={inter.className}>
       <head>
         {/* SEO & performance meta */}
         <meta charSet="UTF-8" />
@@ -119,11 +118,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           defer
         ></script>
       </head>
-      <body className="flex flex-col min-h-screen antialiased text-gray-800 dark:text-gray-200">
+      <body className="flex flex-col min-h-screen antialiased scroll-smooth bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
         <Providers>
           <Navbar />
           <main id="main-content" className="flex-1 pt-20">{children}</main>
-          <Footer />
         </Providers>
       </body>
     </html>
