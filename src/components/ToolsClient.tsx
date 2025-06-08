@@ -1,11 +1,26 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { Tool, getAllTools } from "@/lib/tools";
+import React, { useState, useMemo, useEffect } from "react";
+import { Tool } from "@/lib/tools";
 import ToolCard from "./ToolCard";
 
 export default function ToolsClient() {
-  const allTools: Tool[] = getAllTools();
+  const [allTools, setAllTools] = useState<Tool[]>([]);
+
+  useEffect(() => {
+    async function fetchTools() {
+      try {
+        const res = await fetch("/api/tools");
+        if (!res.ok) throw new Error(`API error ${res.status}`);
+        const data = await res.json();
+        setAllTools(Array.isArray(data.tools) ? data.tools : []);
+      } catch (err) {
+        console.error("\u274c Failed to load tools:", err);
+      }
+    }
+
+    fetchTools();
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
