@@ -72,7 +72,7 @@ export default function MediaKitPage() {
           <h2 className="text-xl font-semibold mb-2">Brand Guidelines</h2>
           <p className="text-sm mb-2">Logo usage, colors, typography, and visual identity.</p>
           <a
-            href="/assets/IkoConnect – Brand Guidelines.pdf"
+            href="/assets/Brand Guidelines.pdf"
             download
             className="text-indigo-600 font-medium hover:underline"
           >

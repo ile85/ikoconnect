@@ -31,17 +31,19 @@ export default function ToolCard({
       <div>
         {/* Logo */}
         {logo && (
-          <div className="relative w-12 h-12 mb-4">
-            <Image
-              src={logo}
-              alt={`${name} logo`}
-              fill
-              sizes="48px"
-              className="object-contain"
-              loading="lazy"
-            />
-          </div>
-        )}
+  <div className="relative w-12 h-12 mb-4 rounded-md bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+    <div className="absolute inset-0 bg-black/5 dark:bg-white/10 z-0 rounded-md" />
+    <Image
+      src={logo}
+      alt={`${name} logo`}
+      fill
+      sizes="48px"
+      className="object-contain relative z-10"
+      loading="lazy"
+    />
+  </div>
+)}
+
 
         {/* Name */}
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
@@ -96,7 +98,7 @@ export default function ToolCard({
           rel="noopener noreferrer"
           className="inline-block text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-full transition"
         >
-          Visit Site →
+          {cta} →
         </a>
       </div>
     </div>

@@ -5,6 +5,7 @@ import ToolsClient from "@/components/ToolsClient";
 import { getAllTools } from "@/lib/tools";
 import { buildBasicMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
+import BackToTop from "@/components/BackToTop";
 
 interface ToolsJsonLdService {
   "@type": "Service";
@@ -64,6 +65,8 @@ export default async function ToolsPage() {
 
       {/* Клиентска компонента за search, filter, pagination */}
       <ToolsClient />
+       <BackToTop />
     </main>
+    
   );
 }

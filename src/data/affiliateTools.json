@@ -757,5 +757,868 @@
     "tier": "freemium",
     "rating": 4.5,
     "cta": "Visit Site"
-  }
+  },
+  {
+  "id": "grammarly",
+  "name": "Grammarly",
+  "description": "Grammarly is an AI-powered writing assistant that helps you write clear, mistake-free content. It checks for grammar, punctuation, style, and tone, making it ideal for freelancers, students, and professionals who want to improve their writing.",
+  "url": "https://www.grammarly.com?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/grammarly.png",
+  "categories": [
+    "writing",
+    "productivity",
+    "ai-tools"
+  ],
+  "features": [
+    "Real-time grammar and spell checking",
+    "Style and tone suggestions",
+    "Plagiarism detection (Premium feature)",
+    "Browser extension and desktop app"
+  ],
+  "tier": "freemium",
+  "rating": 4.8,
+  "cta": "Get Grammarly"
+},
+{
+  "id": "karasomes",
+  "name": "Karasomes",
+  "description": "Karasomes is a Germany-based online marketplace offering smart home gadgets, minimalist decor, and sustainable lifestyle products – perfect for freelancers, digital nomads, and modern households.",
+  "url": "https://www.awin1.com/cread.php?awinmid=XXXX&awinaffid=YYYY",
+  "logo": "https://www.ikoconnect.com/images/logos/karasomes.png",
+  "categories": [
+    "home",
+    "smart-home",
+    "ecommerce",
+    "lifestyle"
+  ],
+  "features": [
+    "Smart gadgets for modern homes",
+    "Minimalist and eco-friendly product design",
+    "Fast shipping within Germany and Austria",
+    "Affordable solutions for renters, students, and freelancers"
+  ],
+  "tier": "paid",
+  "rating": 4.6,
+  "cta": "Shop Karasomes"
+},
+{
+  "id": "embea",
+  "name": "Embea",
+  "description": "Embea is a modern insurance provider offering digital, hassle-free coverage for families, freelancers, and individuals in Germany. From life insurance to accident protection, Embea simplifies your safety.",
+  "url": "https://www.awin1.com/cread.php?awinmid=XXXX&awinaffid=YYYY",
+  "logo": "https://www.ikoconnect.com/images/logos/embea.png",
+  "categories": [
+    "insurance",
+    "finance",
+    "freelancer-tools",
+    "life"
+  ],
+  "features": [
+    "Digital life and accident insurance within minutes",
+    "No paperwork, 100% online application",
+    "Transparent, customizable coverage plans",
+    "Tailored for freelancers, parents, and remote workers"
+  ],
+  "tier": "paid",
+  "rating": 4.8,
+  "cta": "Explore Embea"
+},
+{
+  "id": "amberscript",
+  "name": "Amberscript",
+  "description": "Amberscript is an AI-powered transcription and subtitling tool that turns audio and video into accurate text. Perfect for freelancers, content creators, and remote professionals who work with interviews, podcasts, or educational content.",
+  "url": "https://www.amberscript.com/?ref=ikoconnect",
+  "logo": "https://www.ikoconnect.com/images/logos/amberscript.png",
+  "categories": [
+    "transcription",
+    "ai-tools",
+    "productivity"
+  ],
+  "features": [
+    "Automatic and manual transcription services",
+    "Speaker recognition and timestamping",
+    "Subtitling and caption export options",
+    "Secure and GDPR-compliant data handling"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Try Amberscript"
+},
+{
+  "id": "ergofino",
+  "name": "Ergofino",
+  "description": "Ergofino offers high-quality, ergonomic office furniture including height-adjustable desks and chairs. Ideal for remote workers, freelancers, and anyone looking to improve their home office setup with comfortable and health-focused furniture.",
+  "url": "https://www.ergofino.de/?ref=ikoconnect",
+  "logo": "https://www.ikoconnect.com/images/logos/ergofino.png",
+  "categories": [
+    "ergonomics",
+    "remote-work",
+    "home-office"
+  ],
+  "features": [
+    "Height-adjustable desks",
+    "Ergonomic office chairs with certification",
+    "Fast shipping from Germany",
+    "Free returns within 60 days",
+    "Extended repair and warranty services"
+  ],
+  "tier": "premium",
+  "rating": 4.7,
+  "cta": "Shop Ergofino"
+},
+{
+  "id": "babbel",
+  "name": "Babbel",
+  "description": "Babbel is a top-rated language learning app offering 14 languages with interactive lessons, speech recognition, and mobile access. It's perfect for freelancers, digital nomads, and remote workers looking to upskill or learn new languages.",
+  "url": "https://tidd.ly/3HWnCEf",
+  "logo": "https://www.ikoconnect.com/images/logos/babbel.png",
+  "categories": [
+    "language-learning",
+    "education",
+    "productivity"
+  ],
+  "features": [
+    "14 languages including English, Spanish, French, and Russian",
+    "Interactive lessons with vocabulary, grammar, and listening",
+    "Speech recognition technology for better pronunciation",
+    "Mobile and desktop sync with cloud-based progress tracking",
+    "Free first lesson and 20-day money-back guarantee"
+  ],
+  "tier": "premium",
+  "rating": 4.5,
+  "cta": "Start Learning with Babbel"
+},
+{
+  "id": "fyrst",
+  "name": "FYRST",
+  "description": "FYRST is a digital bank designed specifically for freelancers and self-employed professionals in Germany. It offers business banking, invoicing, accounting integrations, and a fully digital setup with no paperwork.",
+  "url": "https://www.fyrst.de/?ref=ikoconnect",
+  "logo": "https://www.ikoconnect.com/images/logos/fyrst.png",
+  "categories": [
+    "banking",
+    "freelance-tools",
+    "finance"
+  ],
+  "features": [
+    "Business accounts tailored for freelancers & founders",
+    "Online banking with modern UX and mobile access",
+    "Invoicing and accounting tool integrations",
+    "Free plan available with essential features",
+    "Backed by Deutsche Bank security"
+  ],
+  "tier": "freemium",
+  "rating": 4.4,
+  "cta": "Open a FYRST Account"
+},
+{
+  "id": "pack-smooch",
+  "name": "Pack & Smooch",
+  "description": "Pack & Smooch creates handmade accessories for remote workers, including wool felt laptop sleeves, leather desk pads, and minimalist gear designed in Germany.",
+  "url": "https://www.pack-smooch.com/?ref=ikoconnect",
+  "logo": "https://www.ikoconnect.com/images/logos/pack-smooch.png",
+  "categories": [
+    "home-office",
+    "accessories",
+    "remote-work"
+  ],
+  "features": [
+    "Handmade laptop sleeves from wool felt and leather",
+    "Minimalist desk accessories for stylish home offices",
+    "Designed and manufactured in Germany",
+    "Sustainable materials and ethical production",
+    "Perfect gift idea for freelancers and remote workers"
+  ],
+  "tier": "premium",
+  "rating": 4.6,
+  "cta": "Shop Pack & Smooch"
+},
+{
+  "id": "lingoking",
+  "name": "lingoking",
+  "description": "lingoking is a certified translation and interpreting platform offering document, legal, business, and real-time language services. Ideal for individuals and global businesses needing secure, professional language solutions.",
+  "url": "https://www.lingoking.com", 
+  "logo": "https://www.ikoconnect.com/images/logos/lingoking.png",
+  "categories": [
+    "translation",
+    "language",
+    "tools",
+    "business"
+  ],
+  "features": [
+    "Certified translations in over 40 languages",
+    "Real-time and telephone interpreting",
+    "Secure online ordering and delivery",
+    "Transparent fixed pricing and fast turnaround"
+  ],
+  "tier": "paid",
+  "rating": 4.6,
+  "cta": "Get a Certified Translation"
+},
+{
+  "id": "speedcomfort",
+  "name": "SpeedComfort",
+  "slug": "speedcomfort",
+  "logo": "/images/logos/speedcomfort.png",
+  "website": "https://www.speedcomfort.com/de/",
+  "affiliateLink": "https://tidd.ly/3FUFAqf?utm_source=ikoconnect&utm_medium=blog&utm_campaign=speedcomfort",
+  "shortDescription": "Effiziente Heizkörperlüfter zur Reduzierung der Heizkosten und Optimierung der Raumtemperatur.",
+  "tags": [
+    "heating",
+    "energy-saving",
+    "home",
+    "eco",
+    "winter",
+    "efficiency"
+  ],
+  "dateAdded": "2025-06-13",
+  "ogImage": "/images/og/speedcomfort.png",
+  "featured": true,
+  "language": "en"
+},
+
+{
+  "id": "evaneos",
+  "name": "Evaneos",
+  "description": "Evaneos connects travelers with local experts to plan authentic, tailor-made journeys worldwide. Ideal for freelancers and digital nomads seeking deeper travel experiences.",
+  "url": "https://www.ikoconnect.com/redirect/evaneos",
+  "logo": "https://www.ikoconnect.com/images/logos/evaneos.png",
+  "categories": [
+    "travel",
+    "remote-lifestyle",
+    "digital-nomad"
+  ],
+  "features": [
+    "Plan trips with local travel agents",
+    "160+ global destinations",
+    "Fully customizable itineraries",
+    "Ethical, responsible tourism focus"
+  ],
+  "tier": "premium",
+  "rating": 4.7,
+  "cta": "Plan Your Trip"
+},
+{
+  "id": "buddysim",
+  "name": "BuddySIM",
+  "description": "BuddySIM is the ultimate solution for travelers who want hassle-free mobile data in over 100 countries. With prepaid SIMs and eSIMs, you can stay connected worldwide without roaming fees or complicated contracts.",
+  "url": "https://www.buddysim.de?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/buddysim.png",
+  "categories": [
+    "travel",
+    "connectivity",
+    "remote-work"
+  ],
+  "features": [
+    "eSIM and physical SIMs for global data",
+    "Works in 100+ countries",
+    "No contracts, no hidden fees",
+    "Instant online activation",
+    "Perfect for freelancers and digital nomads"
+  ],
+  "tier": "paid",
+  "rating": 4.6,
+  "cta": "Get BuddySIM"
+},{
+  "id": "eset",
+  "name": "ESET",
+  "description": "ESET provides award-winning antivirus and internet security solutions trusted by freelancers, digital nomads, and remote teams. Its lightweight, fast, and reliable protection works seamlessly across all devices, keeping your online work safe and secure.",
+  "url": "https://www.example.com/eset-affiliate-link",
+  "logo": "https://www.ikoconnect.com/images/logos/eset.png",
+  "categories": [
+    "security",
+    "software",
+    "tools",
+    "freelancer",
+    "antivirus"
+  ],
+  "features": [
+    "Advanced real-time threat detection",
+    "Multi-platform protection (Windows, macOS, Linux, Android)",
+    "Anti-phishing and ransomware shield",
+    "Minimal system impact for better productivity"
+  ],
+  "tier": "premium",
+  "rating": 4.7,
+  "cta": "Secure Your Devices"
+}
+,
+{
+  "id": "reisefux",
+  "name": "Reisefux",
+  "description": "Reisefux offers luxury hotel deals at unbeatable prices across Germany and Austria. Perfect for remote workers and digital freelancers who want a spontaneous getaway or a workation retreat without breaking the bank.",
+  "url": "https://www.example.com/reisefux-affiliate-link",
+  "logo": "https://www.ikoconnect.com/images/logos/reisefux.png",
+  "categories": [
+    "travel",
+    "lifestyle",
+    "freelancer",
+    "remote-life",
+    "deals"
+  ],
+  "features": [
+    "Handpicked luxury hotels with major discounts",
+    "No booking fees or hidden costs",
+    "Flexible travel dates",
+    "Perfect for short breaks and digital detoxes"
+  ],
+  "tier": "freemium",
+  "rating": 4.5,
+  "cta": "Find a Deal"
+},
+{
+  "id": "ottonova",
+  "name": "Ottonova",
+  "description": "Ottonova is Germany’s first digital private health insurer built for freelancers, remote workers, and startups—offering fast online enrollment, german-speaking support, telemedicine, and modern coverage options.",
+  "url": "https://www.ottonova.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/ottonova.png",
+  "categories": [
+    "insurance",
+    "health",
+    "freelancer",
+    "remote-life"
+  ],
+  "features": [
+    "Easy online application without paperwork",
+    "German-speaking telemedicine and doctor chat",
+    "Comprehensive coverage for freelancers & families",
+    "Digital claims and billing via app"
+  ],
+  "tier": "premium",
+  "rating": 4.7,
+  "cta": "Insure with Ottonova"
+},
+{
+  "id": "dentolo",
+  "name": "Dentolo",
+  "description": "Dentolo is a modern dental insurance provider in Germany, offering freelancers and self-employed professionals simple, affordable coverage with fast reimbursements and transparent pricing.",
+  "url": "https://www.dentolo.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/dentolo.png",
+  "categories": [
+    "insurance",
+    "dental",
+    "freelancer",
+    "health"
+  ],
+  "features": [
+    "Flexible and affordable dental insurance plans",
+    "Fast claims with online submission",
+    "Coverage for dental cleanings, braces, implants and more",
+    "Special plans tailored for freelancers and families"
+  ],
+  "tier": "premium",
+  "rating": 4.6,
+  "cta": "Get Covered with Dentolo"
+},
+{
+  "id": "wellcard",
+  "name": "WellCard",
+  "description": "WellCard is a flexible health and wellness discount card accepted across Germany, offering up to 30% savings at thousands of wellness providers — including dentists, physiotherapists, massage studios, gyms, and more. Ideal for freelancers looking to stay healthy without breaking the bank.",
+  "url": "https://www.wellcard.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/wellcard.png",
+  "categories": [
+    "health",
+    "freelancer",
+    "insurance",
+    "lifestyle"
+  ],
+  "features": [
+    "Up to 30% discounts on health & wellness services",
+    "Valid at 15,000+ partner providers in Germany",
+    "Covers dental, massage, physiotherapy, and more",
+    "No long-term contract or subscription"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Get Your WellCard"
+},
+{
+  "id": "skr-reisen",
+  "name": "SKR Reisen",
+  "description": "SKR Reisen offers authentic, small-group travel experiences ideal for remote workers and freelancers. With a focus on sustainability, culture, and coworking-friendly setups, it's the perfect way to blend productivity with adventure.",
+  "url": "https://www.skr.de?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/skr-reisen.png",
+  "categories": [
+    "travel",
+    "coworking",
+    "remote-life",
+    "slow travel"
+  ],
+  "features": [
+    "Small group trips with max 12 guests",
+    "Coworking-friendly accommodations with Wi-Fi",
+    "Cultural immersion and sustainable travel",
+    "Flexible schedules with free time for work"
+  ],
+  "tier": "premium",
+  "rating": 4.8,
+  "cta": "Explore with SKR Reisen"
+},
+{
+  "id": "geek-crate",
+  "name": "Geek Crate",
+  "description": "Geek Crate is a monthly subscription box for fans of anime, games, comics, and sci-fi—perfect for freelancers who want fun, creative energy delivered to their door.",
+  "url": "https://tidd.ly/4l7smp3",
+  "logo": "https://www.ikoconnect.com/images/logos/geek-crate.png",
+  "categories": [
+    "subscription",
+    "fun",
+    "geek",
+    "remote-life"
+  ],
+  "features": [
+    "Curated monthly boxes with unique geek culture items",
+    "Includes apparel, figures, gadgets, snacks & more",
+    "Flexible plans with gift options and global shipping",
+    "Perfect for remote workers looking for joy and surprise"
+  ],
+  "tier": "premium",
+  "rating": 4.9,
+  "cta": "Unbox Geek Joy"
+},
+{
+  "id": "reise-sim-karten",
+  "name": "Reise Sim Karten",
+  "description": "Reise Sim Karten DE offers affordable, high-speed data SIM cards for travelers, freelancers, and remote workers who need reliable mobile internet access across Europe and beyond.",
+  "url": "https://www.reisesimkarten.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/reise-sim-karten.png",
+  "categories": [
+    "travel",
+    "connectivity",
+    "remote-life",
+    "productivity"
+  ],
+  "features": [
+    "No contracts – pay-as-you-go travel SIMs",
+    "High-speed internet in 100+ countries",
+    "eSIM and physical SIM options",
+    "Affordable bundles for freelancers and digital nomads"
+  ],
+  "tier": "recommended",
+  "rating": 4.6,
+  "cta": "Stay connected with Reise Sim Karten"
+},
+{
+  "id": "cupper-teas",
+  "name": "Cupper Teas",
+  "description": "Cupper Teas offers organic, fairtrade, and naturally flavored teas that support wellness and clarity—perfect for remote workers and mindful freelancers.",
+  "url": "https://www.cupper-teas.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/cupper-teas.png",
+  "categories": [
+    "wellness",
+    "organic",
+    "remote-life",
+    "productivity"
+  ],
+  "features": [
+    "100% organic and fairtrade certified teas",
+    "Naturally flavored with no artificial ingredients",
+    "Boosts focus, relaxation, and energy for freelancers",
+    "Eco-conscious packaging and ethical sourcing"
+  ],
+  "tier": "essential",
+  "rating": 4.8,
+  "cta": "Relax with Cupper Teas"
+},
+{
+  "id": "axa-versicherung",
+  "name": "AXA Versicherungen",
+  "description": "AXA is one of Germany’s leading insurance providers, offering comprehensive protection for freelancers, digital nomads, and remote teams—from health to liability to travel insurance.",
+  "url": "https://www.axa.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/axa.png",
+  "categories": [
+    "insurance",
+    "freelancer",
+    "remote-life",
+    "travel"
+  ],
+  "features": [
+    "Flexible insurance plans tailored to self-employed professionals",
+    "Comprehensive health and travel insurance packages",
+    "Liability and legal coverage for digital workers",
+    "Award-winning customer service and online claims support"
+  ],
+  "tier": "recommended",
+  "rating": 4.5,
+  "cta": "Secure your future with AXA"
+},{
+  "id": "goneo",
+  "name": "goneo",
+  "description": "goneo is a reliable German hosting provider offering webspace, domains, email, and powerful tools tailored for freelancers, bloggers, and small businesses.",
+  "url": "https://www.goneo.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/goneo.png",
+  "categories": [
+    "web-hosting",
+    "freelancer-tools",
+    "domains",
+    "email"
+  ],
+  "features": [
+    "Affordable domain and webspace bundles",
+    "Email hosting with strong spam filters",
+    "WordPress and CMS-ready hosting",
+    "German-based support and servers"
+  ],
+  "tier": "essential",
+  "rating": 4.3,
+  "cta": "Launch Your Site with goneo"
+},
+{
+  "id": "easyname",
+  "name": "easyname",
+  "description": "easyname is a European domain and hosting provider offering simple, fast, and affordable solutions—perfect for freelancers and small businesses who want a reliable online presence.",
+  "url": "https://www.easyname.com/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/easyname.png",
+  "categories": [
+    "domains",
+    "hosting",
+    "freelancer",
+    "email-tools"
+  ],
+  "features": [
+    "Affordable domains with global extensions",
+    "Easy-to-use control panel for hosting and DNS",
+    "Professional email included with hosting",
+    "One-click WordPress setup"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Launch with easyname"
+}
+,
+{
+  "id": "depositdirect",
+  "name": "DepositDirect",
+  "description": "DepositDirect helps renters in Germany reduce upfront costs by offering deposit-free living. Instead of paying a large rental deposit, tenants pay a small monthly fee while DepositDirect guarantees the security deposit to landlords.",
+  "url": "https://www.depositdirect.de?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/depositdirect.png",
+  "categories": [
+    "finance",
+    "rental",
+    "freelancer-life",
+    "remote-life"
+  ],
+  "features": [
+    "Avoid large upfront rental deposits",
+    "Secure guarantee accepted by landlords",
+    "Transparent monthly fee",
+    "Flexible termination anytime"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Live Deposit-Free"
+},
+{
+  "id": "rapidmail",
+  "name": "rapidmail",
+  "description": "rapidmail is a powerful German email marketing solution designed for small businesses, freelancers, and agencies. It enables easy newsletter creation, automation, and GDPR-compliant email campaigns with intuitive tools and professional templates.",
+  "url": "https://www.rapidmail.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/rapidmail.png",
+  "categories": [
+    "email-marketing",
+    "productivity",
+    "freelancer",
+    "business"
+  ],
+  "features": [
+    "Drag & drop newsletter editor",
+    "GDPR-compliant email campaigns",
+    "Marketing automation tools",
+    "Professional ready-made templates",
+    "Detailed reporting and analytics",
+    "High deliverability and support in German"
+  ],
+  "tier": "freemium",
+  "rating": 4.8,
+  "cta": "Start with rapidmail"
+},{
+  "id": "simpleshow",
+  "name": "simpleshow",
+  "description": "simpleshow is a powerful explainer video tool that turns your complex ideas into simple, animated videos — perfect for freelancers, educators, and remote teams.",
+  "url": "https://www.simpleshow.com/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/simpleshow.png",
+  "categories": [
+    "video",
+    "education",
+    "freelancer",
+    "remote-tools"
+  ],
+  "features": [
+    "AI-assisted explainer video creation",
+    "Professional templates for business, education, and training",
+    "Multilingual support and voiceovers",
+    "No editing experience required"
+  ],
+  "tier": "recommended",
+  "rating": 4.6,
+  "cta": "Try simpleshow Free"
+},{
+  "id": "dogado",
+  "name": "Dogado",
+  "description": "Dogado is a reliable German hosting provider offering scalable cloud, VPS, domain, and email services tailored for freelancers and small businesses.",
+  "url": "https://www.dogado.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/dogado.png",
+  "categories": ["hosting", "domains", "freelancer", "remote-tools"],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Host with Dogado"
+},
+{
+  "id": "phase6",
+  "name": "Phase-6",
+  "description": "Phase-6 is Germany’s leading vocabulary trainer designed for students, freelancers, and language learners. Ideal for remote workers, digital nomads, and families focused on language acquisition and skill-building.",
+  "url": "https://www.phase-6.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/phase6.png",
+  "categories": [
+    "learning",
+    "language",
+    "productivity",
+    "remote-life"
+  ],
+  "features": [
+    "Smart vocabulary training based on scientifically proven methods",
+    "Works offline – perfect for digital nomads and remote workers",
+    "Integrated with top textbooks and language courses",
+    "Apps for iOS, Android, and Web"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Start Learning with Phase-6"
+},{
+  "id": "ohne-makler",
+  "name": "Ohne-Makler.de",
+  "description": "Ohne-Makler is a German real estate platform that lets you sell or rent your property without using an agent. Ideal for freelancers and remote workers managing their own listings and saving on commission fees.",
+  "url": "https://www.ohne-makler.de?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/ohne-makler.png",
+  "categories": [
+    "real-estate",
+    "remote-life",
+    "freelancer",
+    "money"
+  ],
+  "features": [
+    "DIY property listings in Germany",
+    "Syndicates to ImmoScout24, Immowelt, and more",
+    "No agent commissions",
+    "Perfect for digital nomads managing homes remotely"
+  ],
+  "tier": "freemium",
+  "rating": 4.5,
+  "cta": "List Property Now"
+},{
+  "id": "1blu",
+  "name": "1blu",
+  "description": "1blu is a German hosting and domain provider offering reliable, secure, and affordable web services tailored for freelancers, bloggers, and small businesses.",
+  "url": "https://www.1blu.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/1blu.png",
+  "categories": [
+    "hosting",
+    "domains",
+    "web-services",
+    "freelancer"
+  ],
+  "features": [
+    "Web hosting with easy one-click installations",
+    "Domain registration for .de, .com, .org, and more",
+    "Professional email hosting",
+    "GDPR-compliant data centers in Germany"
+  ],
+  "tier": "affordable",
+  "rating": 4.4,
+  "cta": "Launch Your Site with 1blu"
+},{
+  "id": "fraenk",
+  "name": "fraenk",
+  "description": "fraenk is the mobile plan made for digital natives, freelancers, and remote workers in Germany—offering a simple, contract-free mobile experience with 5G access and full transparency.",
+  "url": "https://www.fraenk.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/fraenk.png",
+  "categories": [
+    "mobile",
+    "connectivity",
+    "freelancer",
+    "remote-life"
+  ],
+  "features": [
+    "Flat rate for calls, texts, and data in Germany",
+    "5G access on Telekom network",
+    "No contract – cancel monthly",
+    "eSIM support for quick setup",
+    "App-based management and customer service"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Get fraenk now"
+},
+{
+  "id": "americandream",
+  "name": "AmericanDream DE",
+  "description": "The AmericanDream Green Card service helps remote workers and freelancers apply legally for U.S. permanent residency through the official Green Card Lottery.",
+  "url": "https://www.americandream.de?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/americandream.png",
+  "categories": [
+    "visa",
+    "remote-life",
+    "freelance-life",
+    "legal-services"
+  ],
+  "features": [
+    "Official Green Card Lottery service",
+    "German-speaking expert support",
+    "100% legally compliant process",
+    "Over 21,000 past winners",
+    "24/7 application status updates"
+  ],
+  "tier": "premium",
+  "rating": 4.8,
+  "cta": "Apply for a Green Card"
+},
+{
+  "id": "duden-learnattack",
+  "name": "Duden Learnattack",
+  "description": "Duden Learnattack is an online learning platform from Germany's trusted Duden brand, offering high-quality support in subjects like German, Math, and English. Ideal for students, parents, and freelancers pursuing further education.",
+  "url": "https://www.learnattack.de?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/duden.png",
+  "categories": [
+    "education",
+    "language",
+    "student-tools",
+    "german-learning"
+  ],
+  "features": [
+    "Interactive video tutorials and exercises",
+    "Covers core subjects from grade 4 to 13",
+    "Learning plans tailored to school curriculum",
+    "Test preparation and homework help"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Start Learning with Duden"
+},
+{
+  "id": "verivox",
+  "name": "Verivox",
+  "description": "Verivox is a leading comparison portal in Germany that helps users save money by comparing prices for electricity, gas, internet, insurance, and more. It’s a valuable resource for freelancers and remote workers looking to cut unnecessary expenses and optimize their monthly costs.",
+  "url": "https://www.verivox.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/verivox.png",
+  "categories": [
+    "finance",
+    "productivity",
+    "money-saving",
+    "remote-life"
+  ],
+  "features": [
+    "Compare electricity, gas, internet, and mobile providers",
+    "Switch providers directly through the platform",
+    "Smart tools to estimate potential savings",
+    "Personalized tariff suggestions based on your profile"
+  ],
+  "tier": "freemium",
+  "rating": 4.6,
+  "cta": "Start Saving with Verivox"
+},{
+  "id": "lichtblock",
+  "name": "Lichtblock",
+  "description": "Lichtblock offers premium blue light blockers and red light therapy products that help freelancers and remote workers improve sleep, focus, and overall well-being.",
+  "url": "https://www.lichtblock.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/lichtblock.png",
+  "categories": [
+    "wellness",
+    "remote-life",
+    "productivity",
+    "health"
+  ],
+  "features": [
+    "Scientifically designed red light therapy lamps",
+    "Premium blue light blocking glasses for deep sleep",
+    "Perfect for night-shift workers and screen-heavy routines",
+    "Trusted by biohackers and wellness professionals"
+  ],
+  "tier": "premium",
+  "rating": 4.8,
+  "cta": "Improve Your Sleep with Lichtblock"
+},
+{
+  "id": "paperly",
+  "name": "PAPERLY Poster",
+  "description": "PAPERLY offers customizable, minimalist wall art designed to add personality and inspiration to any remote work or home office setup.",
+  "url": "https://www.paperly.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/paperly.png",
+  "categories": [
+    "home-office",
+    "remote-life",
+    "decor",
+    "gifts"
+  ],
+  "features": [
+    "Personalized poster designs for any occasion",
+    "Minimalist, Scandinavian-inspired aesthetic",
+    "High-quality prints with eco-conscious paper",
+    "Perfect for home offices, coworking setups, and gifts"
+  ],
+  "tier": "standard",
+  "rating": 4.6,
+  "cta": "Decorate Your Workspace"
+},
+{
+  "id": "drakensberg",
+  "name": "DRAKENSBERG",
+  "description": "DRAKENSBERG creates premium vintage-style travel gear and accessories designed for explorers, freelancers, and digital nomads on the move.",
+  "url": "https://www.drakensberg.de/?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/drakensberg.png",
+  "categories": [
+    "travel",
+    "remote-life",
+    "gear",
+    "bags"
+  ],
+  "features": [
+    "Handcrafted leather travel bags with a vintage aesthetic",
+    "Designed for slow travel, coworking trips, and creative journeys",
+    "Durable materials ideal for long-term digital nomads",
+    "Eco-conscious production using natural raw materials"
+  ],
+  "tier": "premium",
+  "rating": 4.8,
+  "cta": "Gear Up with DRAKENSBERG"
+},
+{
+  "id": "bewerbermappe",
+  "name": "Bewerbermappe",
+  "description": "Bewerbermappe helps job seekers and freelancers create professional, modern CVs, cover letters, and full job application documents in just a few clicks.",
+  "url": "https://bewerbermappe.de?ref=ikoconnect123",
+  "logo": "https://www.ikoconnect.com/images/logos/bewerbermappe.png",
+  "categories": [
+    "productivity",
+    "career",
+    "freelancer",
+    "tools"
+  ],
+  "features": [
+    "Easy-to-use CV and cover letter builder",
+    "Professional templates for freelancers and employees",
+    "Instant export as PDF or Word",
+    "Perfect for remote job applications"
+  ],
+  "tier": "essential",
+  "rating": 4.6,
+  "cta": "Build your application"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]

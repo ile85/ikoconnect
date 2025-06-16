@@ -1,10 +1,17 @@
-// /var/www/ikoconnect/src/components/JobsList.tsx
+// src/components/JobsList.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { getBadgeColor } from "../lib/utils";
 import { fixEncoding } from "../lib/fixEncoding";
+
+// Helper to slugify job titles (fallback to ID)
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/[^\w]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 type Job = {
   id: string | number;
@@ -83,7 +90,6 @@ export default function JobsList() {
 
   return (
     <section className="relative overflow-hidden bg-background py-16">
-      {/* Gradient glow behind the section */}
       <div
         className="
           absolute inset-0
@@ -130,7 +136,6 @@ export default function JobsList() {
           </select>
         </div>
 
-        {/* Loading / Error / Content */}
         {loading ? (
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
             {[...Array(jobsPerPage)].map((_, i) => (
@@ -154,13 +159,13 @@ export default function JobsList() {
           </p>
         ) : (
           <>
-            {/* Job Cards */}
             <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
               {currentJobs.map((job) => {
                 const desc = job.description ?? "";
                 const preview =
                   fixEncoding(desc.replace(/<[^>]+>/g, "")).slice(0, 160).trim() +
                   "…";
+                const jobSlug = slugify(job.title || String(job.id));
 
                 return (
                   <div
@@ -213,7 +218,7 @@ export default function JobsList() {
                     </p>
 
                     <Link
-                      href={`/jobs/${job.id}`}
+                      href={`/jobs/${jobSlug}`}
                       className="inline-block mt-4 text-center px-5 py-2 bg-[#00957F] text-white font-medium rounded-md hover:bg-[#007965] transition"
                     >
                       View Details →
@@ -223,14 +228,12 @@ export default function JobsList() {
               })}
             </div>
 
-            {/* No results */}
             {filtered.length === 0 && (
               <p className="text-center text-gray-500 mt-8">
                 No jobs found for your search criteria.
               </p>
             )}
 
-            {/* Pagination */}
             {totalPages > 1 && (
               <div className="mt-10 flex justify-center gap-2">
                 {[...Array(totalPages)].map((_, i) => (

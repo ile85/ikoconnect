@@ -8,6 +8,9 @@ interface Props {
   posts: PostSummary[];
 }
 
+// Define slugs that require a dark background due to white logos
+const forceDarkBgSlugs = ["americandream", "bewerbermappe", "dentolo", "depositdirect"];
+
 export default function BlogList({ posts }: Props) {
   if (!posts.length) {
     return <p className="text-center text-gray-500">No blog posts found.</p>;
@@ -30,6 +33,8 @@ export default function BlogList({ posts }: Props) {
           year: "numeric",
         });
 
+        const useDarkBg = forceDarkBgSlugs.includes(post.slug);
+
         return (
           <motion.div
             key={post.slug}
@@ -44,11 +49,18 @@ export default function BlogList({ posts }: Props) {
             >
               {/* Logo */}
               {post.coverImage && (
-                <div className="w-full h-36 flex items-center justify-center bg-gray-100 p-6 border-b">
+                <div
+                  className={`relative w-full h-36 flex items-center justify-center p-6 border-b shadow-inner rounded-t-xl ${
+                    useDarkBg
+                      ? "bg-gray-900"
+                      : "bg-gray-100 dark:bg-gray-900"
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-black/5 dark:bg-white/10 z-0 rounded-t-xl" />
                   <img
                     src={post.coverImage}
                     alt={post.title}
-                    className="max-h-20 w-auto object-contain"
+                    className="max-h-20 w-auto object-contain relative z-10"
                   />
                 </div>
               )}

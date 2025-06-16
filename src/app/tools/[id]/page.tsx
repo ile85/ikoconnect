@@ -7,6 +7,7 @@ import { buildBasicMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface PageParams {
   params: { id: string };
@@ -16,10 +17,9 @@ export async function generateStaticParams() {
   return getAllToolIds().map((id) => ({ id }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageParams): Promise<Metadata> {
-  const maybeTool = getToolById(params.id);
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+  const { id } = await params;
+  const maybeTool = getToolById(id);
   if (!maybeTool) {
     return {
       title: "Tool Not Found | IkoConnect",
@@ -30,20 +30,20 @@ export async function generateMetadata({
   return buildBasicMetadata({
     title: `${maybeTool.name} – IkoConnect Tool`,
     description: maybeTool.description,
-    path: `/tools/${maybeTool.id}`,
+    path: `/tools/${id}`,
     ogImage: maybeTool.logo,
   });
 }
 
-export default function ToolDetailPage({ params }: PageParams) {
-  const tool = getToolById(params.id);
+export default async function ToolDetailPage({ params }: PageParams) {
+  const { id } = await params;
+  const tool = getToolById(id);
 
   if (!tool) {
     notFound();
     return null;
   }
 
-  // Now TS knows `tool` is a valid Tool
   const t: Tool = tool;
 
   const jsonldTool = {
@@ -62,13 +62,17 @@ export default function ToolDetailPage({ params }: PageParams) {
   return (
     <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <JSONLD data={jsonldTool} />
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { href: "/", label: "Home" },
+          { href: "/tools", label: "Tools" },
+          { href: `/tools/${id}`, label: tool.name },
+        ]}
+      />
 
       <header className="text-center mb-12">
         <div className="mx-auto mb-4 h-24 w-24 relative">
-          {/* 
-            Use "!" to assert `t.logo` is definitely a string.
-            This removes the "string | undefined" complaint from TS.
-          */}
           <Image
             src={t.logo!}
             alt={`${t.name} logo`}

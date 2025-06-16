@@ -1,22 +1,24 @@
 // src/app/resources/page.tsx
 import { getAllTools } from "@/lib/tools";
-import { absoluteUrl } from "@/lib/url";
 import JSONLD from "@/components/JSONLD";
 import ResourcesClient from "./ResourcesClient";
 import type { Metadata } from "next";
+import BackToTop from "@/components/BackToTop";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Resources – IkoConnect",
-    description: "Curated tools, guides & productivity resources for freelancers and remote workers.",
+    description:
+      "Curated tools, guides & productivity resources for freelancers and remote workers.",
     alternates: {
       canonical: `${siteUrl}/resources`,
     },
     openGraph: {
       title: "Resources – IkoConnect",
-      description: "Explore top tools and guides for freelancers and digital nomads.",
+      description:
+        "Explore top tools and guides for freelancers and digital nomads.",
       url: `${siteUrl}/resources`,
       siteName: "IkoConnect",
       images: [
@@ -32,10 +34,17 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "Resources – IkoConnect",
-      description: "Explore top tools and guides for freelancers and digital nomads.",
+      description:
+        "Explore top tools and guides for freelancers and digital nomads.",
       images: [`${siteUrl}/images/og-resources.png`],
     },
-    keywords: ["freelance tools", "remote work", "productivity", "resources", "IkoConnect"],
+    keywords: [
+      "freelance tools",
+      "remote work",
+      "productivity",
+      "resources",
+      "IkoConnect",
+    ],
     robots: {
       index: true,
       follow: true,
@@ -95,13 +104,15 @@ export default function ResourcesPage() {
       <JSONLD data={breadcrumbJsonLD} />
 
       <h1 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-  🧰 Curated Tools for Freelancers
+        🧰 Curated Tools for Freelancers
       </h1>
       <p className="mb-8 text-gray-600 dark:text-gray-400">
-        Browse curated tools and guides crafted to help freelancers and remote professionals succeed.
+        Browse curated tools and guides crafted to help freelancers and remote
+        professionals succeed.
       </p>
 
       <ResourcesClient />
+      <BackToTop />
     </main>
   );
 }

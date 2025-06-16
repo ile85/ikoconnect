@@ -90,23 +90,33 @@ export function getAllPosts(): PostSummary[] {
 
 // 3️⃣ Return full HTML + frontmatter for a single post
 export async function getPostHtmlBySlug(slug: string): Promise<Post | null> {
-  const fullPath = path.join(POSTS_PATH, `${slug}.md`);
-  if (!fs.existsSync(fullPath)) return null;
+  try {
+    const fullPath = path.join(POSTS_PATH, `${slug}.md`);
+    if (!fs.existsSync(fullPath)) {
+      console.error(`[❌] Markdown file not found for slug: ${slug}`);
+      return null;
+    }
 
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-  const html = await marked(content);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+    const html = await marked(content);
 
-  return {
-    slug,
-    title: String(data.title || "Untitled"),
-    description: String(data.description || ""),
-    date: new Date(data.date).toISOString().split("T")[0] || "",
-    tags: Array.isArray(data.tags) ? data.tags.map((t) => String(t)) : [],
-    coverImage: String(
-      data.coverImage || data.ogImage || data.image || "/images/default-cover.jpg"
-    ),
-    html,
-    author: String(data.author || ""),
-  };
+    console.log(`[✅] Loaded markdown: ${slug}`);
+
+    return {
+      slug,
+      title: String(data.title || "Untitled"),
+      description: String(data.description || ""),
+      date: new Date(data.date).toISOString().split("T")[0] || "",
+      tags: Array.isArray(data.tags) ? data.tags.map((t) => String(t)) : [],
+      coverImage: String(
+        data.coverImage || data.ogImage || data.image || "/images/default-cover.jpg"
+      ),
+      html,
+      author: String(data.author || ""),
+    };
+  } catch (err) {
+    console.error(`[💥] Error parsing markdown for slug: ${slug}`, err);
+    return null;
+  }
 }

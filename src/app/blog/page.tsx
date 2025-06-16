@@ -1,5 +1,3 @@
-// /var/www/ikoconnect/src/app/blog/page.tsx
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
@@ -7,7 +5,8 @@ import { buildBasicMetadata } from "@/lib/metadata";
 import JSONLD from "@/components/JSONLD";
 import { generateWebPageJsonLD } from "@/lib/jsonldGenerator";
 import { getAllPosts, PostSummary } from "@/lib/blog";
-import CategoryFilterBar from "@/components/CategoryFilterBar";
+import BlogHero from "@/components/blog/BlogHero";
+import CategoryDropdown from "@/components/CategoryDropdown";
 import BlogList from "@/components/BlogList";
 
 const POSTS_PER_PAGE = 6;
@@ -21,13 +20,14 @@ export const metadata: Metadata = buildBasicMetadata({
 });
 
 interface BlogPageProps {
-  searchParams: { page?: string; tag?: string };
+  searchParams: URLSearchParams;
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const params = await searchParams;
-  const rawPage = params.page || "1";
-  const activeTag = params.tag || "";
+  // ✅ Create URL instance manually from current request (next 15 trick)
+  const url = new URL(`https://dummy.com?${searchParams}`);
+  const rawPage = url.searchParams.get("page") || "1";
+  const activeTag = url.searchParams.get("tag") || "";
 
   let currentPage = parseInt(rawPage, 10);
   if (isNaN(currentPage) || currentPage < 1) {
@@ -35,7 +35,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   }
 
   const allPosts: PostSummary[] = getAllPosts();
-
   const allTags = Array.from(new Set(allPosts.flatMap((post) => post.tags))).sort();
 
   const filteredPosts = activeTag
@@ -64,20 +63,15 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       <JSONLD data={jsonldData} />
+      <BlogHero />
+      <CategoryDropdown allTags={allTags} />
 
-      <h1 className="text-4xl font-bold text-center mb-8 text-[#00957F]">Blog</h1>
-
-      {/* ───── Tag Filter Bar ───── */}
-      <CategoryFilterBar />
-
-      {/* ───── Blog Cards ───── */}
       {paginatedPosts.length === 0 ? (
         <p className="text-center text-gray-500 mt-20">⚠️ No blog posts found.</p>
       ) : (
         <BlogList posts={paginatedPosts} />
       )}
 
-      {/* ───── Pagination ───── */}
       {totalPages > 1 && (
         <div className="flex justify-center mt-10 gap-4">
           {Array.from({ length: totalPages }).map((_, idx) => {
@@ -86,7 +80,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               ? `/blog?tag=${encodeURIComponent(activeTag)}&page=${page}`
               : `/blog?page=${page}`;
             return (
-              <Link
+              <a
                 key={page}
                 href={href}
                 className={`px-4 py-2 border rounded ${
@@ -96,7 +90,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 }`}
               >
                 {page}
-              </Link>
+              </a>
             );
           })}
         </div>

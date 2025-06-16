@@ -1,6 +1,6 @@
 // /var/www/ikoconnect/src/app/newsletter/page.tsx
 import { buildBasicMetadata } from "../../lib/metadata";
-import NewsletterForm from "./NewsletterForm";
+import NewsletterForm from "@/components/NewsletterForm";
 import JSONLD from "../../components/JSONLD";
 
 export const metadata = buildBasicMetadata({
