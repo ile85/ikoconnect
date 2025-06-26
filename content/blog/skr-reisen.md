@@ -102,7 +102,7 @@ Here are a few destinations that are 🔥 for freelancers:
 
 ## 💸 Special Offer – Book via IkoConnect
 
-If you’re thinking of taking the leap, don’t just Google it. Use our **[SKR Reisen special link](https://www.skr.de?ref=ikoconnect123)** to support our work and unlock curated deals for the IkoConnect community.
+If you’re thinking of taking the leap, don’t just Google it. Use our **[SKR Reisen special link](https://tidd.ly/4e59g0x)** to support our work and unlock curated deals for the IkoConnect community.
 
 Travel smarter. Work freer. Live fuller.
 
@@ -133,7 +133,7 @@ To get the most from your SKR Reisen experience, check out:
 
 👇 Tap the button and see where your next remote office might be:
 
-[Start Your Adventure →](https://www.skr.de?ref=ikoconnect123)
+[Start Your Adventure →](https://tidd.ly/4e59g0x)
 
 ---
 

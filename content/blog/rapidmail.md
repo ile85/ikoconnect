@@ -11,7 +11,7 @@ author: "IkoConnect Team"
 
 If you’re running a small business, freelancing, or starting your own digital venture, **email marketing** is one of the most powerful ways to reach your audience. But it can also be super confusing, full of spam traps, design hassles, and GDPR nightmares.
 
-That’s where **[rapidmail](https://www.rapidmail.de/?ref=ikoconnect123)** steps in — a **German-based email marketing platform** made for **simplicity, compliance, and results**.
+That’s where **[rapidmail](https://tidd.ly/464GdIh)** steps in — a **German-based email marketing platform** made for **simplicity, compliance, and results**.
 
 ---
 
@@ -129,7 +129,7 @@ You can choose from:
 
 Getting started is super easy. Sign up with just your email and explore the platform **free**:
 
-👉 [Start with rapidmail now](https://www.rapidmail.de/?ref=ikoconnect123)
+👉 [Start with rapidmail now](https://tidd.ly/464GdIh)
 
 > 💡 Tip: If you're switching from Mailchimp, you can import your contacts in 3 clicks.
 

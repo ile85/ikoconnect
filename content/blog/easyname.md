@@ -78,7 +78,7 @@ Here are a few examples of how IkoConnect users might use easyname:
 
 ## 🔁 How to Get Started with easyname
 
-1. **Visit** [easyname](https://www.easyname.com/?ref=ikoconnect123) ← affiliate link  
+1. **Visit** [easyname](https://tidd.ly/4e1H9iB) ← affiliate link  
 2. **Search for your domain** and register it.
 3. **Choose a hosting plan** that suits your project.
 4. **Install WordPress** or connect your builder.
@@ -116,7 +116,7 @@ If you want to build your digital identity with a no-fuss, affordable, and freel
 
 It’s fast, EU-based, beginner-friendly, and scalable—making it ideal for IkoConnect users launching their online career or expanding their freelance services.
 
-🔗 [Get started with easyname today →](https://www.easyname.com/?ref=ikoconnect123)
+🔗 [Get started with easyname today →](https://tidd.ly/4e1H9iB)
 
 ---
 

@@ -94,7 +94,7 @@ Dogado offers transparent pricing. Here’s a general overview:
 | Exchange Mail| Professional email    | €1.99/month    |
 | Microsoft 365| Full business suite   | €3.49/month    |
 
-> ⚠️ Pricing may vary—check their [official site](https://www.dogado.de/?ref=ikoconnect123) for current offers.
+> ⚠️ Pricing may vary—check their [official site](https://tidd.ly/3HWhiwu) for current offers.
 
 ---
 
@@ -139,7 +139,7 @@ Dogado brings together everything freelancers need in a reliable hosting partner
 
 ---
 
-👉 [Start with Dogado here](https://www.dogado.de/?ref=ikoconnect123)
+👉 [Start with Dogado here](https://tidd.ly/3HWhiwu)
 
 ---
 

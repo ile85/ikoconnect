@@ -15,7 +15,11 @@ export default function ToolsClient() {
 
   const allCategories = useMemo(() => {
     const setCat = new Set<string>();
-    allTools.forEach((t) => t.categories.forEach((c) => setCat.add(c)));
+    allTools.forEach((t) => {
+  if (Array.isArray(t.categories)) {
+    t.categories.forEach((c) => setCat.add(c));
+  }
+});
     return Array.from(setCat).sort();
   }, [allTools]);
 

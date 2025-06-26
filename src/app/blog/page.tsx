@@ -20,14 +20,13 @@ export const metadata: Metadata = buildBasicMetadata({
 });
 
 interface BlogPageProps {
-  searchParams: URLSearchParams;
+  searchParams: { page?: string; tag?: string };
 }
-
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   // ✅ Create URL instance manually from current request (next 15 trick)
   const url = new URL(`https://dummy.com?${searchParams}`);
-  const rawPage = url.searchParams.get("page") || "1";
-  const activeTag = url.searchParams.get("tag") || "";
+  const rawPage = searchParams.page || "1";
+  const activeTag = searchParams.tag || "";
 
   let currentPage = parseInt(rawPage, 10);
   if (isNaN(currentPage) || currentPage < 1) {

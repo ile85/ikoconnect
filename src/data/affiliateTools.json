@@ -1066,28 +1066,6 @@
   "cta": "Find a Deal"
 },
 {
-  "id": "ottonova",
-  "name": "Ottonova",
-  "description": "Ottonova is Germany’s first digital private health insurer built for freelancers, remote workers, and startups—offering fast online enrollment, german-speaking support, telemedicine, and modern coverage options.",
-  "url": "https://www.ottonova.de/?ref=ikoconnect123",
-  "logo": "https://www.ikoconnect.com/images/logos/ottonova.png",
-  "categories": [
-    "insurance",
-    "health",
-    "freelancer",
-    "remote-life"
-  ],
-  "features": [
-    "Easy online application without paperwork",
-    "German-speaking telemedicine and doctor chat",
-    "Comprehensive coverage for freelancers & families",
-    "Digital claims and billing via app"
-  ],
-  "tier": "premium",
-  "rating": 4.7,
-  "cta": "Insure with Ottonova"
-},
-{
   "id": "dentolo",
   "name": "Dentolo",
   "description": "Dentolo is a modern dental insurance provider in Germany, offering freelancers and self-employed professionals simple, affordable coverage with fast reimbursements and transparent pricing.",
@@ -1110,32 +1088,10 @@
   "cta": "Get Covered with Dentolo"
 },
 {
-  "id": "wellcard",
-  "name": "WellCard",
-  "description": "WellCard is a flexible health and wellness discount card accepted across Germany, offering up to 30% savings at thousands of wellness providers — including dentists, physiotherapists, massage studios, gyms, and more. Ideal for freelancers looking to stay healthy without breaking the bank.",
-  "url": "https://www.wellcard.de/?ref=ikoconnect123",
-  "logo": "https://www.ikoconnect.com/images/logos/wellcard.png",
-  "categories": [
-    "health",
-    "freelancer",
-    "insurance",
-    "lifestyle"
-  ],
-  "features": [
-    "Up to 30% discounts on health & wellness services",
-    "Valid at 15,000+ partner providers in Germany",
-    "Covers dental, massage, physiotherapy, and more",
-    "No long-term contract or subscription"
-  ],
-  "tier": "freemium",
-  "rating": 4.6,
-  "cta": "Get Your WellCard"
-},
-{
   "id": "skr-reisen",
   "name": "SKR Reisen",
   "description": "SKR Reisen offers authentic, small-group travel experiences ideal for remote workers and freelancers. With a focus on sustainability, culture, and coworking-friendly setups, it's the perfect way to blend productivity with adventure.",
-  "url": "https://www.skr.de?ref=ikoconnect123",
+  "url": "https://tidd.ly/4e59g0x",
   "logo": "https://www.ikoconnect.com/images/logos/skr-reisen.png",
   "categories": [
     "travel",
@@ -1223,7 +1179,7 @@
   "id": "axa-versicherung",
   "name": "AXA Versicherungen",
   "description": "AXA is one of Germany’s leading insurance providers, offering comprehensive protection for freelancers, digital nomads, and remote teams—from health to liability to travel insurance.",
-  "url": "https://www.axa.de/?ref=ikoconnect123",
+  "url": "https://tidd.ly/4eauWIK",
   "logo": "https://www.ikoconnect.com/images/logos/axa.png",
   "categories": [
     "insurance",
@@ -1266,7 +1222,7 @@
   "id": "easyname",
   "name": "easyname",
   "description": "easyname is a European domain and hosting provider offering simple, fast, and affordable solutions—perfect for freelancers and small businesses who want a reliable online presence.",
-  "url": "https://www.easyname.com/?ref=ikoconnect123",
+  "url": "https://tidd.ly/4e1H9iB",
   "logo": "https://www.ikoconnect.com/images/logos/easyname.png",
   "categories": [
     "domains",
@@ -1334,7 +1290,7 @@
   "id": "simpleshow",
   "name": "simpleshow",
   "description": "simpleshow is a powerful explainer video tool that turns your complex ideas into simple, animated videos — perfect for freelancers, educators, and remote teams.",
-  "url": "https://www.simpleshow.com/?ref=ikoconnect123",
+  "url": "https://tidd.ly/444abtB",
   "logo": "https://www.ikoconnect.com/images/logos/simpleshow.png",
   "categories": [
     "video",
@@ -1355,7 +1311,7 @@
   "id": "dogado",
   "name": "Dogado",
   "description": "Dogado is a reliable German hosting provider offering scalable cloud, VPS, domain, and email services tailored for freelancers and small businesses.",
-  "url": "https://www.dogado.de/?ref=ikoconnect123",
+  "url": "https://tidd.ly/3HWhiwu",
   "logo": "https://www.ikoconnect.com/images/logos/dogado.png",
   "categories": ["hosting", "domains", "freelancer", "remote-tools"],
   "tier": "freemium",
@@ -1494,27 +1450,6 @@
   "cta": "Start Learning with Duden"
 },
 {
-  "id": "verivox",
-  "name": "Verivox",
-  "description": "Verivox is a leading comparison portal in Germany that helps users save money by comparing prices for electricity, gas, internet, insurance, and more. It’s a valuable resource for freelancers and remote workers looking to cut unnecessary expenses and optimize their monthly costs.",
-  "url": "https://www.verivox.de/?ref=ikoconnect123",
-  "logo": "https://www.ikoconnect.com/images/logos/verivox.png",
-  "categories": [
-    "finance",
-    "productivity",
-    "money-saving",
-    "remote-life"
-  ],
-  "features": [
-    "Compare electricity, gas, internet, and mobile providers",
-    "Switch providers directly through the platform",
-    "Smart tools to estimate potential savings",
-    "Personalized tariff suggestions based on your profile"
-  ],
-  "tier": "freemium",
-  "rating": 4.6,
-  "cta": "Start Saving with Verivox"
-},{
   "id": "lichtblock",
   "name": "Lichtblock",
   "description": "Lichtblock offers premium blue light blockers and red light therapy products that help freelancers and remote workers improve sleep, focus, and overall well-being.",
@@ -1602,23 +1537,4 @@
   "rating": 4.6,
   "cta": "Build your application"
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ]

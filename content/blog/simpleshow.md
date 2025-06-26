@@ -11,7 +11,7 @@ author: "IkoConnect"
 
 In today’s fast-paced digital world, **visual storytelling** is more powerful than ever. Whether you're a remote worker explaining a process to a client, a freelancer pitching a new service, or a content creator simplifying a complex idea — **explainer videos** are the way to go.
 
-**Enter [simpleshow](https://www.simpleshow.com?ref=ikoconnect-affiliate-link)** — a smart, easy-to-use platform that helps you create professional animated videos with just a few clicks.
+**Enter [simpleshow](https://tidd.ly/444abtB)** — a smart, easy-to-use platform that helps you create professional animated videos with just a few clicks.
 
 ---
 
@@ -157,7 +157,7 @@ It’s like having your own in-house animation team — but without the cost or 
 
 Start crafting your explainer videos now with simpleshow and communicate like a pro.
 
-👉 [Start with simpleshow](https://www.simpleshow.com?ref=ikoconnect-affiliate-link)
+👉 [Start with simpleshow](https://tidd.ly/444abtB)
 
 ---
 

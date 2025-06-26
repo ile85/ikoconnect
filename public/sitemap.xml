@@ -401,11 +401,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ikoconnect.com/blog/ottonova</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://ikoconnect.com/blog/pack-smooch</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -521,22 +516,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ikoconnect.com/blog/verivox</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://ikoconnect.com/blog/visual-studio-code</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ikoconnect.com/blog/wave</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ikoconnect.com/blog/wellcard</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

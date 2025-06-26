@@ -7,7 +7,7 @@ author: "IkoConnect Team"
 tags: ["insurance", "freelancer", "remote-life", "axa", "germany"]
 coverImage: "/images/logos/axa.png"
 logo: "/images/logos/axa.png"
-affiliate: "https://www.axa.de/?ref=ikoconnect123"
+affiliate: "https://tidd.ly/4eauWIK"
 
 ---
 
@@ -158,7 +158,7 @@ AXA offers **clear tiered pricing**. Choose monthly or yearly. Pick the protecti
 
 Whether you’re just starting out as a freelancer or looking to upgrade your coverage, AXA makes it **simple, digital, and future-proof**.
 
-👉 [Sign up with AXA now and get the protection you need](https://www.axa.de/?ref=ikoconnect123)
+👉 [Sign up with AXA now and get the protection you need](https://tidd.ly/4eauWIK)
 
 ---
 
