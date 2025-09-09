@@ -27,12 +27,20 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
     };
   }
 
-  return buildBasicMetadata({
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
+  const basic = buildBasicMetadata({
     title: `${maybeTool.name} – IkoConnect Tool`,
     description: maybeTool.description,
     path: `/tools/${id}`,
     ogImage: maybeTool.logo,
   });
+
+  return {
+    ...basic,
+    alternates: {
+      canonical: `${siteUrl}/tools/${maybeTool.id}`,
+    },
+  };
 }
 
 export default async function ToolDetailPage({ params }: PageParams) {

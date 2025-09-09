@@ -29,6 +29,8 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   const post = await getPostHtmlBySlug(slug);
   if (!post) return {};
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
+
   const ogImageAbsolute = post.coverImage?.startsWith("http")
     ? post.coverImage
     : `https://www.ikoconnect.com${post.coverImage || "/images/og/default.png"}`;
@@ -36,6 +38,9 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `${siteUrl}/blog/${params.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
