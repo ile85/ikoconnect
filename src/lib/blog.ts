@@ -88,11 +88,21 @@ export async function getPostHtmlBySlug(slug: string): Promise<Post | null> {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
 
-    const rawHtml = await marked(content);
+    const rawHtml = await marked.parse(content);
+
+    // ✅ Безбеден sanitize: без script/style, со разумни атрибути
     const html = sanitizeHtml(rawHtml, {
-      allowedTags: false, // allow default + sanitize intelligently
-      allowedAttributes: false,
-      // keep iframes from known providers if ги користиш:
+      allowedTags: sanitizeHtml.defaults.allowedTags, // нема script/style
+      allowedAttributes: {
+        ...sanitizeHtml.defaults.allowedAttributes,
+        a: ["href", "name", "target", "rel"],
+        img: ["src", "alt", "title", "width", "height", "loading", "decoding"],
+        // дозволи iframe само ако навистина ти треба (инаку избриши ја следнава линија)
+        iframe: ["src", "width", "height", "allow", "allowfullscreen", "frameborder"],
+      },
+      allowedSchemes: ["http", "https", "mailto"],
+      allowedIframeHostnames: ["www.youtube.com", "player.vimeo.com"],
+
       transformTags: {
         a: sanitizeHtml.simpleTransform("a", {
           rel: "noopener nofollow",
