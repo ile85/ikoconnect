@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "IkoConnect",
     images: [
       {
-        url: `${siteUrl}/og-default.png`,
+        url: `${siteUrl}/images/og/og-default.png`, // ← fixed path
         width: 1200,
         height: 630,
         alt: "IkoConnect – Remote Work Portal",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description:
       "IkoConnect – your ultimate portal for remote work: tools, guides, and freelance jobs.",
     creator: "@ikoconnect",
-    images: [`${siteUrl}/og-default.png`],
+    images: [`${siteUrl}/images/og/og-default.png`], // ← fixed path
   },
   icons: {
     icon: ["/favicon.ico", "/favicon-32x32.png"],
@@ -66,12 +66,32 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     name: "IkoConnect",
     url: siteUrl,
     logoUrl: `${siteUrl}/android-chrome-512x512.png`,
+    sameAs: [
+      "https://x.com/ikoconnect",
+      "https://linkedin.com/company/ikoconnect",
+      "https://instagram.com/ikoconnect",
+      "https://facebook.com/ikoconnect",
+    ],
   });
+
   const webJson = generateWebPageJsonLD({
     name: "IkoConnect",
     url: siteUrl,
     description: metadata.description!,
   });
+
+  // Optional: WebSite schema with SearchAction (ако имаш /search?q=)
+  const webSiteJson = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: siteUrl,
+    name: "IkoConnect",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteUrl}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
 
   return (
     <html lang="en" className={inter.className}>
@@ -79,11 +99,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* JSON-LD structured data */}
-        <JSONLD data={orgJson} />
-        <JSONLD data={webJson} />
+        {/* Performance hints */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
 
-        {/* reCAPTCHA */}
+        {/* JSON-LD structured data */}
+        <JSONLD data={[orgJson, webJson, webSiteJson]} id="root-jsonld" />
+
+        {/* reCAPTCHA (load global only if навистина ти треба на сите страници) */}
         <script
           src="https://www.google.com/recaptcha/api.js?render=explicit"
           async
@@ -92,10 +115,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="scroll-smooth bg-white dark:bg-gray-900 flex flex-col min-h-screen antialiased text-gray-800 dark:text-gray-200">
         <ClientOnly>
-          {/* Toggle theme by time */}
           <TimeBasedThemeProvider />
-
-          {/* App shell */}
           <Providers>
             <Navbar />
             <main id="main-content" className="flex-1 pt-20">
@@ -103,13 +123,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <CookieConsent />
             </main>
           </Providers>
-
-          {/* Footer always rendered */}
           <Footer />
         </ClientOnly>
       </body>
     </html>
   );
 }
-export const dynamic = "force-dynamic"; // Always re-render for fresh metadata
-export const revalidate = 0; // Disable static caching for this layout
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;

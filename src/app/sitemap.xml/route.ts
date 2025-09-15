@@ -2,15 +2,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllPostSlugs } from "@/lib/posts";
 import { getAllToolIds } from "@/lib/tools";
-import { absoluteUrl } from "@/lib/url";
 
-// GET /sitemap.xml
 export async function GET(request: NextRequest) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
 
-  // Статични pages
+  // Static pages we want indexed
   const staticPages = [
-    "",
+    "", // homepage
     "about",
     "contact",
     "jobs",
@@ -20,20 +18,23 @@ export async function GET(request: NextRequest) {
     "resources",
     "tools",
     "blog",
+    "legal",
+    "media-kit",
+    "testimonials",
+    "faq",
   ];
 
   const dynamicBlogSlugs = getAllPostSlugs(); // e.g. ["chatgpt", "asana"]
   const dynamicToolIds = getAllToolIds(); // e.g. ["fiverr", "slack"]
-  // Ако имаш resources URLs dynamic, додај ги тука
 
   const urls: string[] = [];
 
-  // Статични
+  // Static
   staticPages.forEach((page) => {
     urls.push(`${siteUrl}/${page}`);
   });
 
-  // Блог постови
+  // Blog posts
   dynamicBlogSlugs.forEach((slug) => {
     urls.push(`${siteUrl}/blog/${slug}`);
   });
@@ -43,16 +44,16 @@ export async function GET(request: NextRequest) {
     urls.push(`${siteUrl}/tools/${id}`);
   });
 
-  // Форматирање на XML
+  // Format XML
   const xmlEntries = urls
-    .map((url) => {
-      return `
+    .map(
+      (url) => `
   <url>
     <loc>${url}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>`;
-    })
+  </url>`
+    )
     .join("");
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

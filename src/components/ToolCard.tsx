@@ -11,7 +11,7 @@ export interface ToolCardProps {
   categories: string[];
   tier: "free" | "freemium" | "paid";
   features?: string[];
-  url?: string; 
+  url?: string;
   cta: string;
 }
 
@@ -24,38 +24,37 @@ export default function ToolCard({
   tier,
   features,
   url,
- cta,
+  cta,
 }: ToolCardProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between">
+    <div className="flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
       <div>
         {/* Logo */}
         {logo && (
-  <div className="relative w-12 h-12 mb-4 rounded-md bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-    <div className="absolute inset-0 bg-black/5 dark:bg-white/10 z-0 rounded-md" />
-    <Image
-      src={logo}
-      alt={`${name} logo`}
-      fill
-      sizes="48px"
-      className="object-contain relative z-10"
-      loading="lazy"
-    />
-  </div>
-)}
-
+          <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-gray-100 dark:bg-gray-900">
+            <div className="absolute inset-0 z-0 rounded-md bg-black/5 dark:bg-white/10" />
+            <Image
+              src={logo}
+              alt={`${name} logo`}
+              fill
+              sizes="48px"
+              className="relative z-10 object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
 
         {/* Name */}
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+        <h3 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
           {name}
         </h3>
 
         {/* Categories */}
-        <div className="flex flex-wrap gap-1 mb-2">
+        <div className="mb-2 flex flex-wrap gap-1">
           {categories.map((cat) => (
             <span
               key={cat}
-              className="bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200 text-xs font-medium px-2 py-0.5 rounded-full"
+              className="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-200"
             >
               {cat}
             </span>
@@ -63,13 +62,13 @@ export default function ToolCard({
         </div>
 
         {/* Description */}
-        <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 line-clamp-3">
+        <p className="mb-3 line-clamp-3 text-sm text-gray-700 dark:text-gray-300">
           {description}
         </p>
 
         {/* Features */}
         {features && features.length > 0 && (
-          <ul className="list-disc list-inside mb-4 text-sm text-gray-600 dark:text-gray-400">
+          <ul className="mb-4 list-inside list-disc text-sm text-gray-600 dark:text-gray-400">
             {features.slice(0, 3).map((f, i) => (
               <li key={i}>{f}</li>
             ))}
@@ -77,10 +76,10 @@ export default function ToolCard({
         )}
       </div>
 
-      <div className="mt-auto pt-4 flex items-center justify-between">
+      <div className="mt-auto flex items-center justify-between pt-4">
         {/* Tier badge */}
         <span
-          className={`text-xs font-semibold px-2 py-1 rounded-full ${
+          className={`rounded-full px-2 py-1 text-xs font-semibold ${
             tier === "free"
               ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
               : tier === "freemium"
@@ -91,12 +90,12 @@ export default function ToolCard({
           {tier.charAt(0).toUpperCase() + tier.slice(1)}
         </span>
 
-        {/* Visit link */}
+        {/* Visit link (affiliate safe) */}
         <a
           href={url || `/api/redirect-tools/${id}`}
           target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-full transition"
+          rel="sponsored nofollow noopener"
+          className="inline-block rounded-full bg-teal-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-teal-700"
         >
           {cta} →
         </a>

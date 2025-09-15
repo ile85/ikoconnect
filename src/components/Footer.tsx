@@ -7,7 +7,10 @@ import NewsletterForm from "@/components/NewsletterForm";
 import { FaTwitter, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
-const NAV_SECTIONS = [
+type SectionItem = { href: string; label: string };
+type Section = { title: string; items: SectionItem[] };
+
+const NAV_SECTIONS: Section[] = [
   {
     title: "Company",
     items: [
@@ -15,16 +18,17 @@ const NAV_SECTIONS = [
       { href: "/testimonials", label: "Testimonials" },
       { href: "/media-kit", label: "Media Kit" },
       { href: "/newsletter", label: "Newsletter" },
+      { href: "/contact", label: "Contact" },
     ],
   },
   {
-    title: "Legal & Help",
+    title: "Legal",
     items: [
-      { href: "/terms", label: "Terms of Service" },
+      { href: "/legal#affiliate-disclosure", label: "Affiliate Disclosure" },
       { href: "/privacy", label: "Privacy Policy" },
-      { href: "/legal", label: "Legal" },
-      { href: "/faq", label: "FAQ" },
-      { href: "/contact", label: "Contact" },
+      { href: "/terms", label: "Terms of Service" },
+      { href: "/legal", label: "Legal Notice" },
+      { href: "/sitemap.xml", label: "Sitemap" },
     ],
   },
 ];
@@ -33,29 +37,32 @@ export default function Footer() {
   const [lastUpdated, setLastUpdated] = useState<string>("");
 
   useEffect(() => {
-    // Ideally sourced from build metadata or CMS
+    // TODO: поврзи со build meta или CMS за реална дата
     setLastUpdated("June 9, 2025");
   }, []);
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 mt-16 border-t border-gray-200 dark:border-gray-700">
+    <footer className="mt-16 border-t border-gray-200 bg-gray-50 text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
       {/* Featured In */}
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="mx-auto max-w-6xl px-6 py-8">
         <FeaturedInSmall />
       </div>
 
       {/* Newsletter */}
-      <div className="bg-white dark:bg-gray-800 py-8">
-        <div className="max-w-4xl mx-auto px-6">
+      <div className="bg-white py-8 dark:bg-gray-800">
+        <div className="mx-auto max-w-4xl px-6">
           <NewsletterForm />
         </div>
       </div>
 
       {/* Navigation & Social */}
-      <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 py-10 md:grid-cols-3">
         {NAV_SECTIONS.map((section) => (
-          <div key={section.title}>
-            <h4 className="text-lg font-semibold mb-4 dark:text-gray-100">
+          <nav key={section.title} aria-labelledby={`footer-${section.title.toLowerCase().replace(/\s+/g, "-")}`}>
+            <h4
+              id={`footer-${section.title.toLowerCase().replace(/\s+/g, "-")}`}
+              className="mb-4 text-lg font-semibold dark:text-gray-100"
+            >
               {section.title}
             </h4>
             <ul className="space-y-2">
@@ -70,17 +77,17 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         ))}
 
         <div>
-          <h4 className="text-lg font-semibold mb-4 dark:text-gray-100">Follow Us</h4>
+          <h4 className="mb-4 text-lg font-semibold dark:text-gray-100">Follow Us</h4>
           <div className="flex items-center space-x-4">
             <a
               href="https://x.com/ikoconnect"
               target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
+              rel="me noopener noreferrer"
+              aria-label="Twitter / X"
               className="text-2xl hover:text-blue-500"
             >
               <FaTwitter />
@@ -88,7 +95,7 @@ export default function Footer() {
             <a
               href="https://linkedin.com/company/ikoconnect"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               aria-label="LinkedIn"
               className="text-2xl hover:text-blue-700"
             >
@@ -97,7 +104,7 @@ export default function Footer() {
             <a
               href="https://facebook.com/ikoconnect"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               aria-label="Facebook"
               className="text-2xl hover:text-blue-600"
             >
@@ -106,7 +113,7 @@ export default function Footer() {
             <a
               href="https://instagram.com/ikoconnect"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               aria-label="Instagram"
               className="text-2xl hover:text-pink-500"
             >
@@ -117,20 +124,29 @@ export default function Footer() {
       </div>
 
       {/* Disclaimer & Copyright */}
-      <div className="bg-gray-100 dark:bg-gray-800 py-6">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p className="mb-4 md:mb-0">
-            Some links may be affiliate links that earn us a small commission at no extra cost to you.
+      <div className="bg-gray-100 py-6 dark:bg-gray-800">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm md:flex-row">
+          <p className="text-center md:text-left">
+            Некои линкови можат да бидат affiliate; можеме да добиеме мала провизија без дополнителен трошок за тебе.{" "}
+            <Link href="/legal#affiliate-disclosure" className="underline hover:no-underline">
+              Прочитај повеќе
+            </Link>
             {lastUpdated && (
-              <span className="block mt-1 text-xs italic">
-                Last updated: {lastUpdated}
-              </span>
+              <span className="mt-1 block text-xs italic">Last updated: {lastUpdated}</span>
             )}
           </p>
-          <p>
+          <p className="text-center md:text-right">
             &copy; {new Date().getFullYear()} <span className="font-semibold">IkoConnect</span>. All rights reserved.
           </p>
         </div>
+
+        <p className="mx-auto mt-4 max-w-6xl px-6 text-center text-xs text-gray-500 dark:text-gray-500">
+          Овој сајт користи колачиња (cookies). Погледни{" "}
+          <Link href="/privacy" className="underline hover:no-underline">
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </div>
     </footer>
   );

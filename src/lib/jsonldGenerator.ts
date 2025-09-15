@@ -1,36 +1,24 @@
 // src/lib/jsonldGenerator.ts
 
-export function generateWebPageJsonLD({
-  url,
-  name,
-  description,
-  dateModified,
-  
-}: {
+export function generateWebPageJsonLD(params: {
   url: string;
   name: string;
   description: string;
   dateModified?: string;
 }) {
-  return {
+  const { url, name, description, dateModified } = params;
+  const json: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     url,
     name,
     description,
-    ...(dateModified && { dateModified }),
   };
+  if (dateModified) json.dateModified = dateModified;
+  return json;
 }
 
-export function generateBlogPostJsonLD({
-  url,
-  title,
-  description,
-  authorName,
-  datePublished,
-  dateModified,
-  image,
-}: {
+export function generateBlogPostJsonLD(params: {
   url: string;
   title: string;
   description: string;
@@ -38,64 +26,82 @@ export function generateBlogPostJsonLD({
   datePublished: string;
   dateModified?: string;
   image?: string;
+  keywords?: string[];
+  articleSection?: string;
+  publisherName?: string;
+  publisherLogo?: string;
+  inLanguage?: string;
+  wordCount?: number;
 }) {
-  return {
+  const {
+    url,
+    title,
+    description,
+    authorName,
+    datePublished,
+    dateModified,
+    image,
+    keywords,
+    articleSection,
+    publisherName,
+    publisherLogo,
+    inLanguage = "en",
+    wordCount,
+  } = params;
+
+  const json: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
     url,
     headline: title,
     description,
-    author: {
-      "@type": "Person",
-      name: authorName,
-    },
+    author: { "@type": "Person", name: authorName },
     datePublished,
-    ...(dateModified && { dateModified }),
+    inLanguage,
+    isAccessibleForFree: true,
   };
+
+  if (dateModified) json.dateModified = dateModified;
+  if (image) json.image = { "@type": "ImageObject", url: image };
+  if (publisherName) {
+    json.publisher = {
+      "@type": "Organization",
+      name: publisherName,
+      ...(publisherLogo && { logo: { "@type": "ImageObject", url: publisherLogo } }),
+    };
+  }
+  if (Array.isArray(keywords) && keywords.length) json.keywords = keywords.join(", ");
+  if (articleSection) json.articleSection = articleSection;
+  if (typeof wordCount === "number") json.wordCount = wordCount;
+
+  return json;
 }
 
-export function generateOrganizationJsonLD({
-  name,
-  url,
-  logoUrl,
-  sameAs,       // ← allow passing sameAs[]
-}: {
+export function generateOrganizationJsonLD(params: {
   name: string;
   url: string;
   logoUrl: string;
-  sameAs?: string[];  // ← add sameAs to the type
+  sameAs?: string[];
 }) {
-  return {
+  const { name, url, logoUrl, sameAs } = params;
+  const json: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name,
     url,
-    logo: {
-      "@type": "ImageObject",
-      url: logoUrl,
-    },
-    ...(sameAs && { sameAs }),  // ← include sameAs if it exists
+    logo: { "@type": "ImageObject", url: logoUrl },
   };
+  if (sameAs && sameAs.length) json.sameAs = sameAs;
+  return json;
 }
 
-export function generateJobPostingJsonLD({
-  title,
-  description,
-  datePosted,
-  validThrough,
-  hiringOrganization,
-  employmentType,
-  jobLocation,
-}: {
+export function generateJobPostingJsonLD(params: {
   title: string;
   description: string;
   datePosted: string;
   validThrough: string;
-  hiringOrganization: {
-    name: string;
-    sameAs?: string;
-    logo?: string;
-  };
+  hiringOrganization: { name: string; sameAs?: string; logo?: string };
   employmentType: string;
   jobLocation: {
     address: {
@@ -107,7 +113,17 @@ export function generateJobPostingJsonLD({
     };
   };
 }) {
-  return {
+  const {
+    title,
+    description,
+    datePosted,
+    validThrough,
+    hiringOrganization,
+    employmentType,
+    jobLocation,
+  } = params;
+
+  const json: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     title,
@@ -117,26 +133,30 @@ export function generateJobPostingJsonLD({
     hiringOrganization: {
       "@type": "Organization",
       name: hiringOrganization.name,
-      ...(hiringOrganization.sameAs && { sameAs: hiringOrganization.sameAs }),
-      ...(hiringOrganization.logo && { logo: hiringOrganization.logo }),
     },
     employmentType,
     jobLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        ...(jobLocation.address.streetAddress && {
-          streetAddress: jobLocation.address.streetAddress,
-        }),
         addressLocality: jobLocation.address.addressLocality,
-        ...(jobLocation.address.addressRegion && {
-          addressRegion: jobLocation.address.addressRegion,
-        }),
-        ...(jobLocation.address.postalCode && {
-          postalCode: jobLocation.address.postalCode,
-        }),
         addressCountry: jobLocation.address.addressCountry,
       },
     },
   };
+
+  if (hiringOrganization.sameAs) json.hiringOrganization.sameAs = hiringOrganization.sameAs;
+  if (hiringOrganization.logo) json.hiringOrganization.logo = hiringOrganization.logo;
+
+  if (jobLocation.address.streetAddress) {
+    json.jobLocation.address.streetAddress = jobLocation.address.streetAddress;
+  }
+  if (jobLocation.address.addressRegion) {
+    json.jobLocation.address.addressRegion = jobLocation.address.addressRegion;
+  }
+  if (jobLocation.address.postalCode) {
+    json.jobLocation.address.postalCode = jobLocation.address.postalCode;
+  }
+
+  return json;
 }

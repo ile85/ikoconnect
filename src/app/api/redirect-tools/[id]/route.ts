@@ -13,23 +13,41 @@ export async function GET(
   }
 
   try {
-    // Правиме URL безбедно
+    // Enforce HTTPS
     const rawUrl = tool.url.startsWith("http://")
-      ? tool.url.replace("http://", "https://") // избегнување Mixed Content
+      ? tool.url.replace("http://", "https://")
       : tool.url;
 
     const redirectUrl = new URL(rawUrl);
 
-    // Додај aff ID ако е потребно (само ако го нема веќе)
-    const affId = process.env.NEXT_PUBLIC_AFF_ID;
-if (!affId || affId === "YOUR_AFF_ID") {
-  console.warn("Missing or placeholder affiliate ID. Set NEXT_PUBLIC_AFF_ID in your .env file.");
-}
-redirectUrl.searchParams.set("aff", affId || "");
+    // Add UTM if missing (non-invasive, не менува affiliate params)
+    if (!redirectUrl.searchParams.get("utm_source")) {
+      redirectUrl.searchParams.set("utm_source", "ikoconnect");
+    }
+    if (!redirectUrl.searchParams.get("utm_medium")) {
+      redirectUrl.searchParams.set("utm_medium", "affiliate");
+    }
+    if (!redirectUrl.searchParams.get("utm_campaign")) {
+      redirectUrl.searchParams.set("utm_campaign", id);
+    }
 
-    // Може да се логираат кликови овде...
+    // Optional: subId tracking ако партнер дозволува, но само ако има ENV и нема конфликт
+    // const subId = process.env.NEXT_PUBLIC_AFF_SUBID;
+    // if (subId && !redirectUrl.searchParams.get("subId")) {
+    //   redirectUrl.searchParams.set("subId", subId);
+    // }
 
-    return NextResponse.redirect(redirectUrl.toString(), 302); // 302 = temporary redirect
+    // Minimal logging (може да се замени со база)
+    const ua = req.headers.get("user-agent") || "unknown";
+    const ref = req.headers.get("referer") || "direct";
+    console.log(`[click] tool=${id} ref=${ref} ua=${ua}`);
+
+    const res = NextResponse.redirect(redirectUrl.toString(), 302);
+    // Hint за ботови да не индексираат оваа interim-рута
+    res.headers.set("X-Robots-Tag", "noindex, nofollow");
+    // Security headers (light)
+    res.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+    return res;
   } catch (error) {
     return NextResponse.json({ error: "Invalid URL" }, { status: 500 });
   }

@@ -1,17 +1,36 @@
 "use client";
 import React from "react";
 
+export type JSONLDData =
+  | Record<string, any>
+  | Record<string, any>[];
+
 interface JSONLDProps {
-  data: Record<string, any>;
+  data: JSONLDData;
+  id?: string; // за уникатен key ако има повеќе script-ови
 }
 
-export default function JSONLD({ data }: JSONLDProps) {
+export default function JSONLD({ data, id }: JSONLDProps) {
+  // Ако е array => ќе инјектираме повеќе <script>
+  if (Array.isArray(data)) {
+    return (
+      <>
+        {data.map((entry, i) => (
+          <script
+            key={id ? `${id}-${i}` : `jsonld-${i}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
+          />
+        ))}
+      </>
+    );
+  }
+
   return (
     <script
-      key="jsonld"
+      key={id || "jsonld"}
       type="application/ld+json"
-      // БЕЗБЕДНО: content доаѓа само од backend или строго дефинирани објекти
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data, null, 0) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
 }

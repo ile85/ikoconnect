@@ -51,6 +51,7 @@
     "react-icons": "^5.5.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
+    "sanitize-html": "^2.17.0",
     "satori": "^0.12.2",
     "sharp": "^0.34.1",
     "slugify": "^1.6.6"
@@ -80,6 +81,7 @@
     "@types/postcss-import": "^14.0.3",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
+    "@types/sanitize-html": "^2.16.0",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
     "@typescript-eslint/parser": "^8.33.1",
     "autoprefixer": "^10.4.21",

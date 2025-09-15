@@ -1,20 +1,40 @@
-// src/components/Navbar.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
-const ThemeToggle = dynamic(() => import("./ThemeToggle"), {
-  ssr: false,
-});
+const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
+
+type Item = { href: string; label: string };
+
+const primary: Item[] = [
+  { href: "/blog", label: "Blog" },
+  { href: "/jobs", label: "Jobs" },
+  { href: "/tools", label: "Tools" },
+  { href: "/resources", label: "Resources" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+const more: Item[] = [
+  { href: "/media-kit", label: "Media Kit" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/legal#affiliate-disclosure", label: "Affiliate Disclosure" },
+];
 
 export default function Navbar() {
+  const pathname = usePathname() || "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname();
+  const [resOpen, setResOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const resBtnRef = useRef<HTMLButtonElement | null>(null);
+  const moreBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -22,137 +42,174 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { href: "/blog", label: "Blog" },
-    { href: "/jobs", label: "Jobs" },
-    { href: "/community", label: "Community" },
-    { href: "/media-kit", label: "Media Kit" },
-    { href: "/testimonials", label: "Testimonials" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ];
+  useEffect(() => {
+    // затвори мени при навигација
+    setMobileOpen(false);
+    setResOpen(false);
+    setMoreOpen(false);
+  }, [pathname]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header
-      className={`
-        fixed top-0 w-full z-50 transition-all duration-300
-        ${scrolled
-          ? "bg-white/80 dark:bg-gray-800/80 shadow-lg backdrop-blur-md"
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-white/80 shadow-lg backdrop-blur-md dark:bg-gray-900/80"
           : "bg-transparent"
-        }
-      `}
+      }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        {/* Logo */}
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        {/* Brand */}
         <Link
           href="/"
-          aria-label="Go to homepage"
-          className="
-            inline-block transition-transform duration-200 transform
-            hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-          "
+          aria-label="IkoConnect — Home"
+          className="inline-flex items-center gap-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
         >
-          <img
-            src="/logo.svg"
-            alt="IkoConnect"
-            className="h-12 w-auto sm:h-14"
-          />
+          <span className="relative block h-10 w-10 sm:h-12 sm:w-12">
+            <Image
+              src="/logo.svg"
+              alt="IkoConnect"
+              fill
+              sizes="48px"
+              priority
+            />
+          </span>
+          <span className="hidden text-base font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:inline">
+            IkoConnect
+          </span>
         </Link>
 
-        {/* Desktop navigation */}
-        <ul className="hidden md:flex items-center space-x-4">
-          {navLinks.map(({ href, label }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                className={`
-                  px-4 py-2 rounded-md text-[15px] font-medium
-                  ${
-                    pathname === href
-                      ? "bg-[#E0F7F2] text-[#00957F]"
-                      : "text-gray-800 dark:text-gray-100 hover:bg-[#E0F7F2] hover:text-[#00957F] dark:hover:bg-gray-700 dark:hover:text-teal-400"
-                  }
-                  transition
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-                `}
-              >
-                {label}
-              </Link>
-            </li>
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-1 md:flex">
+          {primary.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`rounded-md px-3 py-2 text-[15px] font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${
+                isActive(item.href)
+                  ? "bg-[#E0F7F2] text-[#00957F]"
+                  : "text-gray-800 hover:bg-[#E0F7F2] hover:text-[#00957F] dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-teal-400"
+              }`}
+            >
+              {item.label}
+            </Link>
           ))}
 
           {/* Resources dropdown */}
-          <li className="relative group">
+          <div className="relative">
             <button
-              aria-haspopup="true"
-              aria-expanded="false"
-              className="
-                flex items-center px-4 py-2 rounded-md text-[15px] font-medium
-                text-gray-800 dark:text-gray-100 hover:bg-[#E0F7F2] hover:text-[#00957F] dark:hover:bg-gray-700 dark:hover:text-teal-400
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 transition
-              "
+              ref={resBtnRef}
+              aria-haspopup="menu"
+              aria-expanded={resOpen}
+              aria-controls="resources-menu"
+              onClick={() => setResOpen((v) => !v)}
+              onBlur={(e) => {
+                // затвори ако фокусот излезе од попапот
+                if (!e.currentTarget.parentElement?.contains(e.relatedTarget as Node)) {
+                  setResOpen(false);
+                }
+              }}
+              className="flex items-center rounded-md px-3 py-2 text-[15px] font-medium text-gray-800 transition hover:bg-[#E0F7F2] hover:text-[#00957F] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-teal-400"
             >
               Resources
               <ChevronDown className="ml-1 h-4 w-4" />
             </button>
-
             <div
-              className="
-                absolute left-0 top-full w-48
-                bg-white dark:bg-gray-800 shadow-lg rounded-md py-2
-                z-50 opacity-0 group-hover:opacity-100
-                pointer-events-none group-hover:pointer-events-auto
-                transition-opacity
-              "
-              style={{ marginTop: "-2px" }}
+              id="resources-menu"
+              role="menu"
+              className={`absolute right-0 mt-2 w-56 rounded-md border border-gray-200 bg-white p-2 shadow-lg transition dark:border-gray-800 dark:bg-gray-900 ${
+                resOpen ? "opacity-100" : "pointer-events-none opacity-0"
+              }`}
             >
               <Link
+                role="menuitem"
                 href="/resources"
-                className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
               >
                 All Resources
               </Link>
               <Link
+                role="menuitem"
                 href="/tools"
-                className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
               >
                 Tools
               </Link>
               <Link
+                role="menuitem"
                 href="/resources#guides"
-                className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
               >
                 Guides
               </Link>
             </div>
-          </li>
+          </div>
 
-          {/* Community CTA (styled as a button) */}
-          <li>
-            <Link
-              href="/community"
-              className="
-                px-4 py-2 bg-[#00957F] text-white font-semibold
-                rounded-md hover:bg-[#007965] dark:bg-teal-600 dark:hover:bg-teal-500
-                transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-              "
+          {/* More dropdown */}
+          <div className="relative">
+            <button
+              ref={moreBtnRef}
+              aria-haspopup="menu"
+              aria-expanded={moreOpen}
+              aria-controls="more-menu"
+              onClick={() => setMoreOpen((v) => !v)}
+              onBlur={(e) => {
+                if (!e.currentTarget.parentElement?.contains(e.relatedTarget as Node)) {
+                  setMoreOpen(false);
+                }
+              }}
+              className="flex items-center rounded-md px-3 py-2 text-[15px] font-medium text-gray-800 transition hover:bg-[#E0F7F2] hover:text-[#00957F] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-teal-400"
             >
-              Join Community
-            </Link>
-          </li>
+              More
+              <ChevronDown className="ml-1 h-4 w-4" />
+            </button>
+            <div
+              id="more-menu"
+              role="menu"
+              className={`absolute right-0 mt-2 w-56 rounded-md border border-gray-200 bg-white p-2 shadow-lg transition dark:border-gray-800 dark:bg-gray-900 ${
+                moreOpen ? "opacity-100" : "pointer-events-none opacity-0"
+              }`}
+            >
+              {more.map((item) => (
+                <Link
+                  key={item.href}
+                  role="menuitem"
+                  href={item.href}
+                  className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
 
-          {/* Theme Toggle */}
-          <li>
+          {/* CTAs */}
+          <Link
+            href="/newsletter"
+            className="ml-2 rounded-md bg-[#00957F] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#007965] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:bg-teal-600 dark:hover:bg-teal-500"
+          >
+            Subscribe
+          </Link>
+          <Link
+            href="/community"
+            className="ml-2 rounded-md border border-[#00957F] px-4 py-2 text-sm font-semibold text-[#00957F] transition hover:bg-[#E0F7F2] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:border-teal-500 dark:text-teal-400 dark:hover:bg-gray-800"
+          >
+            Join Community
+          </Link>
+
+          <div className="ml-2">
             <ThemeToggle />
-          </li>
-        </ul>
+          </div>
+        </div>
 
         {/* Mobile controls */}
         <div className="flex items-center md:hidden">
           <ThemeToggle />
           <button
-            className="ml-4 text-gray-800 dark:text-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
-            onClick={() => setMobileOpen((prev) => !prev)}
+            className="ml-4 text-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:text-gray-100"
+            onClick={() => setMobileOpen((p) => !p)}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={28} /> : <Menu size={28} />}
@@ -160,93 +217,84 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile sheet */}
       {mobileOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-800 shadow-md px-6 pt-2 pb-4">
-          <ul className="flex flex-col gap-4">
-            {navLinks.map(({ href, label }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className="
-                    block px-4 py-2 rounded-md text-base font-medium
-                    text-gray-800 dark:text-gray-100
-                    hover:bg-[#E0F7F2] dark:hover:bg-gray-700
-                    transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-                  "
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {label}
-                </Link>
-              </li>
+        <div className="md:hidden">
+          <div className="mx-4 mb-4 rounded-2xl border border-gray-200 bg-white p-3 shadow-md dark:border-gray-800 dark:bg-gray-900">
+            {/* Primary */}
+            {primary.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`block rounded-md px-3 py-2 text-base transition ${
+                  isActive(item.href)
+                    ? "bg-[#E0F7F2] text-[#00957F]"
+                    : "text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                {item.label}
+              </Link>
             ))}
 
-            {/* Mobile Resources section */}
-            <li>
-              <div className="px-4 py-2 font-medium text-gray-800 dark:text-gray-100">
-                Resources
-              </div>
-              <ul className="pl-4 space-y-1">
-                <li>
-                  <Link
-                    href="/resources"
-                    className="
-                      block px-4 py-2 rounded-md text-base font-medium
-                      text-gray-800 dark:text-gray-100
-                      hover:bg-[#E0F7F2] dark:hover:bg-gray-700
-                      transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-                    "
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    All Resources
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/tools"
-                    className="
-                      block px-4 py-2 rounded-md text-base font-medium
-                      text-gray-800 dark:text-gray-100
-                      hover:bg-[#E0F7F2] dark:hover:bg-gray-700
-                      transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-                    "
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Tools
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/resources#guides"
-                    className="
-                      block px-4 py-2 rounded-md text-base font-medium
-                      text-gray-800 dark:text-gray-100
-                      hover:bg-[#E0F7F2] dark:hover:bg-gray-700
-                      transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-                    "
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Guides
-                  </Link>
-                </li>
-              </ul>
-            </li>
+            {/* Resources */}
+            <div className="my-2 h-px bg-gray-200 dark:bg-gray-800" />
+            <div className="px-3 pb-1 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              Resources
+            </div>
+            <div className="space-y-1 pl-2">
+              <Link
+                href="/resources"
+                className="block rounded-md px-3 py-2 text-base text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
+              >
+                All Resources
+              </Link>
+              <Link
+                href="/tools"
+                className="block rounded-md px-3 py-2 text-base text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
+              >
+                Tools
+              </Link>
+              <Link
+                href="/resources#guides"
+                className="block rounded-md px-3 py-2 text-base text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
+              >
+                Guides
+              </Link>
+            </div>
 
-            {/* Community CTA */}
-            <li>
+            {/* More */}
+            <div className="my-2 h-px bg-gray-200 dark:bg-gray-800" />
+            <div className="px-3 pb-1 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              More
+            </div>
+            <div className="space-y-1 pl-2">
+              {more.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block rounded-md px-3 py-2 text-base text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="my-3 grid grid-cols-2 gap-2">
+              <Link
+                href="/newsletter"
+                className="rounded-md bg-[#00957F] px-3 py-2 text-center font-semibold text-white hover:bg-[#007965]"
+              >
+                Subscribe
+              </Link>
               <Link
                 href="/community"
-                className="
-                  block px-4 py-2 text-center bg-[#00957F] text-white font-semibold
-                  rounded-md hover:bg-[#007965] dark:bg-teal-600 dark:hover:bg-teal-500
-                  transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500
-                "
-                onClick={() => setMobileOpen(false)}
+                className="rounded-md border border-[#00957F] px-3 py-2 text-center font-semibold text-[#00957F] hover:bg-[#E0F7F2] dark:border-teal-500 dark:text-teal-400 dark:hover:bg-gray-800"
               >
-                Join Community
+                Join
               </Link>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       )}
     </header>
