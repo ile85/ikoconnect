@@ -1,9 +1,9 @@
 // src/app/resources/page.tsx
-import { getAllTools } from "@/lib/tools";
 import JSONLD from "@/components/JSONLD";
-import ResourcesClient from "./ResourcesClient";
-import type { Metadata } from "next";
 import BackToTop from "@/components/BackToTop";
+import type { Metadata } from "next";
+import { getAllTools } from "@/lib/tools";
+import ResourcesClient from "./ResourcesClient";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ikoconnect.com";
 
@@ -60,6 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function ResourcesPage() {
+  // ❗️СЕГА се вчитува на сервер (без fs во клиент)
   const tools = getAllTools();
 
   // JSON-LD: ItemList
@@ -111,8 +112,13 @@ export default function ResourcesPage() {
         professionals succeed.
       </p>
 
-      <ResourcesClient />
+      {/* 👉 Пренеси ги алатките како props до клиент-компонентата */}
+      <ResourcesClient tools={tools} />
+
       <BackToTop />
     </main>
   );
 }
+
+// По желба: ре-валидација (ако извори се статички)
+// export const revalidate = 3600;
